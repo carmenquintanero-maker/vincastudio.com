@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Irene Castro — Brand Identity · Vinca Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Fredoka:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+    :root {
+      --dark:        #1D1319;
+      --white:       #FFFFFF;
+      --cream:       #E9E3DC;
+      --yellow:      #FFB548;
+      --brand:       #1A3568;
+      --brand-mid:   #24579E;
+      --brand-light: #6AABDB;
+      --ease:        cubic-bezier(0.65, 0, 0.15, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--dark);
+      background: var(--dark);
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── NAV (exact match to main page) ─── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 2.5rem;
+      background: rgba(29,19,25,0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      transition: background 0.5s var(--ease), box-shadow 0.5s var(--ease);
+    }
+    #nav.scrolled {
+      background: rgba(29,19,25,0.92);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .nav-logo svg { height: 30px; width: auto; }
+    .nav-links {
+      display: flex; gap: 2.25rem; list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-cta {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dark);
+      background: var(--yellow);
+      padding: 0.55rem 1.4rem;
+      border-radius: 100px;
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+      box-shadow: 0 2px 14px rgba(255,181,72,0.35);
+    }
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(255,181,72,0.5);
+    }
+
+    /* ─── REVEAL ─── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.12s; }
+    .reveal-d2 { transition-delay: 0.24s; }
+    .reveal-d3 { transition-delay: 0.36s; }
+
+    /* ─── §1 HERO ─── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: 50% 50%;
+    }
+    .hero-veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(10,16,32,0.35) 0%,
+        rgba(10,16,32,0.0) 40%,
+        rgba(10,16,32,0.55) 100%
+      );
+      z-index: 1;
+    }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .hero-scroll-line {
+      width: 1px; height: 2.5rem;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+      animation: scrollLine 2s var(--ease) infinite;
+      transform-origin: top;
+    }
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50% { transform: scaleY(0.35); opacity: 0.3; }
+    }
+
+    /* ─── §2 BRIEF ─── */
+    .brief {
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 82vh;
+    }
+    .brief-left {
+      padding: 8rem 5rem 8rem 5.5rem;
+      display: flex; flex-direction: column; justify-content: center;
+      border-right: 1px solid rgba(29,19,25,0.07);
+    }
+    .brief-right {
+      padding: 8rem 5.5rem 8rem 5rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .sec-tag {
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 600; font-size: 0.72rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--brand-mid); margin-bottom: 3rem;
+    }
+    .brief-heading {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+      line-height: 1.05; letter-spacing: -0.025em;
+      color: var(--dark); margin-bottom: 2.5rem;
+    }
+    .brief-heading em { font-style: italic; color: var(--brand-mid); }
+    .brief-body {
+      font-size: 1rem; line-height: 1.8;
+      color: rgba(29,19,25,0.58); max-width: 44ch;
+    }
+    .brief-body p + p { margin-top: 1.1rem; }
+    .brief-details {
+      display: flex; flex-direction: column; gap: 0;
+      border-top: 1px solid rgba(29,19,25,0.08);
+    }
+    .brief-detail {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(29,19,25,0.08);
+    }
+    .detail-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(29,19,25,0.3);
+    }
+    .detail-value {
+      font-size: 0.88rem; font-weight: 400;
+      color: rgba(29,19,25,0.75); text-align: right;
+    }
+
+    /* ─── §3 IRENE2 SECTION (brand blue) ─── */
+    .blue-section {
+      background: var(--brand);
+      padding: 7rem 0 0;
+      overflow: hidden;
+    }
+    .blue-section-header {
+      padding: 0 5.5rem;
+      margin-bottom: 4rem;
+    }
+    .blue-eyebrow {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--brand-light); margin-bottom: 1.25rem; display: block;
+    }
+    .blue-heading {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 400; line-height: 1.08; letter-spacing: -0.025em;
+      color: #fff;
+    }
+    .blue-heading em { font-style: italic; color: var(--brand-light); }
+    .blue-section-img {
+      width: 100%;
+    }
+    .blue-section-img img {
+      width: 100%; height: auto; display: block;
+    }
+
+    /* ─── §4 IRENE3 SECTION (clean white) ─── */
+    .clean-section {
+      background: var(--white);
+      padding: 0;
+    }
+    .clean-section img {
+      width: 100%; height: auto; display: block;
+    }
+
+    /* ─── §5 TEXT SECTION ─── */
+    .text-section {
+      background: var(--white);
+      padding: 7rem 5.5rem;
+      border-top: 1px solid rgba(29,19,25,0.07);
+      border-bottom: 1px solid rgba(29,19,25,0.07);
+    }
+    .text-section-inner {
+      max-width: 700px;
+    }
+    .text-eyebrow {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--brand-mid); margin-bottom: 2rem; display: block;
+    }
+    .text-body {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.5rem, 2.8vw, 2.6rem);
+      font-style: italic; font-weight: 400;
+      line-height: 1.35; letter-spacing: -0.018em;
+      color: var(--dark);
+    }
+
+    /* ─── §6 BRAND GUIDELINES ─── */
+    .guidelines-section {
+      background: #000000;
+      padding-top: 7rem;
+    }
+    .guidelines-header {
+      padding: 0 5.5rem 4.5rem;
+      display: flex; align-items: flex-end;
+      justify-content: space-between; gap: 3rem;
+    }
+    .guidelines-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 400; line-height: 1; letter-spacing: -0.025em;
+      color: #fff;
+    }
+    .guidelines-title em { font-style: italic; color: var(--brand-light); }
+    .guidelines-sub {
+      font-size: 0.88rem; color: rgba(255,255,255,0.35);
+      max-width: 28ch; text-align: right; line-height: 1.65; flex-shrink: 0;
+    }
+    .guidelines-img {
+      width: 100%;
+    }
+    .guidelines-img img {
+      width: 100%; height: auto; display: block;
+    }
+
+    /* ─── §7 BRAND APPLICATIONS ─── */
+    .applications-section {
+      background: var(--white);
+      padding-top: 7rem;
+    }
+    .applications-header {
+      padding: 0 5.5rem 4.5rem;
+      display: flex; align-items: flex-end;
+      justify-content: space-between; gap: 3rem;
+    }
+    .applications-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 400; line-height: 1; letter-spacing: -0.025em;
+      color: var(--dark);
+    }
+    .applications-title em { font-style: italic; color: var(--brand-mid); }
+    .applications-sub {
+      font-size: 0.88rem; color: rgba(29,19,25,0.4);
+      max-width: 28ch; text-align: right; line-height: 1.65; flex-shrink: 0;
+    }
+    .applications-img {
+      width: 100%;
+    }
+    .applications-img img {
+      width: 100%; height: auto; display: block;
+    }
+
+    /* ─── §8 CAROUSEL (infinite drag — Qarmela style) ─── */
+    .ic-car-section {
+      background: var(--white);
+      padding-bottom: 6rem;
+    }
+    .ic-car-head {
+      padding: 6.5rem 5.5rem 4.5rem;
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .ic-car-title {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400; font-size: clamp(2.2rem, 4vw, 3.8rem);
+      letter-spacing: -0.025em; color: var(--dark);
+    }
+    .ic-car-title em { font-style: italic; color: var(--brand-mid); }
+    .ic-car-hint {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(29,19,25,0.3);
+    }
+    .ic-car-vp {
+      overflow-x: scroll; overflow-y: hidden;
+      scrollbar-width: none; cursor: grab;
+      user-select: none; -webkit-overflow-scrolling: touch;
+    }
+    .ic-car-vp::-webkit-scrollbar { display: none; }
+    .ic-car-vp.dragging { cursor: grabbing; }
+    .ic-car-track {
+      display: flex; align-items: stretch;
+      gap: 4px; width: max-content;
+    }
+    /* User-specified slide sizing */
+    .irene-carousel-slide {
+      height: 70vh;
+      max-height: 760px;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .irene-carousel-slide img {
+      width: auto;
+      height: 100%;
+      max-width: none;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      pointer-events: none;
+    }
+    /* Per-slide background — matches each image's natural bg */
+    .ic-slide--6 { background: #7B74C0; }
+    .ic-slide--7 { background: #7E77C4; }
+    .ic-slide--8 { background: #C6AB88; }
+    .ic-slide--9 { background: #E2D9CE; }
+
+    /* ─── CLOSING ─── */
+    .closing {
+      background: var(--dark);
+      padding: 9rem 5.5rem 8rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem; align-items: start;
+    }
+    .closing-heading {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400; font-style: italic;
+      font-size: clamp(3rem, 6vw, 6rem);
+      line-height: 1; letter-spacing: -0.03em;
+      color: #fff;
+    }
+    .closing-heading em { font-style: normal; color: var(--brand-light); }
+    .closing-right { padding-top: 0.5rem; }
+    .closing-body {
+      font-size: 1rem; line-height: 1.8;
+      color: rgba(255,255,255,0.45);
+      max-width: 44ch; margin-bottom: 3.5rem;
+    }
+    .closing-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .closing-cell {
+      padding: 1.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .closing-cell:nth-child(odd) { padding-right: 2rem; border-right: 1px solid rgba(255,255,255,0.08); }
+    .closing-cell:nth-child(even) { padding-left: 2rem; }
+    .cell-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25); margin-bottom: 0.4rem;
+    }
+    .cell-val {
+      font-size: 0.92rem; font-weight: 400;
+      color: rgba(255,255,255,0.7);
+    }
+    @media (max-width: 1024px) {
+      .closing { grid-template-columns: 1fr; gap: 4rem; padding: 6rem 4rem; }
+    }
+    @media (max-width: 640px) {
+      .closing { padding: 5rem 1.5rem; }
+    }
+
+    /* ─── NEXT PROJECT ─── */
+    .next-project {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 5rem 5.5rem;
+      background: #E8C6D1;
+      text-decoration: none; color: #1A1714;
+      transition: background 0.4s var(--ease);
+    }
+    .next-project:hover { background: #D9B1C0; }
+    .next-project:hover .next-arrow { transform: translateX(14px); }
+    .next-label-sm {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(26,23,20,0.5); margin-bottom: 0.6rem;
+    }
+    .next-name {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400; font-style: italic;
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      letter-spacing: -0.025em; color: #1A1714; line-height: 1;
+    }
+    .next-arrow {
+      font-size: 2.5rem; color: rgba(26,23,20,0.45);
+      transition: transform 0.35s var(--ease), color 0.35s;
+      flex-shrink: 0;
+    }
+    .next-project:hover .next-arrow { color: #1A1714; }
+
+    /* ─── FOOTER ─── */
+    .project-footer {
+      background: #060810;
+      padding: 3rem 5.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .back-link {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #fff; }
+    .footer-logo svg { height: 22px; width: auto; opacity: 0.25; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .brief { grid-template-columns: 1fr; min-height: auto; }
+      .brief-left { padding: 6rem 4rem; border-right: none; border-bottom: 1px solid rgba(29,19,25,0.07); }
+      .brief-right { padding: 4rem 4rem 6rem; }
+      .blue-section { padding-top: 5rem; }
+      .blue-section-header { padding: 0 3rem; }
+      .text-section { padding: 5rem 3rem; }
+      .guidelines-header { padding: 0 3rem 3.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .guidelines-sub { text-align: left; }
+      .applications-header { padding: 0 3rem 3.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .applications-sub { text-align: left; }
+      .carousel-head { padding: 5rem 3rem 3.5rem; }
+      .project-footer { padding: 2.5rem 3rem; }
+    }
+    @media (max-width: 640px) {
+      #nav { padding: 1.25rem 1.5rem; }
+      .nav-links { display: none; }
+      .brief-left { padding: 5rem 1.5rem; }
+      .brief-right { padding: 3rem 1.5rem 5rem; }
+      .blue-section { padding-top: 4rem; }
+      .blue-section-header { padding: 0 1.5rem; }
+      .text-section { padding: 4rem 1.5rem; }
+      .guidelines-header { padding: 0 1.5rem 3rem; }
+      .applications-header { padding: 0 1.5rem 3rem; }
+      .carousel-head { padding: 4rem 1.5rem 3rem; }
+      .project-footer { padding: 2rem 1.5rem; }
+      .strip-slide img { height: 50vw; }
+    }
+
+    #back-to-top {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 99;
+      width: 48px; height: 48px;
+      background: transparent; border: 1.5px solid rgba(221,133,186,0.45);
+      border-radius: 50%; color: #DD85BA;
+      font-size: 1rem; cursor: pointer;
+      opacity: 0; transform: translateY(12px);
+      transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), background 0.2s, border-color 0.2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #back-to-top.visible { opacity: 1; transform: none; }
+    #back-to-top:hover { background: rgba(221,133,186,0.15); border-color: #DD85BA; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV — exact match to main page -->
+  <nav id="nav">
+    <a href="/" class="nav-logo" aria-label="Vinca Studio">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="25 222 340 72" aria-hidden="true">
+        <path fill="#db84b6" d="M95.87,236.94c10.77-.14,9.67,13.1-.55,12.97-10.32-.13-10.15-12.83.55-12.97Z"/>
+        <path fill="#db84b6" d="M75.41,231.12c-.26-.32-.39-.83-.29-1.23l.77-.72c4.42-.34,9.32-.76,13.75-.44,6.7.48.92,3.87-.86,6.04-1.06,1.29-1.91,2.76-2.57,4.3-3.85,8.9-6.41,19.79-9.89,29.12-1.2,3.23-2.49,6.73-3.87,9.87-1.42,3.23-1.91,5.77-6.03,5.75-8.6-.05-11.06-7.28-14.26-13.94-3.99-8.31-7.26-17-11.23-25.32-2.15-4.5-4.35-9.65-8.62-12.47-.99-.65-2.74-.84-2.63-2.18.33-1.36,4.76-.84,5.96-.9,5.64-.27,11.43-.47,17.1-.26,1.25.05,6.36.28,6.95.86,1.14,1.11-1.35,2.17-1.96,2.71-3.13,2.72-1.34,6.46-.18,9.77,3.03,8.61,7.42,17.17,10.96,25.59,1.34,1.76,2.33-2.04,2.67-2.92,2.75-7.19,6.01-15.75,8.06-23.1.54-1.92,1.59-5.22.91-7.07-.93-2.54-3.76-2.25-4.75-3.45h.01Z"/>
+        <path fill="#db84b6" d="M122.48,255.76c4.21-4.6,11.58-7.04,17.26-3.73,6.85,3.99,4.46,16.3,4.96,23.03.26,3.49,1.58,6.31,5.33,6.8l.21.56c-.06.87-1.32,1.1-2.06,1.28-4.25,1.05-12.06.73-15.07-2.87-3.55-4.24-.84-14.6-2.18-20.17-1.08-4.48-6.45-4.08-7.64-.53-1,2.98-.75,13.02-.28,16.37.2,1.45.46,2.37,1.43,3.48.43.5,1.84,1.06,1.2,2.05-.11.17-1.9.5-2.28.53-3.77.31-10.15.28-13.94,0-4.86-.35-1.54-1.87-.75-3.48.72-1.45.82-4.74.89-6.47.14-3.29.42-11.88-.62-14.63-.63-1.65-1.94-1.53-2.34-2.14-.54-.82-.05-1.55.79-1.88,2.27-.89,10.15-2.77,12.6-3.04.5-.06,2.49-.25,2.49.55v4.3h0Z"/>
+        <path fill="#db84b6" d="M162.63,272.39c3.36,3.68,9.28,3.65,13.51,1.6.94-.45,4.63-3.65,4.69-.91.09,3.91-5.62,8.24-8.95,9.4-12.73,4.47-26.74-3.39-23.64-18.13,2.41-11.46,18.13-17.2,27.9-12.09,6.82,3.57,4.87,13.27-1.98,12.56-5-.52-2.43-9.15-7.85-9.34-7.14-.24-7.7,12.5-3.69,16.88h0Z"/>
+        <path fill="#db84b6" d="M102.39,251.89c.76.76.07,3.68.05,4.72-.11,5.87-.42,13.19.01,18.93.1,1.32.42,3.31,1.33,4.31.54.59,1.82.84,1.24,1.96-.29.55-1.6.69-2.2.74-3.67.31-10.25.29-13.94,0-.9-.07-2.83-.19-2.46-1.49.18-.63.84-.72,1.12-1.1.99-1.3,1.33-2.55,1.46-4.18.34-4.04.36-11.46.01-15.49-.07-.8-.29-1.83-.65-2.55-.7-1.4-4.45-2.63-.74-3.75,2.16-.65,12.13-2.65,13.95-2.4.25.03.63.1.81.28h0Z"/>
+        <path fill="#db84b6" d="M203.59,278.61c-5.12,7.86-22.59,6.7-21.23-5.01.81-6.95,8.56-8.66,14.27-8.99,1.55-.09,4.38.66,5.02-.63-.31-2.81-1.18-8.99-5.21-8.17-2.9.59-1.2,4.52-4.32,6.22-4.7,2.56-10.13-2.09-6.96-6.76,2.88-4.24,13.19-5.12,17.79-4.41,12.85,1.99,11.82,13.46,14.15,23.37.53,2.26.99,4.4,2.98,5.85,1.09.8,5.19,1.36,2.15,2.65-3.47,1.48-12.16,1.34-15.44-.58-1.54-.9-2.23-2.15-3.19-3.54h-.01ZM202.09,268.08c-3.94-1.05-8.32.74-7.72,5.44.65,5.06,8.48,5.62,8.49,1.29l-.77-6.73Z"/>
+        <path fill="#fbb349" d="M229.73,260.04c0-1.86.48-3.49,1.44-4.92.96-1.42,2.28-2.53,3.98-3.33,1.7-.8,3.66-1.2,5.89-1.2s4.01.38,5.59,1.13c1.58.75,2.81,1.83,3.7,3.22.88,1.39,1.36,3.04,1.41,4.96h-5.57c-.06-1.36-.55-2.43-1.48-3.2-.93-.77-2.17-1.15-3.74-1.15-1.71,0-3.08.38-4.11,1.15-1.03.77-1.54,1.82-1.54,3.15,0,1.13.31,2.02.94,2.67.62.65,1.6,1.14,2.94,1.46l5,1.13c2.73.58,4.76,1.57,6.09,2.98,1.33,1.41,2,3.3,2,5.68,0,1.94-.48,3.65-1.44,5.13-.96,1.48-2.31,2.62-4.07,3.41-1.75.8-3.81,1.2-6.16,1.2s-4.19-.38-5.87-1.15c-1.68-.77-2.99-1.85-3.94-3.24-.94-1.39-1.44-3.03-1.5-4.92h5.57c.03,1.33.56,2.39,1.59,3.15,1.03.77,2.43,1.15,4.2,1.15s3.33-.38,4.41-1.15c1.09-.77,1.63-1.79,1.63-3.07,0-1.1-.29-1.98-.87-2.63s-1.52-1.11-2.83-1.37l-5.05-1.13c-2.7-.58-4.74-1.63-6.13-3.15s-2.09-3.52-2.09-5.98Z"/>
+        <path fill="#fbb349" d="M254.39,261.48h13.57v4.44h-13.57v-4.44ZM263.83,282.96h-5.31v-28.19h5.31v28.19Z"/>
+        <path fill="#fbb349" d="M285.88,261.48h5.31v21.49h-4.92l-.39-2.87c-.64,1.02-1.59,1.84-2.87,2.48s-2.64.96-4.09.96c-2.47,0-4.39-.78-5.79-2.35-1.39-1.57-2.09-3.65-2.09-6.26v-13.44h5.31v11.57c0,2.03.39,3.49,1.17,4.39.78.9,1.91,1.35,3.39,1.35,1.68,0,2.93-.5,3.74-1.5.81-1,1.22-2.52,1.22-4.55v-11.27Z"/>
+        <path fill="#fbb349" d="M305.05,283.53c-2.09,0-3.88-.47-5.37-1.41-1.49-.94-2.65-2.25-3.48-3.94-.83-1.68-1.24-3.64-1.24-5.87s.41-4.21,1.24-5.94c.83-1.72,2.02-3.08,3.59-4.07,1.57-.99,3.42-1.48,5.57-1.48,1.51,0,2.89.3,4.13.89,1.25.59,2.2,1.43,2.87,2.5v-13.61h5.26v32.36h-4.87l-.35-3.35c-.64,1.22-1.62,2.17-2.94,2.87-1.32.7-2.79,1.04-4.42,1.04ZM306.23,278.66c1.25,0,2.32-.27,3.22-.8.9-.54,1.6-1.31,2.11-2.31.51-1,.76-2.14.76-3.41s-.25-2.44-.76-3.42c-.51-.97-1.21-1.74-2.11-2.31s-1.97-.85-3.22-.85-2.28.28-3.17.85c-.9.57-1.59,1.34-2.07,2.33-.48.99-.72,2.12-.72,3.39s.24,2.41.72,3.39,1.17,1.75,2.07,2.3c.9.55,1.96.83,3.17.83Z"/>
+        <path fill="#fbb349" d="M325.76,257.17c-.9,0-1.66-.31-2.28-.94-.62-.62-.94-1.38-.94-2.28s.31-1.65.94-2.26c.62-.61,1.38-.91,2.28-.91s1.66.3,2.28.91c.62.61.93,1.36.93,2.26s-.31,1.66-.93,2.28-1.39.94-2.28.94ZM323.15,282.96v-21.49h5.31v21.49h-5.31Z"/>
+        <path fill="#fbb349" d="M332.67,272.18c0-2.23.49-4.2,1.48-5.89.99-1.7,2.35-3.02,4.09-3.98,1.74-.96,3.71-1.43,5.92-1.43s4.21.48,5.94,1.43c1.72.96,3.08,2.28,4.07,3.98.99,1.7,1.48,3.66,1.48,5.89s-.49,4.2-1.48,5.89c-.99,1.7-2.34,3.02-4.07,3.98-1.73.96-3.71,1.43-5.94,1.43s-4.18-.48-5.92-1.43c-1.74-.96-3.1-2.28-4.09-3.98-.99-1.7-1.48-3.66-1.48-5.89ZM337.98,272.18c0,1.3.27,2.45.8,3.44.54.99,1.26,1.75,2.17,2.3.91.55,1.98.83,3.2.83s2.29-.28,3.22-.83c.93-.55,1.65-1.32,2.17-2.3.52-.99.78-2.13.78-3.44s-.26-2.49-.78-3.46c-.52-.97-1.25-1.73-2.17-2.28-.93-.55-2-.83-3.22-.83s-2.28.28-3.2.83c-.91.55-1.64,1.31-2.17,2.28-.54.97-.8,2.12-.8,3.46Z"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#studio">Studio</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/work" class="active">Work</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <a href="/contact" class="nav-cta">Let's Talk</a>
+  </nav>
+
+  <!-- ①  HERO — image-led, no title -->
+  <section class="hero">
+    <img class="hero-img" src="../brand_assets/irene1.png" alt="Irene Castro Brand Identity" />
+    <div class="hero-veil"></div>
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ②  BRIEF — white, two columns -->
+  <section class="brief">
+    <div class="brief-left">
+      <div class="sec-tag reveal">Brand Identity · 2025</div>
+      <h2 class="brief-heading reveal reveal-d1">Design<br />with <em>purpose.</em></h2>
+      <div class="brief-body reveal reveal-d2">
+        <p>Irene Castro is a personal brand inspired by the connection between nature, the sea and the land. These elements represent the essence of the brand and became the foundation of its visual identity.</p>
+        <p>The goal was to create a visual language that feels calm, elegant and timeless — a system that remains highly recognizable across every application, from stationery to digital presence.</p>
+      </div>
+    </div>
+    <div class="brief-right reveal reveal-d1">
+      <div class="brief-details">
+        <div class="brief-detail">
+          <span class="detail-label">Client</span>
+          <span class="detail-value">Irene Castro Rodríguez</span>
+        </div>
+        <div class="brief-detail">
+          <span class="detail-label">Discipline</span>
+          <span class="detail-value">Brand Identity / Art Direction</span>
+        </div>
+        <div class="brief-detail">
+          <span class="detail-label">Deliverables</span>
+          <span class="detail-value">Identity System, Guidelines, Collateral</span>
+        </div>
+        <div class="brief-detail">
+          <span class="detail-label">Year</span>
+          <span class="detail-value">2025</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③  IRENE2 — brand blue background -->
+  <section class="blue-section">
+    <div class="blue-section-header reveal">
+      <span class="blue-eyebrow">Brand Concept</span>
+      <h2 class="blue-heading">From <em>nature</em> to mark.</h2>
+    </div>
+    <div class="blue-section-img reveal reveal-d1">
+      <img src="../brand_assets/irene2.jpg" alt="Irene Castro brand concept and logo construction" />
+    </div>
+  </section>
+
+  <!-- ④  IRENE3 — clean and large -->
+  <section class="clean-section reveal">
+    <img src="../brand_assets/irene3.png" alt="Irene Castro visual identity and typography system" />
+  </section>
+
+  <!-- ⑤  SMALL TEXT SECTION — white, minimal -->
+  <section class="text-section">
+    <div class="text-section-inner">
+      <span class="text-eyebrow reveal">The Identity</span>
+      <p class="text-body reveal reveal-d1">"A personal brand inspired by the connection between nature, the sea and the land — translated into a single, timeless mark."</p>
+    </div>
+  </section>
+
+  <!-- ⑥  BRAND GUIDELINES — dark background -->
+  <section class="guidelines-section">
+    <div class="guidelines-header">
+      <h2 class="guidelines-title reveal">Brand<br /><em>Guidelines</em></h2>
+      <p class="guidelines-sub reveal reveal-d1">Every rule, every proportion, every relationship — documented for consistency across every surface.</p>
+    </div>
+    <div class="guidelines-img reveal reveal-d1">
+      <img src="../brand_assets/irene4.png" alt="Irene Castro brand guidelines document" />
+    </div>
+  </section>
+
+  <!-- ⑦  BRAND APPLICATIONS — white, irene5 large -->
+  <section class="applications-section">
+    <div class="applications-header">
+      <h2 class="applications-title reveal">Brand<br /><em>Applications</em></h2>
+      <p class="applications-sub reveal reveal-d1">The identity deployed across stationery and print touchpoints.</p>
+    </div>
+    <div class="applications-img reveal reveal-d1">
+      <img src="../brand_assets/irene5.jpg" alt="Irene Castro business card applications" />
+    </div>
+  </section>
+
+  <!-- ⑧  CAROUSEL — infinite drag (Qarmela-style) -->
+  <section class="ic-car-section">
+    <div class="ic-car-head">
+      <h2 class="ic-car-title reveal">Brand<br /><em>Materials</em></h2>
+      <p class="ic-car-hint reveal reveal-d1">Drag to explore</p>
+    </div>
+    <div class="ic-car-vp" id="icCarVp">
+      <div class="ic-car-track" id="icCarTrack">
+
+        <!-- Originals — purple · kraft · purple · sand -->
+        <div class="irene-carousel-slide ic-slide--6">
+          <img src="../brand_assets/irene6.png" alt="Irene Castro branded tote bags" />
+        </div>
+        <div class="irene-carousel-slide ic-slide--8">
+          <img src="../brand_assets/irene8.png" alt="Irene Castro packaging label" />
+        </div>
+        <div class="irene-carousel-slide ic-slide--7">
+          <img src="../brand_assets/irene7.png" alt="Irene Castro stationery suite" />
+        </div>
+        <div class="irene-carousel-slide ic-slide--9">
+          <img src="../brand_assets/irene9.png" alt="Irene Castro branded mug" />
+        </div>
+
+        <!-- Clones for infinite loop -->
+        <div class="irene-carousel-slide ic-slide--6" aria-hidden="true">
+          <img src="../brand_assets/irene6.png" alt="" />
+        </div>
+        <div class="irene-carousel-slide ic-slide--8" aria-hidden="true">
+          <img src="../brand_assets/irene8.png" alt="" />
+        </div>
+        <div class="irene-carousel-slide ic-slide--7" aria-hidden="true">
+          <img src="../brand_assets/irene7.png" alt="" />
+        </div>
+        <div class="irene-carousel-slide ic-slide--9" aria-hidden="true">
+          <img src="../brand_assets/irene9.png" alt="" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing">
+    <div class="reveal">
+      <h2 class="closing-heading">An identity<br />as timeless<br />as the <em>sea.</em></h2>
+    </div>
+    <div class="closing-right reveal reveal-d1">
+      <p class="closing-body">A visual system deployed across stationery, packaging, digital presence and branded merchandise. Built to hold its shape across every surface it enters — personal without being small.</p>
+      <div class="closing-grid">
+        <div class="closing-cell">
+          <p class="cell-label">Services</p>
+          <p class="cell-val">Brand Identity</p>
+        </div>
+        <div class="closing-cell">
+          <p class="cell-label">Scope</p>
+          <p class="cell-val">Personal Branding</p>
+        </div>
+        <div class="closing-cell">
+          <p class="cell-label">Industry</p>
+          <p class="cell-val">Design & Art Direction</p>
+        </div>
+        <div class="closing-cell">
+          <p class="cell-label">Year</p>
+          <p class="cell-val">2025</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT PROJECT -->
+  <a href="/work/qarmela" class="next-project">
+    <div>
+      <p class="next-label-sm">Next Project</p>
+      <p class="next-name">Qarmela</p>
+    </div>
+    <span class="next-arrow">→</span>
+  </a>
+
+  <!-- FOOTER -->
+  <footer class="project-footer">
+    <a href="/work" class="back-link">← Back to Work</a>
+    <span class="footer-logo" aria-label="Vinca Studio">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="25 222 340 72" aria-hidden="true">
+        <path fill="#db84b6" d="M95.87,236.94c10.77-.14,9.67,13.1-.55,12.97-10.32-.13-10.15-12.83.55-12.97Z"/>
+        <path fill="#db84b6" d="M75.41,231.12c-.26-.32-.39-.83-.29-1.23l.77-.72c4.42-.34,9.32-.76,13.75-.44,6.7.48.92,3.87-.86,6.04-1.06,1.29-1.91,2.76-2.57,4.3-3.85,8.9-6.41,19.79-9.89,29.12-1.2,3.23-2.49,6.73-3.87,9.87-1.42,3.23-1.91,5.77-6.03,5.75-8.6-.05-11.06-7.28-14.26-13.94-3.99-8.31-7.26-17-11.23-25.32-2.15-4.5-4.35-9.65-8.62-12.47-.99-.65-2.74-.84-2.63-2.18.33-1.36,4.76-.84,5.96-.9,5.64-.27,11.43-.47,17.1-.26,1.25.05,6.36.28,6.95.86,1.14,1.11-1.35,2.17-1.96,2.71-3.13,2.72-1.34,6.46-.18,9.77,3.03,8.61,7.42,17.17,10.96,25.59,1.34,1.76,2.33-2.04,2.67-2.92,2.75-7.19,6.01-15.75,8.06-23.1.54-1.92,1.59-5.22.91-7.07-.93-2.54-3.76-2.25-4.75-3.45h.01Z"/>
+        <path fill="#db84b6" d="M122.48,255.76c4.21-4.6,11.58-7.04,17.26-3.73,6.85,3.99,4.46,16.3,4.96,23.03.26,3.49,1.58,6.31,5.33,6.8l.21.56c-.06.87-1.32,1.1-2.06,1.28-4.25,1.05-12.06.73-15.07-2.87-3.55-4.24-.84-14.6-2.18-20.17-1.08-4.48-6.45-4.08-7.64-.53-1,2.98-.75,13.02-.28,16.37.2,1.45.46,2.37,1.43,3.48.43.5,1.84,1.06,1.2,2.05-.11.17-1.9.5-2.28.53-3.77.31-10.15.28-13.94,0-4.86-.35-1.54-1.87-.75-3.48.72-1.45.82-4.74.89-6.47.14-3.29.42-11.88-.62-14.63-.63-1.65-1.94-1.53-2.34-2.14-.54-.82-.05-1.55.79-1.88,2.27-.89,10.15-2.77,12.6-3.04.5-.06,2.49-.25,2.49.55v4.3h0Z"/>
+        <path fill="#db84b6" d="M162.63,272.39c3.36,3.68,9.28,3.65,13.51,1.6.94-.45,4.63-3.65,4.69-.91.09,3.91-5.62,8.24-8.95,9.4-12.73,4.47-26.74-3.39-23.64-18.13,2.41-11.46,18.13-17.2,27.9-12.09,6.82,3.57,4.87,13.27-1.98,12.56-5-.52-2.43-9.15-7.85-9.34-7.14-.24-7.7,12.5-3.69,16.88h0Z"/>
+        <path fill="#db84b6" d="M102.39,251.89c.76.76.07,3.68.05,4.72-.11,5.87-.42,13.19.01,18.93.1,1.32.42,3.31,1.33,4.31.54.59,1.82.84,1.24,1.96-.29.55-1.6.69-2.2.74-3.67.31-10.25.29-13.94,0-.9-.07-2.83-.19-2.46-1.49.18-.63.84-.72,1.12-1.1.99-1.3,1.33-2.55,1.46-4.18.34-4.04.36-11.46.01-15.49-.07-.8-.29-1.83-.65-2.55-.7-1.4-4.45-2.63-.74-3.75,2.16-.65,12.13-2.65,13.95-2.4.25.03.63.1.81.28h0Z"/>
+        <path fill="#db84b6" d="M203.59,278.61c-5.12,7.86-22.59,6.7-21.23-5.01.81-6.95,8.56-8.66,14.27-8.99,1.55-.09,4.38.66,5.02-.63-.31-2.81-1.18-8.99-5.21-8.17-2.9.59-1.2,4.52-4.32,6.22-4.7,2.56-10.13-2.09-6.96-6.76,2.88-4.24,13.19-5.12,17.79-4.41,12.85,1.99,11.82,13.46,14.15,23.37.53,2.26.99,4.4,2.98,5.85,1.09.8,5.19,1.36,2.15,2.65-3.47,1.48-12.16,1.34-15.44-.58-1.54-.9-2.23-2.15-3.19-3.54h-.01ZM202.09,268.08c-3.94-1.05-8.32.74-7.72,5.44.65,5.06,8.48,5.62,8.49,1.29l-.77-6.73Z"/>
+        <path fill="#fbb349" d="M229.73,260.04c0-1.86.48-3.49,1.44-4.92.96-1.42,2.28-2.53,3.98-3.33,1.7-.8,3.66-1.2,5.89-1.2s4.01.38,5.59,1.13c1.58.75,2.81,1.83,3.7,3.22.88,1.39,1.36,3.04,1.41,4.96h-5.57c-.06-1.36-.55-2.43-1.48-3.2-.93-.77-2.17-1.15-3.74-1.15-1.71,0-3.08.38-4.11,1.15-1.03.77-1.54,1.82-1.54,3.15,0,1.13.31,2.02.94,2.67.62.65,1.6,1.14,2.94,1.46l5,1.13c2.73.58,4.76,1.57,6.09,2.98,1.33,1.41,2,3.3,2,5.68,0,1.94-.48,3.65-1.44,5.13-.96,1.48-2.31,2.62-4.07,3.41-1.75.8-3.81,1.2-6.16,1.2s-4.19-.38-5.87-1.15c-1.68-.77-2.99-1.85-3.94-3.24-.94-1.39-1.44-3.03-1.5-4.92h5.57c.03,1.33.56,2.39,1.59,3.15,1.03.77,2.43,1.15,4.2,1.15s3.33-.38,4.41-1.15c1.09-.77,1.63-1.79,1.63-3.07,0-1.1-.29-1.98-.87-2.63s-1.52-1.11-2.83-1.37l-5.05-1.13c-2.7-.58-4.74-1.63-6.13-3.15s-2.09-3.52-2.09-5.98Z"/>
+        <path fill="#fbb349" d="M254.39,261.48h13.57v4.44h-13.57v-4.44ZM263.83,282.96h-5.31v-28.19h5.31v28.19Z"/>
+        <path fill="#fbb349" d="M285.88,261.48h5.31v21.49h-4.92l-.39-2.87c-.64,1.02-1.59,1.84-2.87,2.48s-2.64.96-4.09.96c-2.47,0-4.39-.78-5.79-2.35-1.39-1.57-2.09-3.65-2.09-6.26v-13.44h5.31v11.57c0,2.03.39,3.49,1.17,4.39.78.9,1.91,1.35,3.39,1.35,1.68,0,2.93-.5,3.74-1.5.81-1,1.22-2.52,1.22-4.55v-11.27Z"/>
+        <path fill="#fbb349" d="M305.05,283.53c-2.09,0-3.88-.47-5.37-1.41-1.49-.94-2.65-2.25-3.48-3.94-.83-1.68-1.24-3.64-1.24-5.87s.41-4.21,1.24-5.94c.83-1.72,2.02-3.08,3.59-4.07,1.57-.99,3.42-1.48,5.57-1.48,1.51,0,2.89.3,4.13.89,1.25.59,2.2,1.43,2.87,2.5v-13.61h5.26v32.36h-4.87l-.35-3.35c-.64,1.22-1.62,2.17-2.94,2.87-1.32.7-2.79,1.04-4.42,1.04ZM306.23,278.66c1.25,0,2.32-.27,3.22-.8.9-.54,1.6-1.31,2.11-2.31.51-1,.76-2.14.76-3.41s-.25-2.44-.76-3.42c-.51-.97-1.21-1.74-2.11-2.31s-1.97-.85-3.22-.85-2.28.28-3.17.85c-.9.57-1.59,1.34-2.07,2.33-.48.99-.72,2.12-.72,3.39s.24,2.41.72,3.39,1.17,1.75,2.07,2.3c.9.55,1.96.83,3.17.83Z"/>
+        <path fill="#fbb349" d="M325.76,257.17c-.9,0-1.66-.31-2.28-.94-.62-.62-.94-1.38-.94-2.28s.31-1.65.94-2.26c.62-.61,1.38-.91,2.28-.91s1.66.3,2.28.91c.62.61.93,1.36.93,2.26s-.31,1.66-.93,2.28-1.39.94-2.28.94ZM323.15,282.96v-21.49h5.31v21.49h-5.31Z"/>
+        <path fill="#fbb349" d="M332.67,272.18c0-2.23.49-4.2,1.48-5.89.99-1.7,2.35-3.02,4.09-3.98,1.74-.96,3.71-1.43,5.92-1.43s4.21.48,5.94,1.43c1.72.96,3.08,2.28,4.07,3.98.99,1.7,1.48,3.66,1.48,5.89s-.49,4.2-1.48,5.89c-.99,1.7-2.34,3.02-4.07,3.98-1.73.96-3.71,1.43-5.94,1.43s-4.18-.48-5.92-1.43c-1.74-.96-3.1-2.28-4.09-3.98-.99-1.7-1.48-3.66-1.48-5.89ZM337.98,272.18c0,1.3.27,2.45.8,3.44.54.99,1.26,1.75,2.17,2.3.91.55,1.98.83,3.2.83s2.29-.28,3.22-.83c.93-.55,1.65-1.32,2.17-2.3.52-.99.78-2.13.78-3.44s-.26-2.49-.78-3.46c-.52-.97-1.25-1.73-2.17-2.28-.93-.55-2-.83-3.22-.83s-2.28.28-3.2.83c-.91.55-1.64,1.31-2.17,2.28-.54.97-.8,2.12-.8,3.46Z"/>
+      </svg>
+    </span>
+  </footer>
+
+  <script>
+    /* Nav scroll */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* Scroll reveal */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* Infinite drag carousel — same engine as Qarmela */
+    (function () {
+      const vp = document.getElementById('icCarVp');
+      let isDragging = false, startX = 0, startScroll = 0;
+      let velX = 0, lastX = 0, lastT = 0;
+      let hovered = false, dragRaf = null;
+      const SPEED = 0.45;
+
+      function half() { return vp.scrollWidth / 2; }
+      function loop() {
+        const h = half();
+        if (vp.scrollLeft >= h) vp.scrollLeft -= h;
+        else if (vp.scrollLeft < 0) vp.scrollLeft += h;
+      }
+      function autoTick() {
+        if (!isDragging && !hovered) { vp.scrollLeft += SPEED; loop(); }
+        requestAnimationFrame(autoTick);
+      }
+      function px(e) { return e.touches ? e.touches[0].clientX : e.clientX; }
+      function down(e) {
+        isDragging = true; hovered = true;
+        startX = px(e); startScroll = vp.scrollLeft;
+        velX = 0; lastX = startX; lastT = performance.now();
+        vp.classList.add('dragging');
+        cancelAnimationFrame(dragRaf);
+      }
+      function move(e) {
+        if (!isDragging) return;
+        if (e.cancelable) e.preventDefault();
+        const x = px(e), now = performance.now(), dt = now - lastT;
+        if (dt > 0) velX = (x - lastX) / dt * 16;
+        lastX = x; lastT = now;
+        vp.scrollLeft = startScroll - (x - startX);
+        loop();
+      }
+      function decay() {
+        if (Math.abs(velX) < 0.08) return;
+        velX *= 0.94; vp.scrollLeft -= velX; loop();
+        dragRaf = requestAnimationFrame(decay);
+      }
+      function up() {
+        if (!isDragging) return;
+        isDragging = false;
+        vp.classList.remove('dragging');
+        decay();
+        setTimeout(() => { hovered = false; }, 600);
+      }
+      vp.addEventListener('mousedown', down);
+      document.addEventListener('mousemove', move);
+      document.addEventListener('mouseup', up);
+      vp.addEventListener('touchstart', down, { passive: true });
+      vp.addEventListener('touchmove', move, { passive: false });
+      vp.addEventListener('touchend', up);
+      vp.addEventListener('mouseenter', () => { hovered = true; });
+      vp.addEventListener('mouseleave', () => { if (!isDragging) hovered = false; });
+      requestAnimationFrame(autoTick);
+    })();
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => { btt.classList.toggle('visible', window.scrollY > 400); }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+  <button id="back-to-top" aria-label="Back to top">↑</button>
+</body>
+</html>

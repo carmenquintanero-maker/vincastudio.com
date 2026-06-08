@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Irene Castro — Brand Identity · Vinca Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&family=Barlow:wght@400;700&family=Barlow+Condensed:wght@700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #090E18;
+      --bg-alt:     #0D1420;
+      --cream:      #EDE8DF;
+      --blue:       #24579E;
+      --blue-light: #6AABDB;
+      --sand:       #C8B890;
+      --ease:       cubic-bezier(0.65, 0, 0.15, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ─── NAV ─── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 2.5rem;
+      background: rgba(29,19,25,0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      transition: background 0.5s var(--ease), box-shadow 0.5s var(--ease);
+    }
+    #nav.scrolled {
+      background: rgba(29,19,25,0.92);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .nav-logo svg { height: 30px; width: auto; }
+    .nav-links { display: flex; gap: 2.25rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dark);
+      background: var(--yellow);
+      padding: 0.55rem 1.4rem;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+      box-shadow: 0 2px 14px rgba(255,181,72,0.35);
+    }
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(255,181,72,0.5);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: 50% 50%;
+    }
+    .hero-veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(9,14,24,0.97) 0%,
+        rgba(9,14,24,0.42) 48%,
+        rgba(9,14,24,0.12) 100%
+      );
+      z-index: 1;
+    }
+    .hero-tint {
+      position: absolute; inset: 0;
+      background: rgba(15,28,60,0.28);
+      mix-blend-mode: multiply; z-index: 2;
+    }
+    .hero-content {
+      position: relative; z-index: 3;
+      padding: 0 4rem 1.5rem;
+      max-width: 1400px; width: 100%;
+    }
+    .hero-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--blue-light); margin-bottom: 1.25rem;
+    }
+    .hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(4.5rem, 12vw, 14rem);
+      font-weight: 400; line-height: 0.88;
+      letter-spacing: -0.03em;
+      color: var(--cream);
+      margin-bottom: 2.5rem;
+    }
+    .hero-title em { font-style: italic; color: var(--blue-light); }
+    .hero-meta {
+      display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(237,232,223,0.12);
+      padding-top: 1.75rem;
+    }
+    .hero-meta-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(237,232,223,0.38); margin-bottom: 0.35rem;
+    }
+    .hero-meta-value {
+      font-size: 0.88rem; font-weight: 400;
+      color: rgba(237,232,223,0.82);
+    }
+
+    /* ─── FOUNDATIONS ─── */
+    .section {
+      padding: 8rem 2.5rem;
+      max-width: 1300px; margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--blue-light); margin-bottom: 1.5rem;
+    }
+
+    .section-heading {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      font-weight: 400; line-height: 1.1;
+      letter-spacing: -0.025em; color: var(--cream);
+    }
+
+    .body-text {
+      font-size: 1rem; line-height: 1.8;
+      color: rgba(237,232,223,0.62);
+      max-width: 52ch;
+    }
+
+    /* ─── OVERVIEW ─── */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: start;
+    }
+    .overview-left .section-heading { margin-bottom: 2.5rem; }
+    .overview-right { padding-top: 1rem; }
+    .overview-right .body-text { max-width: 100%; margin-bottom: 0; }
+
+    /* ─── CONCEPT STRIP ─── */
+    .concept-strip {
+      background: var(--bg-alt);
+      padding: 7rem 0;
+    }
+    .concept-inner {
+      max-width: 1300px; margin: 0 auto;
+      padding: 0 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem; align-items: center;
+    }
+    .concept-heading {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      line-height: 1.05; letter-spacing: -0.03em;
+      color: var(--cream);
+    }
+    .concept-heading em { font-style: italic; color: var(--blue-light); }
+    .concept-right .body-text { max-width: 100%; }
+    .concept-right .body-text + .body-text { margin-top: 1.5rem; }
+
+    /* ─── QUOTE ─── */
+    .quote-section {
+      padding: 10rem 2.5rem;
+      text-align: center;
+      position: relative;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .quote-section::before {
+      content: '"';
+      font-family: 'DM Serif Display', serif;
+      font-size: 28rem; line-height: 0.7;
+      color: rgba(106,171,219,0.04);
+      position: absolute; top: 2rem; left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none; user-select: none; z-index: 0;
+    }
+    blockquote {
+      position: relative; z-index: 1;
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.6rem, 3.2vw, 3rem);
+      font-style: italic; line-height: 1.35;
+      letter-spacing: -0.02em;
+      color: var(--cream); margin-bottom: 2rem;
+    }
+    cite {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.75rem; letter-spacing: 0.18em;
+      text-transform: uppercase; font-style: normal;
+      color: rgba(237,232,223,0.32);
+    }
+
+    /* ─── SHOWCASE STRIP ─── */
+    .showcase-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3px;
+      height: 72vh;
+    }
+    .showcase-frame { position: relative; overflow: hidden; }
+    .showcase-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 1s var(--ease);
+    }
+    .showcase-frame:hover img { transform: scale(1.04); }
+    .showcase-frame-overlay {
+      position: absolute; inset: 0; z-index: 1;
+    }
+    .showcase-frame-label {
+      position: absolute; bottom: 1.5rem; left: 1.5rem; z-index: 2;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(237,232,223,0.55);
+    }
+
+    /* ─── BRAND GUIDELINES (light) ─── */
+    .guidelines-section {
+      background: #F2EDE5;
+      padding: 7rem 0 0;
+    }
+    .guidelines-inner {
+      max-width: 1300px; margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+    .guidelines-eyebrow {
+      display: inline-block;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 1.5rem;
+    }
+    .guidelines-heading {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      font-weight: 400; line-height: 1.1;
+      letter-spacing: -0.025em; color: #0D1420;
+      margin-bottom: 1.25rem;
+    }
+    .guidelines-heading em { font-style: italic; color: var(--blue); }
+    .guidelines-body {
+      font-size: 1rem; line-height: 1.8;
+      color: rgba(13,20,32,0.52);
+      max-width: 52ch; margin-bottom: 4rem;
+    }
+    .guidelines-img {
+      width: 100%;
+    }
+    .guidelines-img img {
+      width: 100%; height: auto; display: block;
+    }
+
+    /* ─── BUSINESS CARDS (light) ─── */
+    .bizcard-section {
+      background: #EAE5DC;
+      height: 82vh; overflow: hidden;
+    }
+    .bizcard-img { height: 100%; }
+    .bizcard-img img {
+      width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block;
+    }
+
+    /* ─── PALETTE & TYPE (dark) ─── */
+    .palette-type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem; align-items: start;
+    }
+    .swatch-row { display: flex; gap: 0; margin-top: 2rem; }
+    .swatch {
+      flex: 1; height: 6rem;
+      position: relative; cursor: default;
+      transition: flex 0.3s var(--ease);
+    }
+    .swatch:hover { flex: 1.7; }
+    .swatch-name {
+      position: absolute; bottom: 0.75rem; left: 0.9rem;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+    .swatch-hex {
+      position: absolute; top: 0.75rem; left: 0.9rem;
+      font-size: 0.65rem; font-weight: 300;
+      color: rgba(255,255,255,0.42);
+    }
+    .type-sample { margin-top: 2rem; }
+    .type-display {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      line-height: 0.9; letter-spacing: -0.03em;
+      color: var(--cream); margin-bottom: 1.5rem;
+    }
+    .type-display em { font-style: italic; color: var(--blue-light); }
+    .type-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(237,232,223,0.28); margin-bottom: 3rem;
+    }
+    .type-body-sample {
+      font-size: 0.95rem; line-height: 1.75;
+      color: rgba(237,232,223,0.48); max-width: 38ch;
+    }
+
+    /* ─── APPLICATIONS STRIP ─── */
+    .apps-strip {
+      background: var(--bg-alt);
+      padding: 7rem 0;
+    }
+    .apps-inner {
+      max-width: 1300px; margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+    .apps-header { margin-bottom: 4rem; }
+    .apps-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 3px;
+    }
+    .app-item {
+      position: relative; overflow: hidden;
+    }
+    .app-item img {
+      width: 100%; height: 100%;
+      min-height: 520px;
+      object-fit: cover; display: block;
+      transition: transform 1s var(--ease);
+    }
+    .app-item:hover img { transform: scale(1.04); }
+    .app-item-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(9,14,24,0.55) 0%, transparent 55%);
+      z-index: 1;
+    }
+    .app-item-label {
+      position: absolute; bottom: 1.5rem; left: 1.5rem; z-index: 2;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(237,232,223,0.6);
+    }
+
+    /* ─── FULL-BLEED ─── */
+    .full-bleed {
+      position: relative;
+      height: 70vh; overflow: hidden;
+    }
+    .full-bleed img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: 50% 40%;
+    }
+    .full-bleed-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(36,87,158,0.28) 0%,
+        rgba(9,14,24,0.52) 100%
+      );
+    }
+
+    /* ─── OUTCOME ─── */
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: start;
+    }
+    .outcome-stats {
+      display: flex; flex-direction: column;
+      border-top: 1px solid rgba(237,232,223,0.1);
+    }
+    .outcome-stat {
+      display: flex; align-items: baseline; justify-content: space-between;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid rgba(237,232,223,0.1);
+    }
+    .outcome-stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      line-height: 1; letter-spacing: -0.03em;
+      color: var(--blue-light);
+    }
+    .outcome-stat-desc {
+      font-size: 0.85rem; color: rgba(237,232,223,0.48);
+      text-align: right; max-width: 16ch;
+    }
+
+    /* ─── OUTCOME ─── */
+    .ic-outcome {
+      background: #0D1B2E;
+      padding: 10rem 5.5rem 8rem;
+    }
+    .ic-outcome-inner { max-width: 1200px; }
+    .ic-outcome-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #24579E;
+      margin-bottom: 3.5rem;
+    }
+    .ic-outcome-quote {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-style: italic;
+      font-size: clamp(3rem, 6.5vw, 7rem);
+      line-height: 1.08;
+      color: #fff;
+      margin-bottom: 5rem;
+    }
+    .ic-outcome-quote .accent { color: #24579E; }
+    .ic-outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .ic-outcome-cell {
+      padding: 2.5rem 0 2rem;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+    .ic-outcome-cell:last-child { border-right: none; }
+    .ic-cell-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 0.75rem;
+    }
+    .ic-cell-val {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #fff;
+    }
+
+    /* ─── NEXT PROJECT ─── */
+    .next-project {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 5rem 5.5rem;
+      background: #F3C9D1;
+      text-decoration: none; color: #1A1714;
+      transition: background 0.4s var(--ease);
+    }
+    .next-project:hover { background: #e8b5be; }
+    .next-project:hover .next-arrow { transform: translateX(14px); color: #1A1714; }
+    .next-label-sm {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.72rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(26,23,20,0.5); margin-bottom: 0.5rem;
+    }
+    .next-name {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: -0.02em; color: #1A1714; line-height: 1;
+      text-transform: uppercase;
+    }
+    .next-name-q {
+      font-family: 'EB Garamond', serif;
+      font-weight: 400; font-style: normal;
+    }
+    .next-name-armela {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700; font-style: normal;
+    }
+    .next-arrow {
+      font-size: 2.5rem; font-weight: 900;
+      color: rgba(26,23,20,0.4);
+      transition: transform 0.35s var(--ease), color 0.35s;
+    }
+
+    /* BACK TO TOP */
+    #back-to-top {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 99;
+      width: 48px; height: 48px;
+      background: transparent; border: 1.5px solid rgba(221,133,186,0.45);
+      border-radius: 50%; color: #DD85BA;
+      font-size: 1rem; cursor: pointer;
+      opacity: 0; transform: translateY(12px);
+      transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), background 0.2s, border-color 0.2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #back-to-top.visible { opacity: 1; transform: none; }
+    #back-to-top:hover { background: rgba(221,133,186,0.15); border-color: #DD85BA; }
+
+    /* ─── FOOTER ─── */
+    .project-footer {
+      background: #060810;
+      padding: 3rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(237,232,223,0.07);
+    }
+    .back-link {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(237,232,223,0.42);
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--cream); }
+    .footer-logo svg { height: 22px; width: auto; opacity: 0.25; }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      height: 1px;
+      background: rgba(237,232,223,0.07);
+      margin: 0 2.5rem;
+    }
+
+    /* ─── CAROUSEL ─── */
+    .carousel-section {
+      background: var(--bg);
+      padding-bottom: 5rem;
+      border-top: 1px solid rgba(237,232,223,0.06);
+    }
+    .carousel-head {
+      padding: 5.5rem 4rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .carousel-title {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400; font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: -0.025em; color: var(--cream);
+    }
+    .carousel-sub {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(237,232,223,0.25); align-self: flex-end;
+    }
+    .carousel-viewport {
+      overflow-x: scroll; overflow-y: hidden;
+      scrollbar-width: none; cursor: grab; user-select: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .carousel-viewport::-webkit-scrollbar { display: none; }
+    .carousel-viewport.is-dragging { cursor: grabbing; }
+    .car-track { display: flex; align-items: stretch; gap: 4px; width: max-content; }
+    .car-slide { height: 580px; flex-shrink: 0; overflow: hidden; position: relative; width: 820px; }
+    .car-slide img { width: 100%; height: 100%; object-fit: cover; object-position: center; pointer-events: none; display: block; }
+
+    /* ─── TICKER ─── */
+    .ticker { background: var(--blue); overflow: hidden; padding: 0.9rem 0; }
+    .ticker-track {
+      display: flex; gap: 2.5rem;
+      animation: tickerRun 30s linear infinite;
+      width: max-content; white-space: nowrap;
+    }
+    .ticker-track span {
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 600; font-size: 1rem;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--cream);
+    }
+    .ticker-track .sep { color: rgba(237,232,223,0.35); }
+    @keyframes tickerRun { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── STANDALONE IMAGE ─── */
+    .standalone-img { width: 100%; background: #F2EDE5; }
+    .standalone-img img { width: 100%; height: auto; display: block; }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="/" class="nav-logo" aria-label="Vinca Studio">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="25 222 340 72" aria-hidden="true">
+        <path fill="#db84b6" d="M95.87,236.94c10.77-.14,9.67,13.1-.55,12.97-10.32-.13-10.15-12.83.55-12.97Z"/>
+        <path fill="#db84b6" d="M75.41,231.12c-.26-.32-.39-.83-.29-1.23l.77-.72c4.42-.34,9.32-.76,13.75-.44,6.7.48.92,3.87-.86,6.04-1.06,1.29-1.91,2.76-2.57,4.3-3.85,8.9-6.41,19.79-9.89,29.12-1.2,3.23-2.49,6.73-3.87,9.87-1.42,3.23-1.91,5.77-6.03,5.75-8.6-.05-11.06-7.28-14.26-13.94-3.99-8.31-7.26-17-11.23-25.32-2.15-4.5-4.35-9.65-8.62-12.47-.99-.65-2.74-.84-2.63-2.18.33-1.36,4.76-.84,5.96-.9,5.64-.27,11.43-.47,17.1-.26,1.25.05,6.36.28,6.95.86,1.14,1.11-1.35,2.17-1.96,2.71-3.13,2.72-1.34,6.46-.18,9.77,3.03,8.61,7.42,17.17,10.96,25.59,1.34,1.76,2.33-2.04,2.67-2.92,2.75-7.19,6.01-15.75,8.06-23.1.54-1.92,1.59-5.22.91-7.07-.93-2.54-3.76-2.25-4.75-3.45h.01Z"/>
+        <path fill="#db84b6" d="M122.48,255.76c4.21-4.6,11.58-7.04,17.26-3.73,6.85,3.99,4.46,16.3,4.96,23.03.26,3.49,1.58,6.31,5.33,6.8l.21.56c-.06.87-1.32,1.1-2.06,1.28-4.25,1.05-12.06.73-15.07-2.87-3.55-4.24-.84-14.6-2.18-20.17-1.08-4.48-6.45-4.08-7.64-.53-1,2.98-.75,13.02-.28,16.37.2,1.45.46,2.37,1.43,3.48.43.5,1.84,1.06,1.2,2.05-.11.17-1.9.5-2.28.53-3.77.31-10.15.28-13.94,0-4.86-.35-1.54-1.87-.75-3.48.72-1.45.82-4.74.89-6.47.14-3.29.42-11.88-.62-14.63-.63-1.65-1.94-1.53-2.34-2.14-.54-.82-.05-1.55.79-1.88,2.27-.89,10.15-2.77,12.6-3.04.5-.06,2.49-.25,2.49.55v4.3h0Z"/>
+        <path fill="#db84b6" d="M162.63,272.39c3.36,3.68,9.28,3.65,13.51,1.6.94-.45,4.63-3.65,4.69-.91.09,3.91-5.62,8.24-8.95,9.4-12.73,4.47-26.74-3.39-23.64-18.13,2.41-11.46,18.13-17.2,27.9-12.09,6.82,3.57,4.87,13.27-1.98,12.56-5-.52-2.43-9.15-7.85-9.34-7.14-.24-7.7,12.5-3.69,16.88h0Z"/>
+        <path fill="#db84b6" d="M102.39,251.89c.76.76.07,3.68.05,4.72-.11,5.87-.42,13.19.01,18.93.1,1.32.42,3.31,1.33,4.31.54.59,1.82.84,1.24,1.96-.29.55-1.6.69-2.2.74-3.67.31-10.25.29-13.94,0-.9-.07-2.83-.19-2.46-1.49.18-.63.84-.72,1.12-1.1.99-1.3,1.33-2.55,1.46-4.18.34-4.04.36-11.46.01-15.49-.07-.8-.29-1.83-.65-2.55-.7-1.4-4.45-2.63-.74-3.75,2.16-.65,12.13-2.65,13.95-2.4.25.03.63.1.81.28h0Z"/>
+        <path fill="#db84b6" d="M203.59,278.61c-5.12,7.86-22.59,6.7-21.23-5.01.81-6.95,8.56-8.66,14.27-8.99,1.55-.09,4.38.66,5.02-.63-.31-2.81-1.18-8.99-5.21-8.17-2.9.59-1.2,4.52-4.32,6.22-4.7,2.56-10.13-2.09-6.96-6.76,2.88-4.24,13.19-5.12,17.79-4.41,12.85,1.99,11.82,13.46,14.15,23.37.53,2.26.99,4.4,2.98,5.85,1.09.8,5.19,1.36,2.15,2.65-3.47,1.48-12.16,1.34-15.44-.58-1.54-.9-2.23-2.15-3.19-3.54h-.01ZM202.09,268.08c-3.94-1.05-8.32.74-7.72,5.44.65,5.06,8.48,5.62,8.49,1.29l-.77-6.73Z"/>
+        <path fill="#fbb349" d="M229.73,260.04c0-1.86.48-3.49,1.44-4.92.96-1.42,2.28-2.53,3.98-3.33,1.7-.8,3.66-1.2,5.89-1.2s4.01.38,5.59,1.13c1.58.75,2.81,1.83,3.7,3.22.88,1.39,1.36,3.04,1.41,4.96h-5.57c-.06-1.36-.55-2.43-1.48-3.2-.93-.77-2.17-1.15-3.74-1.15-1.71,0-3.08.38-4.11,1.15-1.03.77-1.54,1.82-1.54,3.15,0,1.13.31,2.02.94,2.67.62.65,1.6,1.14,2.94,1.46l5,1.13c2.73.58,4.76,1.57,6.09,2.98,1.33,1.41,2,3.3,2,5.68,0,1.94-.48,3.65-1.44,5.13-.96,1.48-2.31,2.62-4.07,3.41-1.75.8-3.81,1.2-6.16,1.2s-4.19-.38-5.87-1.15c-1.68-.77-2.99-1.85-3.94-3.24-.94-1.39-1.44-3.03-1.5-4.92h5.57c.03,1.33.56,2.39,1.59,3.15,1.03.77,2.43,1.15,4.2,1.15s3.33-.38,4.41-1.15c1.09-.77,1.63-1.79,1.63-3.07,0-1.1-.29-1.98-.87-2.63s-1.52-1.11-2.83-1.37l-5.05-1.13c-2.7-.58-4.74-1.63-6.13-3.15s-2.09-3.52-2.09-5.98Z"/>
+        <path fill="#fbb349" d="M254.39,261.48h13.57v4.44h-13.57v-4.44ZM263.83,282.96h-5.31v-28.19h5.31v28.19Z"/>
+        <path fill="#fbb349" d="M285.88,261.48h5.31v21.49h-4.92l-.39-2.87c-.64,1.02-1.59,1.84-2.87,2.48s-2.64.96-4.09.96c-2.47,0-4.39-.78-5.79-2.35-1.39-1.57-2.09-3.65-2.09-6.26v-13.44h5.31v11.57c0,2.03.39,3.49,1.17,4.39.78.9,1.91,1.35,3.39,1.35,1.68,0,2.93-.5,3.74-1.5.81-1,1.22-2.52,1.22-4.55v-11.27Z"/>
+        <path fill="#fbb349" d="M305.05,283.53c-2.09,0-3.88-.47-5.37-1.41-1.49-.94-2.65-2.25-3.48-3.94-.83-1.68-1.24-3.64-1.24-5.87s.41-4.21,1.24-5.94c.83-1.72,2.02-3.08,3.59-4.07,1.57-.99,3.42-1.48,5.57-1.48,1.51,0,2.89.3,4.13.89,1.25.59,2.2,1.43,2.87,2.5v-13.61h5.26v32.36h-4.87l-.35-3.35c-.64,1.22-1.62,2.17-2.94,2.87-1.32.7-2.79,1.04-4.42,1.04ZM306.23,278.66c1.25,0,2.32-.27,3.22-.8.9-.54,1.6-1.31,2.11-2.31.51-1,.76-2.14.76-3.41s-.25-2.44-.76-3.42c-.51-.97-1.21-1.74-2.11-2.31s-1.97-.85-3.22-.85-2.28.28-3.17.85c-.9.57-1.59,1.34-2.07,2.33-.48.99-.72,2.12-.72,3.39s.24,2.41.72,3.39,1.17,1.75,2.07,2.3c.9.55,1.96.83,3.17.83Z"/>
+        <path fill="#fbb349" d="M325.76,257.17c-.9,0-1.66-.31-2.28-.94-.62-.62-.94-1.38-.94-2.28s.31-1.65.94-2.26c.62-.61,1.38-.91,2.28-.91s1.66.3,2.28.91c.62.61.93,1.36.93,2.26s-.31,1.66-.93,2.28-1.39.94-2.28.94ZM323.15,282.96v-21.49h5.31v21.49h-5.31Z"/>
+        <path fill="#fbb349" d="M332.67,272.18c0-2.23.49-4.2,1.48-5.89.99-1.7,2.35-3.02,4.09-3.98,1.74-.96,3.71-1.43,5.92-1.43s4.21.48,5.94,1.43c1.72.96,3.08,2.28,4.07,3.98.99,1.7,1.48,3.66,1.48,5.89s-.49,4.2-1.48,5.89c-.99,1.7-2.34,3.02-4.07,3.98-1.73.96-3.71,1.43-5.94,1.43s-4.18-.48-5.92-1.43c-1.74-.96-3.1-2.28-4.09-3.98-.99-1.7-1.48-3.66-1.48-5.89ZM337.98,272.18c0,1.3.27,2.45.8,3.44.54.99,1.26,1.75,2.17,2.3.91.55,1.98.83,3.2.83s2.29-.28,3.22-.83c.93-.55,1.65-1.32,2.17-2.3.52-.99.78-2.13.78-3.44s-.26-2.49-.78-3.46c-.52-.97-1.25-1.73-2.17-2.28-.93-.55-2-.83-3.22-.83s-2.28.28-3.2.83c-.91.55-1.64,1.31-2.17,2.28-.54.97-.8,2.12-.8,3.46Z"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#studio">Studio</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <a href="/contact" class="nav-cta">Let's Talk</a>
+  </nav>
+
+  <!-- §1 HERO -->
+  <section class="hero">
+    <img class="hero-img" src="../brand_assets/irene1.png" alt="Irene Castro Brand Identity" />
+    <div class="hero-veil"></div>
+    <div class="hero-tint"></div>
+    <div class="hero-content">
+      <p class="hero-label">Brand Identity · 2025</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <p class="hero-meta-label">Client</p>
+          <p class="hero-meta-value">Irene Castro Rodríguez</p>
+        </div>
+        <div class="hero-meta-item">
+          <p class="hero-meta-label">Discipline</p>
+          <p class="hero-meta-value">Brand Identity / Art Direction</p>
+        </div>
+        <div class="hero-meta-item">
+          <p class="hero-meta-label">Deliverables</p>
+          <p class="hero-meta-value">Identity System, Guidelines, Collateral</p>
+        </div>
+        <div class="hero-meta-item">
+          <p class="hero-meta-label">Year</p>
+          <p class="hero-meta-value">2025</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Nature</span><span class="sep"> ✕ </span>
+      <span>Sea</span><span class="sep"> ✕ </span>
+      <span>Land</span><span class="sep"> ✕ </span>
+      <span>Living Mark</span><span class="sep"> ✕ </span>
+      <span>Design with Purpose</span><span class="sep"> ✕ </span>
+      <span>Personal Brand</span><span class="sep"> ✕ </span>
+      <span>Identity System</span><span class="sep"> ✕ </span>
+      <span>Coastal</span><span class="sep"> ✕ </span>
+      <span>Organic</span><span class="sep"> ✕ </span>
+      <span>Timeless</span><span class="sep"> ✕ </span>
+      <span>Nature</span><span class="sep"> ✕ </span>
+      <span>Sea</span><span class="sep"> ✕ </span>
+      <span>Land</span><span class="sep"> ✕ </span>
+      <span>Living Mark</span><span class="sep"> ✕ </span>
+      <span>Design with Purpose</span><span class="sep"> ✕ </span>
+      <span>Personal Brand</span><span class="sep"> ✕ </span>
+      <span>Identity System</span><span class="sep"> ✕ </span>
+      <span>Coastal</span><span class="sep"> ✕ </span>
+      <span>Organic</span><span class="sep"> ✕ </span>
+      <span>Timeless</span><span class="sep"> ✕ </span>
+    </div>
+  </div>
+
+  <!-- §2 OVERVIEW -->
+  <div class="section">
+    <div class="overview-grid">
+      <div class="overview-left reveal">
+        <span class="eyebrow">Project Overview</span>
+        <h2 class="section-heading">A personal brand born from where sea meets land.</h2>
+      </div>
+      <div class="overview-right">
+        <p class="body-text reveal">Irene Castro is a personal brand inspired by the connection between nature, the sea and the land. These three elements represent the essence of who she is and became the foundation of her visual identity.</p>
+        <p class="body-text reveal reveal-delay-1" style="margin-top:1.5rem;">The identity system was built around an organic symbol that represents movement, roots, waves and growth — a single mark that carries the weight of the natural world without becoming decorative.</p>
+        <p class="body-text reveal reveal-delay-2" style="margin-top:1.5rem;">The goal was to create a visual language that feels calm, elegant and timeless while remaining highly recognizable across every application.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- §3 FIRST PHOTO -->
+  <div class="standalone-img">
+    <img src="../brand_assets/irene2.jpg" alt="Irene Castro — Brand Inspiration & Logo Construction" />
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- §4 CONCEPT STRIP -->
+  <div class="concept-strip">
+    <div class="concept-inner">
+      <div class="concept-left reveal">
+        <h2 class="concept-heading">Nature, sea and land —<br />distilled into a single<br /><em>living mark.</em></h2>
+      </div>
+      <div class="concept-right">
+        <p class="body-text reveal reveal-delay-1">The logo was not designed — it was extracted. From the textures of sea foam, the geometry of coastal rock formations, and the organic patterns of underwater current. Three elements collapsed into one circular symbol.</p>
+        <p class="body-text reveal reveal-delay-2" style="margin-top:1.5rem;">Each curve in the mark can be read as a wave, a root, or a shoreline. The ambiguity is intentional. The brand feels universal without being generic — rooted in the natural world, not in a category. Elegance through restraint. Simplicity as the highest form of craft.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- §6 irene3.png -->
+  <div class="standalone-img">
+    <img src="../brand_assets/irene3.png" alt="Irene Castro — Logo System & Guidelines" />
+  </div>
+
+  <!-- §6 BRAND GUIDELINES (light section) -->
+  <div class="guidelines-section">
+    <div class="guidelines-inner reveal">
+      <span class="guidelines-eyebrow">Brand Guidelines</span>
+      <h2 class="guidelines-heading">The complete visual<br /><em>identity system.</em></h2>
+      <p class="guidelines-body">Every rule, every proportion, every relationship — documented for consistency across every surface the brand will ever touch.</p>
+    </div>
+    <div class="guidelines-img reveal reveal-delay-1">
+      <img src="../brand_assets/irene4.png" alt="Irene Castro Brand Guidelines" />
+    </div>
+  </div>
+
+  <!-- QUOTE — after brand guidelines -->
+  <div style="background: var(--bg);">
+    <div class="quote-section">
+      <blockquote class="reveal">"A mark that speaks before the name does."</blockquote>
+      <cite class="reveal reveal-delay-1">— Creative Direction</cite>
+    </div>
+  </div>
+
+  <!-- §7 BUSINESS CARD APPLICATION (full-bleed) -->
+  <div class="bizcard-section">
+    <div class="bizcard-img">
+      <img src="../brand_assets/irene5.jpg" alt="Irene Castro business card mockups" />
+    </div>
+  </div>
+
+
+  <!-- §9 CAROUSEL — Brand Applications -->
+  <section class="carousel-section" id="carousel-section">
+    <div class="carousel-head">
+      <h2 class="carousel-title reveal">Brand Applications</h2>
+      <p class="carousel-sub reveal">Drag to explore</p>
+    </div>
+    <div class="carousel-viewport" id="carViewport">
+      <div class="car-track" id="carTrack">
+        <!-- Originals: purple bg → neutral → purple bg → neutral -->
+        <div class="car-slide"><img src="../brand_assets/irene6.png" alt="Tote bags" /></div>
+        <div class="car-slide"><img src="../brand_assets/irene9.png" alt="Brand application" /></div>
+        <div class="car-slide"><img src="../brand_assets/irene7.png" alt="Stationery suite" /></div>
+        <div class="car-slide"><img src="../brand_assets/irene8.png" alt="Packaging application" /></div>
+        <!-- Clones for infinite loop -->
+        <div class="car-slide" aria-hidden="true"><img src="../brand_assets/irene6.png" alt="" /></div>
+        <div class="car-slide" aria-hidden="true"><img src="../brand_assets/irene9.png" alt="" /></div>
+        <div class="car-slide" aria-hidden="true"><img src="../brand_assets/irene7.png" alt="" /></div>
+        <div class="car-slide" aria-hidden="true"><img src="../brand_assets/irene8.png" alt="" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §11 OUTCOME -->
+  <section class="ic-outcome">
+    <div class="ic-outcome-inner">
+      <div class="ic-outcome-tag reveal">Outcome</div>
+      <div class="ic-outcome-quote reveal reveal-d1">A presence as<br>strong as her <span class="accent">work.</span></div>
+      <div class="ic-outcome-grid">
+        <div class="ic-outcome-cell reveal">
+          <div class="ic-cell-label">Services</div>
+          <div class="ic-cell-val">Brand Identity</div>
+        </div>
+        <div class="ic-outcome-cell reveal reveal-d1">
+          <div class="ic-cell-label">Scope</div>
+          <div class="ic-cell-val">Full Visual System</div>
+        </div>
+        <div class="ic-outcome-cell reveal reveal-d2">
+          <div class="ic-cell-label">Industry</div>
+          <div class="ic-cell-val">Personal Brand</div>
+        </div>
+        <div class="ic-outcome-cell reveal reveal-d3">
+          <div class="ic-cell-label">Year</div>
+          <div class="ic-cell-val">2024</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §12 NEXT PROJECT -->
+  <a href="/work/qarmela" class="next-project">
+    <div class="next-left">
+      <div class="next-label-sm">Next Project</div>
+      <div class="next-name"><span class="next-name-q">Q</span><span class="next-name-armela">armela</span></div>
+    </div>
+    <div class="next-arrow">→</div>
+  </a>
+
+  <!-- FOOTER -->
+  <footer class="project-footer">
+    <a href="/work" class="back-link">← Back to Work</a>
+    <span class="footer-logo" aria-label="Vinca Studio">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="25 222 340 72" aria-hidden="true">
+        <path fill="#db84b6" d="M95.87,236.94c10.77-.14,9.67,13.1-.55,12.97-10.32-.13-10.15-12.83.55-12.97Z"/>
+        <path fill="#db84b6" d="M75.41,231.12c-.26-.32-.39-.83-.29-1.23l.77-.72c4.42-.34,9.32-.76,13.75-.44,6.7.48.92,3.87-.86,6.04-1.06,1.29-1.91,2.76-2.57,4.3-3.85,8.9-6.41,19.79-9.89,29.12-1.2,3.23-2.49,6.73-3.87,9.87-1.42,3.23-1.91,5.77-6.03,5.75-8.6-.05-11.06-7.28-14.26-13.94-3.99-8.31-7.26-17-11.23-25.32-2.15-4.5-4.35-9.65-8.62-12.47-.99-.65-2.74-.84-2.63-2.18.33-1.36,4.76-.84,5.96-.9,5.64-.27,11.43-.47,17.1-.26,1.25.05,6.36.28,6.95.86,1.14,1.11-1.35,2.17-1.96,2.71-3.13,2.72-1.34,6.46-.18,9.77,3.03,8.61,7.42,17.17,10.96,25.59,1.34,1.76,2.33-2.04,2.67-2.92,2.75-7.19,6.01-15.75,8.06-23.1.54-1.92,1.59-5.22.91-7.07-.93-2.54-3.76-2.25-4.75-3.45h.01Z"/>
+        <path fill="#db84b6" d="M122.48,255.76c4.21-4.6,11.58-7.04,17.26-3.73,6.85,3.99,4.46,16.3,4.96,23.03.26,3.49,1.58,6.31,5.33,6.8l.21.56c-.06.87-1.32,1.1-2.06,1.28-4.25,1.05-12.06.73-15.07-2.87-3.55-4.24-.84-14.6-2.18-20.17-1.08-4.48-6.45-4.08-7.64-.53-1,2.98-.75,13.02-.28,16.37.2,1.45.46,2.37,1.43,3.48.43.5,1.84,1.06,1.2,2.05-.11.17-1.9.5-2.28.53-3.77.31-10.15.28-13.94,0-4.86-.35-1.54-1.87-.75-3.48.72-1.45.82-4.74.89-6.47.14-3.29.42-11.88-.62-14.63-.63-1.65-1.94-1.53-2.34-2.14-.54-.82-.05-1.55.79-1.88,2.27-.89,10.15-2.77,12.6-3.04.5-.06,2.49-.25,2.49.55v4.3h0Z"/>
+        <path fill="#db84b6" d="M162.63,272.39c3.36,3.68,9.28,3.65,13.51,1.6.94-.45,4.63-3.65,4.69-.91.09,3.91-5.62,8.24-8.95,9.4-12.73,4.47-26.74-3.39-23.64-18.13,2.41-11.46,18.13-17.2,27.9-12.09,6.82,3.57,4.87,13.27-1.98,12.56-5-.52-2.43-9.15-7.85-9.34-7.14-.24-7.7,12.5-3.69,16.88h0Z"/>
+        <path fill="#db84b6" d="M102.39,251.89c.76.76.07,3.68.05,4.72-.11,5.87-.42,13.19.01,18.93.1,1.32.42,3.31,1.33,4.31.54.59,1.82.84,1.24,1.96-.29.55-1.6.69-2.2.74-3.67.31-10.25.29-13.94,0-.9-.07-2.83-.19-2.46-1.49.18-.63.84-.72,1.12-1.1.99-1.3,1.33-2.55,1.46-4.18.34-4.04.36-11.46.01-15.49-.07-.8-.29-1.83-.65-2.55-.7-1.4-4.45-2.63-.74-3.75,2.16-.65,12.13-2.65,13.95-2.4.25.03.63.1.81.28h0Z"/>
+        <path fill="#db84b6" d="M203.59,278.61c-5.12,7.86-22.59,6.7-21.23-5.01.81-6.95,8.56-8.66,14.27-8.99,1.55-.09,4.38.66,5.02-.63-.31-2.81-1.18-8.99-5.21-8.17-2.9.59-1.2,4.52-4.32,6.22-4.7,2.56-10.13-2.09-6.96-6.76,2.88-4.24,13.19-5.12,17.79-4.41,12.85,1.99,11.82,13.46,14.15,23.37.53,2.26.99,4.4,2.98,5.85,1.09.8,5.19,1.36,2.15,2.65-3.47,1.48-12.16,1.34-15.44-.58-1.54-.9-2.23-2.15-3.19-3.54h-.01ZM202.09,268.08c-3.94-1.05-8.32.74-7.72,5.44.65,5.06,8.48,5.62,8.49,1.29l-.77-6.73Z"/>
+        <path fill="#fbb349" d="M229.73,260.04c0-1.86.48-3.49,1.44-4.92.96-1.42,2.28-2.53,3.98-3.33,1.7-.8,3.66-1.2,5.89-1.2s4.01.38,5.59,1.13c1.58.75,2.81,1.83,3.7,3.22.88,1.39,1.36,3.04,1.41,4.96h-5.57c-.06-1.36-.55-2.43-1.48-3.2-.93-.77-2.17-1.15-3.74-1.15-1.71,0-3.08.38-4.11,1.15-1.03.77-1.54,1.82-1.54,3.15,0,1.13.31,2.02.94,2.67.62.65,1.6,1.14,2.94,1.46l5,1.13c2.73.58,4.76,1.57,6.09,2.98,1.33,1.41,2,3.3,2,5.68,0,1.94-.48,3.65-1.44,5.13-.96,1.48-2.31,2.62-4.07,3.41-1.75.8-3.81,1.2-6.16,1.2s-4.19-.38-5.87-1.15c-1.68-.77-2.99-1.85-3.94-3.24-.94-1.39-1.44-3.03-1.5-4.92h5.57c.03,1.33.56,2.39,1.59,3.15,1.03.77,2.43,1.15,4.2,1.15s3.33-.38,4.41-1.15c1.09-.77,1.63-1.79,1.63-3.07,0-1.1-.29-1.98-.87-2.63s-1.52-1.11-2.83-1.37l-5.05-1.13c-2.7-.58-4.74-1.63-6.13-3.15s-2.09-3.52-2.09-5.98Z"/>
+        <path fill="#fbb349" d="M254.39,261.48h13.57v4.44h-13.57v-4.44ZM263.83,282.96h-5.31v-28.19h5.31v28.19Z"/>
+        <path fill="#fbb349" d="M285.88,261.48h5.31v21.49h-4.92l-.39-2.87c-.64,1.02-1.59,1.84-2.87,2.48s-2.64.96-4.09.96c-2.47,0-4.39-.78-5.79-2.35-1.39-1.57-2.09-3.65-2.09-6.26v-13.44h5.31v11.57c0,2.03.39,3.49,1.17,4.39.78.9,1.91,1.35,3.39,1.35,1.68,0,2.93-.5,3.74-1.5.81-1,1.22-2.52,1.22-4.55v-11.27Z"/>
+        <path fill="#fbb349" d="M305.05,283.53c-2.09,0-3.88-.47-5.37-1.41-1.49-.94-2.65-2.25-3.48-3.94-.83-1.68-1.24-3.64-1.24-5.87s.41-4.21,1.24-5.94c.83-1.72,2.02-3.08,3.59-4.07,1.57-.99,3.42-1.48,5.57-1.48,1.51,0,2.89.3,4.13.89,1.25.59,2.2,1.43,2.87,2.5v-13.61h5.26v32.36h-4.87l-.35-3.35c-.64,1.22-1.62,2.17-2.94,2.87-1.32.7-2.79,1.04-4.42,1.04ZM306.23,278.66c1.25,0,2.32-.27,3.22-.8.9-.54,1.6-1.31,2.11-2.31.51-1,.76-2.14.76-3.41s-.25-2.44-.76-3.42c-.51-.97-1.21-1.74-2.11-2.31s-1.97-.85-3.22-.85-2.28.28-3.17.85c-.9.57-1.59,1.34-2.07,2.33-.48.99-.72,2.12-.72,3.39s.24,2.41.72,3.39,1.17,1.75,2.07,2.3c.9.55,1.96.83,3.17.83Z"/>
+        <path fill="#fbb349" d="M325.76,257.17c-.9,0-1.66-.31-2.28-.94-.62-.62-.94-1.38-.94-2.28s.31-1.65.94-2.26c.62-.61,1.38-.91,2.28-.91s1.66.3,2.28.91c.62.61.93,1.36.93,2.26s-.31,1.66-.93,2.28-1.39.94-2.28.94ZM323.15,282.96v-21.49h5.31v21.49h-5.31Z"/>
+        <path fill="#fbb349" d="M332.67,272.18c0-2.23.49-4.2,1.48-5.89.99-1.7,2.35-3.02,4.09-3.98,1.74-.96,3.71-1.43,5.92-1.43s4.21.48,5.94,1.43c1.72.96,3.08,2.28,4.07,3.98.99,1.7,1.48,3.66,1.48,5.89s-.49,4.2-1.48,5.89c-.99,1.7-2.34,3.02-4.07,3.98-1.73.96-3.71,1.43-5.94,1.43s-4.18-.48-5.92-1.43c-1.74-.96-3.1-2.28-4.09-3.98-.99-1.7-1.48-3.66-1.48-5.89ZM337.98,272.18c0,1.3.27,2.45.8,3.44.54.99,1.26,1.75,2.17,2.3.91.55,1.98.83,3.2.83s2.29-.28,3.22-.83c.93-.55,1.65-1.32,2.17-2.3.52-.99.78-2.13.78-3.44s-.26-2.49-.78-3.46c-.52-.97-1.25-1.73-2.17-2.28-.93-.55-2-.83-3.22-.83s-2.28.28-3.2.83c-.91.55-1.64,1.31-2.17,2.28-.54.97-.8,2.12-.8,3.46Z"/>
+      </svg>
+    </span>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Brand applications carousel
+    (function() {
+      const vp = document.getElementById('carViewport');
+      if (!vp) return;
+      let isDragging = false, startX = 0, startScroll = 0, velX = 0, lastX = 0, lastT = 0;
+      let autoRaf = null, hovered = false, dragMomentumRaf = null;
+      const AUTO_SPEED = 0.5;
+      function halfWidth() { return vp.scrollWidth / 2; }
+      function checkLoop() {
+        const h = halfWidth();
+        if (vp.scrollLeft >= h) vp.scrollLeft -= h;
+        else if (vp.scrollLeft < 0) vp.scrollLeft += h;
+      }
+      function autoScroll() {
+        if (!isDragging && !hovered) { vp.scrollLeft += AUTO_SPEED; checkLoop(); }
+        autoRaf = requestAnimationFrame(autoScroll);
+      }
+      function getX(e) { return e.touches ? e.touches[0].clientX : e.clientX; }
+      function onDown(e) {
+        isDragging = true; hovered = true;
+        startX = getX(e); startScroll = vp.scrollLeft;
+        velX = 0; lastX = startX; lastT = performance.now();
+        vp.classList.add('is-dragging');
+        cancelAnimationFrame(dragMomentumRaf);
+      }
+      function onMove(e) {
+        if (!isDragging) return;
+        if (e.cancelable) e.preventDefault();
+        const x = getX(e), now = performance.now(), dt = now - lastT;
+        if (dt > 0) velX = (x - lastX) / dt * 16;
+        lastX = x; lastT = now;
+        vp.scrollLeft = startScroll - (x - startX);
+        checkLoop();
+      }
+      function decayMomentum() {
+        if (Math.abs(velX) < 0.08) return;
+        velX *= 0.94; vp.scrollLeft -= velX; checkLoop();
+        dragMomentumRaf = requestAnimationFrame(decayMomentum);
+      }
+      function onUp() {
+        if (!isDragging) return;
+        isDragging = false; vp.classList.remove('is-dragging');
+        decayMomentum();
+        setTimeout(() => { hovered = false; }, 600);
+      }
+      vp.addEventListener('mousedown', onDown);
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+      vp.addEventListener('touchstart', onDown, { passive: true });
+      vp.addEventListener('touchmove', onMove, { passive: false });
+      vp.addEventListener('touchend', onUp);
+      vp.addEventListener('mouseenter', () => { hovered = true; });
+      vp.addEventListener('mouseleave', () => { if (!isDragging) hovered = false; });
+      autoRaf = requestAnimationFrame(autoScroll);
+    })();
+
+    // Back to top
+    const btt = document.getElementById('back-to-top');
+    if (btt) {
+      window.addEventListener('scroll', () => {
+        btt.classList.toggle('visible', window.scrollY > 400);
+      }, { passive: true });
+      btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+  </script>
+
+  <button id="back-to-top" aria-label="Back to top">↑</button>
+</body>
+</html>

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qarmela — Vinca Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:  #FAF7F4;
+      --ivory:  #F2EDE8;
+      --coral:  #D96B4A;
+      --forest: #2D4A3E;
+      --gold:   #C9943A;
+      --dark:   #1A1714;
+      --yellow: #FFB548;
+      --white:  #FFFFFF;
+      --text:   #3D3530;
+      --muted:  rgba(61,53,48,0.48);
+      --ease:   cubic-bezier(0.65, 0, 0.15, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV (exact match with site nav) ─── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 2.5rem;
+      background: rgba(29,19,25,0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      transition: background 0.5s var(--ease), box-shadow 0.5s var(--ease);
+    }
+    #nav.scrolled {
+      background: rgba(29,19,25,0.92);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .nav-logo svg { height: 30px; width: auto; }
+    .nav-links { display: flex; gap: 2.25rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dark);
+      background: var(--yellow);
+      padding: 0.55rem 1.4rem;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+      box-shadow: 0 2px 14px rgba(255,181,72,0.35);
+    }
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(255,181,72,0.5);
+    }
+
+    /* ─── §1 HERO ─────────────────────────── */
+    .q-hero {
+      position: relative;
+      width: 100vw; height: 100vh; min-height: 680px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 5.5rem 5rem;
+    }
+    .q-hero-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 25%;
+      filter: brightness(0.84) saturate(1.08);
+      animation: qDrift 14s cubic-bezier(0.0,0.0,0.2,1) forwards;
+      transform-origin: center 25%;
+      will-change: transform;
+    }
+    @keyframes qDrift {
+      from { transform: scale(1.05); }
+      to   { transform: scale(1); }
+    }
+    .q-hero-veil {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(26,23,20,0.05) 0%, rgba(26,23,20,0.0) 28%, rgba(26,23,20,0.52) 65%, rgba(26,23,20,0.90) 100%),
+        linear-gradient(to right, rgba(26,23,20,0.45) 0%, rgba(26,23,20,0.1) 55%, transparent 80%);
+    }
+    .q-hero-content { position: relative; z-index: 2; max-width: 820px; }
+    .q-hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600; font-size: 0.78rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: qFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.15s backwards;
+    }
+    .q-hero-eyebrow::before {
+      content: ''; display: block;
+      width: 2.5rem; height: 1.5px;
+      background: rgba(255,255,255,0.35);
+    }
+    .q-hero-desc {
+      font-size: 0.95rem; font-weight: 400;
+      color: rgba(255,255,255,0.50);
+      max-width: 380px; line-height: 1.65;
+      margin-bottom: 1.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      animation: qFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.28s backwards;
+    }
+    .q-hero-pills {
+      display: flex; gap: 0.6rem; flex-wrap: wrap;
+      animation: qFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.42s backwards;
+    }
+    .q-hero-pill {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.72rem;
+      letter-spacing: 0.11em; text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.45);
+    }
+    @keyframes qFadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── §2 WORDMARK ─────────────────────── */
+    .q-wordmark {
+      display: block;
+      line-height: 0;
+      margin: 0; padding: 0;
+    }
+    .q-wm-logo {
+      width: 100%;
+      display: block;
+    }
+
+    /* ─── §3 INTRO ────────────────────────── */
+    .q-intro {
+      background: #0D1B2E;
+      padding: 11rem 5.5rem;
+      display: grid; grid-template-columns: 5fr 7fr;
+      gap: 9rem; align-items: center;
+    }
+    .q-intro-left { }
+    .q-intro-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 6rem; font-weight: 900; font-style: italic;
+      color: rgba(255,255,255,0.06);
+      line-height: 1; margin-bottom: 1.5rem;
+      user-select: none;
+    }
+    .q-intro-tag {
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.26em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .q-intro-h {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700; font-style: italic;
+      font-size: clamp(2.8rem, 4.8vw, 5.2rem);
+      line-height: 1.06; color: #ffffff;
+      letter-spacing: -0.015em;
+      margin-bottom: 2.8rem;
+    }
+    .q-intro-h .coral { font-style: normal; color: #E8907A; }
+    .q-intro-body {
+      font-size: 1.02rem; line-height: 1.84;
+      color: rgba(255,255,255,0.50);
+    }
+    .q-intro-body p + p { margin-top: 1.25em; }
+    .q-intro-body strong { color: rgba(255,255,255,0.82); font-weight: 500; }
+
+    /* ─── FULL IMAGE UTILITY ──────────────── */
+    .q-full { width: 100%; display: block; }
+
+    /* ─── §5 IDENTITY SYSTEM IMAGE ──────── */
+    .q-identity-img-wrap {
+      width: 100%;
+      overflow: hidden;
+    }
+    .q-identity-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ─── §4/5 BRAND SECTIONS ────────────── */
+    .q-brand-block { background: var(--ivory); }
+    .q-brand-block.cream { background: var(--cream); }
+    .q-brand-header {
+      padding: 5.5rem 5.5rem 4rem;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      border-bottom: 1px solid rgba(61,53,48,0.08);
+    }
+    .q-brand-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700; font-size: clamp(2rem, 3.2vw, 3rem);
+      letter-spacing: -0.01em; color: var(--dark);
+    }
+    .q-brand-sub {
+      font-size: 0.84rem; color: var(--muted);
+      max-width: 280px; text-align: right; line-height: 1.62;
+    }
+
+    /* ─── §6 CAROUSEL ─────────────────────── */
+    .q-car-section {
+      background: var(--forest);
+      padding-bottom: 6rem;
+    }
+    .q-car-head {
+      padding: 6.5rem 5.5rem 4.5rem;
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .q-car-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700; font-size: clamp(2rem, 3.2vw, 3rem);
+      color: #ffffff; letter-spacing: -0.01em;
+    }
+    .q-car-hint {
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+    .q-car-vp {
+      overflow-x: scroll; overflow-y: hidden;
+      scrollbar-width: none; cursor: grab;
+      user-select: none; -webkit-overflow-scrolling: touch;
+    }
+    .q-car-vp::-webkit-scrollbar { display: none; }
+    .q-car-vp.dragging { cursor: grabbing; }
+    .q-car-track {
+      display: flex; align-items: stretch;
+      gap: 4px; width: max-content;
+    }
+    .q-car-slide {
+      width: min(1000px, 78vw); height: 68vh;
+      flex-shrink: 0; overflow: hidden;
+    }
+    .q-car-slide img {
+      width: 100%; height: 100%;
+      object-fit: contain; object-position: center;
+      display: block; pointer-events: none;
+    }
+    /* Per-slide backgrounds matched to each photo */
+    .q-car-slide--box        { background: #F0E6D8; }
+    .q-car-slide--stamp      { background: #EAE1D0; }
+    .q-car-slide--stationery { background: #E07B5D; }
+    .q-car-slide--stamp img       { object-fit: cover; object-position: center; }
+    .q-car-slide--box img         { object-fit: cover; object-position: center; }
+    .q-car-slide--stationery img  { object-fit: cover; object-position: center; }
+
+    /* ─── §7 CLOSING ──────────────────────── */
+    .q-closing {
+      background: var(--yellow);
+      padding: 13rem 5.5rem 11rem;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+    }
+    .q-closing-tag {
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(26,23,20,0.45); margin-bottom: 3rem;
+    }
+    .q-closing-quote {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900; font-style: italic;
+      font-size: clamp(3.8rem, 8.5vw, 9.5rem);
+      line-height: 0.94; letter-spacing: -0.025em;
+      color: var(--dark); margin-bottom: 3rem;
+    }
+    .q-closing-quote .coral { font-style: normal; color: #E8907A; }
+    .q-closing-quote .q-yellow { font-style: normal; color: #0D1B2E; }
+    .q-closing-sub {
+      font-size: 1rem; line-height: 1.75;
+      color: rgba(26,23,20,0.5);
+      max-width: 380px; margin-bottom: 4.5rem;
+    }
+    .q-closing-btn {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--cream);
+      background: var(--dark);
+      padding: 1.1rem 2.8rem;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.22);
+    }
+    .q-closing-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 44px rgba(0,0,0,0.3);
+    }
+
+    /* ─── TICKER ────────────────────────────── */
+    .q-ticker {
+      background: var(--ivory);
+      overflow: hidden; padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(61,53,48,0.07);
+    }
+    .q-ticker-track {
+      display: flex; gap: 2.5rem; width: max-content;
+      white-space: nowrap;
+      animation: qTickerRun 35s linear infinite;
+    }
+    .q-ticker-track span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.88rem;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text);
+    }
+    .q-ticker-track .sep { color: var(--coral); font-weight: 400; }
+    @keyframes qTickerRun {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── OUTCOME ────────────────────────────── */
+    .q-outcome {
+      background: #0D1B2E;
+      padding: 10rem 5.5rem 8rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .q-outcome-inner { max-width: 980px; }
+    .q-outcome-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.72rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--coral); margin-bottom: 3.5rem;
+    }
+    .q-outcome-quote {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900; font-style: italic;
+      font-size: clamp(3rem, 6.5vw, 7rem);
+      line-height: 0.92; letter-spacing: -0.02em;
+      color: #fff; margin-bottom: 5rem;
+    }
+    .q-outcome-quote .accent { color: var(--coral); font-style: normal; }
+    .q-outcome-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .q-outcome-cell { padding: 2.5rem 2rem 0; }
+    .q-outcome-cell + .q-outcome-cell { border-left: 1px solid rgba(255,255,255,0.07); }
+    .q-cell-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.28); margin-bottom: 0.75rem;
+    }
+    .q-cell-val {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700; font-size: 1.4rem;
+      color: #fff; line-height: 1.2;
+    }
+
+    /* ─── NEXT PROJECT ────────────────────────── */
+    .next-project {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 5rem 5.5rem;
+      background: #78C831;
+      text-decoration: none; color: #0B0A08;
+      transition: background 0.4s var(--ease);
+    }
+    .next-project:hover { background: #63A828; }
+    .next-project:hover .next-arrow { transform: translateX(14px); color: #0B0A08; }
+    .next-label-sm {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(11,10,8,0.5); margin-bottom: 0.5rem;
+    }
+    .next-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: clamp(2.5rem, 5vw, 4rem);
+      text-transform: uppercase; letter-spacing: -0.02em;
+      color: #0B0A08; line-height: 1;
+    }
+    .next-arrow {
+      font-size: 2.5rem; font-weight: 900;
+      color: rgba(11,10,8,0.45);
+      transition: transform 0.35s var(--ease), color 0.35s;
+    }
+
+    /* ─── BACK TO TOP ────────────────────────── */
+    #back-to-top {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 99;
+      width: 48px; height: 48px;
+      background: transparent; border: 1.5px solid rgba(221,133,186,0.45);
+      border-radius: 50%; color: #DD85BA;
+      font-size: 1rem; cursor: pointer;
+      opacity: 0; transform: translateY(12px);
+      transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), background 0.2s, border-color 0.2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #back-to-top.visible { opacity: 1; transform: none; }
+    #back-to-top:hover { background: rgba(221,133,186,0.15); border-color: #DD85BA; }
+
+    /* ─── FOOTER ─── */
+    .project-footer {
+      background: #060810;
+      padding: 3rem 5.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .back-link {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      transition: color 0.2s; text-decoration: none;
+    }
+    .back-link:hover { color: #fff; }
+    .footer-logo svg { height: 22px; width: auto; opacity: 0.25; }
+
+    /* ─── REVEAL ──────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(2rem);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.22s; }
+    .reveal-d3 { transition-delay: 0.36s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="/" class="nav-logo" aria-label="Vinca Studio">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="25 222 340 72" aria-hidden="true">
+        <path fill="#db84b6" d="M95.87,236.94c10.77-.14,9.67,13.1-.55,12.97-10.32-.13-10.15-12.83.55-12.97Z"/>
+        <path fill="#db84b6" d="M75.41,231.12c-.26-.32-.39-.83-.29-1.23l.77-.72c4.42-.34,9.32-.76,13.75-.44,6.7.48.92,3.87-.86,6.04-1.06,1.29-1.91,2.76-2.57,4.3-3.85,8.9-6.41,19.79-9.89,29.12-1.2,3.23-2.49,6.73-3.87,9.87-1.42,3.23-1.91,5.77-6.03,5.75-8.6-.05-11.06-7.28-14.26-13.94-3.99-8.31-7.26-17-11.23-25.32-2.15-4.5-4.35-9.65-8.62-12.47-.99-.65-2.74-.84-2.63-2.18.33-1.36,4.76-.84,5.96-.9,5.64-.27,11.43-.47,17.1-.26,1.25.05,6.36.28,6.95.86,1.14,1.11-1.35,2.17-1.96,2.71-3.13,2.72-1.34,6.46-.18,9.77,3.03,8.61,7.42,17.17,10.96,25.59,1.34,1.76,2.33-2.04,2.67-2.92,2.75-7.19,6.01-15.75,8.06-23.1.54-1.92,1.59-5.22.91-7.07-.93-2.54-3.76-2.25-4.75-3.45h.01Z"/>
+        <path fill="#db84b6" d="M122.48,255.76c4.21-4.6,11.58-7.04,17.26-3.73,6.85,3.99,4.46,16.3,4.96,23.03.26,3.49,1.58,6.31,5.33,6.8l.21.56c-.06.87-1.32,1.1-2.06,1.28-4.25,1.05-12.06.73-15.07-2.87-3.55-4.24-.84-14.6-2.18-20.17-1.08-4.48-6.45-4.08-7.64-.53-1,2.98-.75,13.02-.28,16.37.2,1.45.46,2.37,1.43,3.48.43.5,1.84,1.06,1.2,2.05-.11.17-1.9.5-2.28.53-3.77.31-10.15.28-13.94,0-4.86-.35-1.54-1.87-.75-3.48.72-1.45.82-4.74.89-6.47.14-3.29.42-11.88-.62-14.63-.63-1.65-1.94-1.53-2.34-2.14-.54-.82-.05-1.55.79-1.88,2.27-.89,10.15-2.77,12.6-3.04.5-.06,2.49-.25,2.49.55v4.3h0Z"/>
+        <path fill="#db84b6" d="M162.63,272.39c3.36,3.68,9.28,3.65,13.51,1.6.94-.45,4.63-3.65,4.69-.91.09,3.91-5.62,8.24-8.95,9.4-12.73,4.47-26.74-3.39-23.64-18.13,2.41-11.46,18.13-17.2,27.9-12.09,6.82,3.57,4.87,13.27-1.98,12.56-5-.52-2.43-9.15-7.85-9.34-7.14-.24-7.7,12.5-3.69,16.88h0Z"/>
+        <path fill="#db84b6" d="M102.39,251.89c.76.76.07,3.68.05,4.72-.11,5.87-.42,13.19.01,18.93.1,1.32.42,3.31,1.33,4.31.54.59,1.82.84,1.24,1.96-.29.55-1.6.69-2.2.74-3.67.31-10.25.29-13.94,0-.9-.07-2.83-.19-2.46-1.49.18-.63.84-.72,1.12-1.1.99-1.3,1.33-2.55,1.46-4.18.34-4.04.36-11.46.01-15.49-.07-.8-.29-1.83-.65-2.55-.7-1.4-4.45-2.63-.74-3.75,2.16-.65,12.13-2.65,13.95-2.4.25.03.63.1.81.28h0Z"/>
+        <path fill="#db84b6" d="M203.59,278.61c-5.12,7.86-22.59,6.7-21.23-5.01.81-6.95,8.56-8.66,14.27-8.99,1.55-.09,4.38.66,5.02-.63-.31-2.81-1.18-8.99-5.21-8.17-2.9.59-1.2,4.52-4.32,6.22-4.7,2.56-10.13-2.09-6.96-6.76,2.88-4.24,13.19-5.12,17.79-4.41,12.85,1.99,11.82,13.46,14.15,23.37.53,2.26.99,4.4,2.98,5.85,1.09.8,5.19,1.36,2.15,2.65-3.47,1.48-12.16,1.34-15.44-.58-1.54-.9-2.23-2.15-3.19-3.54h-.01ZM202.09,268.08c-3.94-1.05-8.32.74-7.72,5.44.65,5.06,8.48,5.62,8.49,1.29l-.77-6.73Z"/>
+        <path fill="#fbb349" d="M229.73,260.04c0-1.86.48-3.49,1.44-4.92.96-1.42,2.28-2.53,3.98-3.33,1.7-.8,3.66-1.2,5.89-1.2s4.01.38,5.59,1.13c1.58.75,2.81,1.83,3.7,3.22.88,1.39,1.36,3.04,1.41,4.96h-5.57c-.06-1.36-.55-2.43-1.48-3.2-.93-.77-2.17-1.15-3.74-1.15-1.71,0-3.08.38-4.11,1.15-1.03.77-1.54,1.82-1.54,3.15,0,1.13.31,2.02.94,2.67.62.65,1.6,1.14,2.94,1.46l5,1.13c2.73.58,4.76,1.57,6.09,2.98,1.33,1.41,2,3.3,2,5.68,0,1.94-.48,3.65-1.44,5.13-.96,1.48-2.31,2.62-4.07,3.41-1.75.8-3.81,1.2-6.16,1.2s-4.19-.38-5.87-1.15c-1.68-.77-2.99-1.85-3.94-3.24-.94-1.39-1.44-3.03-1.5-4.92h5.57c.03,1.33.56,2.39,1.59,3.15,1.03.77,2.43,1.15,4.2,1.15s3.33-.38,4.41-1.15c1.09-.77,1.63-1.79,1.63-3.07,0-1.1-.29-1.98-.87-2.63s-1.52-1.11-2.83-1.37l-5.05-1.13c-2.7-.58-4.74-1.63-6.13-3.15s-2.09-3.52-2.09-5.98Z"/>
+        <path fill="#fbb349" d="M254.39,261.48h13.57v4.44h-13.57v-4.44ZM263.83,282.96h-5.31v-28.19h5.31v28.19Z"/>
+        <path fill="#fbb349" d="M285.88,261.48h5.31v21.49h-4.92l-.39-2.87c-.64,1.02-1.59,1.84-2.87,2.48s-2.64.96-4.09.96c-2.47,0-4.39-.78-5.79-2.35-1.39-1.57-2.09-3.65-2.09-6.26v-13.44h5.31v11.57c0,2.03.39,3.49,1.17,4.39.78.9,1.91,1.35,3.39,1.35,1.68,0,2.93-.5,3.74-1.5.81-1,1.22-2.52,1.22-4.55v-11.27Z"/>
+        <path fill="#fbb349" d="M305.05,283.53c-2.09,0-3.88-.47-5.37-1.41-1.49-.94-2.65-2.25-3.48-3.94-.83-1.68-1.24-3.64-1.24-5.87s.41-4.21,1.24-5.94c.83-1.72,2.02-3.08,3.59-4.07,1.57-.99,3.42-1.48,5.57-1.48,1.51,0,2.89.3,4.13.89,1.25.59,2.2,1.43,2.87,2.5v-13.61h5.26v32.36h-4.87l-.35-3.35c-.64,1.22-1.62,2.17-2.94,2.87-1.32.7-2.79,1.04-4.42,1.04ZM306.23,278.66c1.25,0,2.32-.27,3.22-.8.9-.54,1.6-1.31,2.11-2.31.51-1,.76-2.14.76-3.41s-.25-2.44-.76-3.42c-.51-.97-1.21-1.74-2.11-2.31s-1.97-.85-3.22-.85-2.28.28-3.17.85c-.9.57-1.59,1.34-2.07,2.33-.48.99-.72,2.12-.72,3.39s.24,2.41.72,3.39,1.17,1.75,2.07,2.3c.9.55,1.96.83,3.17.83Z"/>
+        <path fill="#fbb349" d="M325.76,257.17c-.9,0-1.66-.31-2.28-.94-.62-.62-.94-1.38-.94-2.28s.31-1.65.94-2.26c.62-.61,1.38-.91,2.28-.91s1.66.3,2.28.91c.62.61.93,1.36.93,2.26s-.31,1.66-.93,2.28-1.39.94-2.28.94ZM323.15,282.96v-21.49h5.31v21.49h-5.31Z"/>
+        <path fill="#fbb349" d="M332.67,272.18c0-2.23.49-4.2,1.48-5.89.99-1.7,2.35-3.02,4.09-3.98,1.74-.96,3.71-1.43,5.92-1.43s4.21.48,5.94,1.43c1.72.96,3.08,2.28,4.07,3.98.99,1.7,1.48,3.66,1.48,5.89s-.49,4.2-1.48,5.89c-.99,1.7-2.34,3.02-4.07,3.98-1.73.96-3.71,1.43-5.94,1.43s-4.18-.48-5.92-1.43c-1.74-.96-3.1-2.28-4.09-3.98-.99-1.7-1.48-3.66-1.48-5.89ZM337.98,272.18c0,1.3.27,2.45.8,3.44.54.99,1.26,1.75,2.17,2.3.91.55,1.98.83,3.2.83s2.29-.28,3.22-.83c.93-.55,1.65-1.32,2.17-2.3.52-.99.78-2.13.78-3.44s-.26-2.49-.78-3.46c-.52-.97-1.25-1.73-2.17-2.28-.93-.55-2-.83-3.22-.83s-2.28.28-3.2.83c-.91.55-1.64,1.31-2.17,2.28-.54.97-.8,2.12-.8,3.46Z"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#studio">Studio</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <a href="/contact" class="nav-cta">Let's Talk</a>
+  </nav>
+
+  <!-- §1 HERO -->
+  <section class="q-hero">
+    <img
+      src="../brand_assets/qarmela1.png"
+      alt="Qarmela — Art Direction & Graphic Design — branded business cards on a warm wood table with botanical wallpaper and coral flowers in the background"
+      class="q-hero-bg"
+    >
+    <div class="q-hero-veil"></div>
+    <div class="q-hero-content">
+      <p class="q-hero-eyebrow">Art Direction &amp; Graphic Design — 2024</p>
+      <p class="q-hero-desc">A studio identity rooted in nature — botanical illustration, warm colour, and craft built into every brand touchpoint.</p>
+      <div class="q-hero-pills">
+        <span class="q-hero-pill">Brand Identity</span>
+        <span class="q-hero-pill">Art Direction</span>
+        <span class="q-hero-pill">Stationery</span>
+        <span class="q-hero-pill">2024</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORD TICKER -->
+  <div class="q-ticker">
+    <div class="q-ticker-track">
+      <span>Floral</span><span class="sep"> ◆ </span><span>Expressive</span><span class="sep"> ◆ </span><span>Warm</span><span class="sep"> ◆ </span><span>Art Direction</span><span class="sep"> ◆ </span><span>Graphic Design</span><span class="sep"> ◆ </span><span>Identity</span><span class="sep"> ◆ </span><span>Bloom</span><span class="sep"> ◆ </span><span>Visual Language</span><span class="sep"> ◆ </span><span>Craft</span><span class="sep"> ◆ </span><span>Floral</span><span class="sep"> ◆ </span><span>Expressive</span><span class="sep"> ◆ </span><span>Warm</span><span class="sep"> ◆ </span><span>Art Direction</span><span class="sep"> ◆ </span><span>Graphic Design</span><span class="sep"> ◆ </span><span>Identity</span><span class="sep"> ◆ </span><span>Bloom</span><span class="sep"> ◆ </span><span>Visual Language</span><span class="sep"> ◆ </span><span>Craft</span><span class="sep"> ◆ </span>
+    </div>
+  </div>
+
+  <!-- §2 WORDMARK -->
+  <div class="q-wordmark">
+    <img
+      src="../brand_assets/qarmela2.png"
+      alt="Qarmela — colorful botanical wordmark logo on soft pink background"
+      class="q-wm-logo reveal"
+    >
+  </div>
+
+  <!-- §3 INTRO -->
+  <section class="q-intro">
+    <div class="reveal">
+      <p class="q-intro-tag">The Brief</p>
+    </div>
+    <div>
+      <h2 class="q-intro-h reveal reveal-d1">
+        A mark that<br>grows with<br>the <span class="coral">brand.</span>
+      </h2>
+      <div class="q-intro-body reveal reveal-d2">
+        <p>Qarmela needed an identity that felt <strong>alive</strong> — something that communicated the warmth, craft, and botanical spirit behind the studio without ever feeling generic or cold.</p>
+        <p>We built a full brand system from the ground up: a hand-crafted wordmark filled with botanical illustration, a flexible icon family, a warm and expressive color palette, and a complete stationery suite designed to delight at every touchpoint.</p>
+        <p>The result is a brand that feels <strong>rooted, refined, and ready to bloom</strong> across every application.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- §4 BRAND GUIDELINES -->
+  <section class="q-brand-block">
+    <div class="q-brand-header reveal">
+      <h2 class="q-brand-title">The Mark</h2>
+      <p class="q-brand-sub">Primary logo, construction rules, and Q icon system across all versions.</p>
+    </div>
+    <img
+      src="../brand_assets/qarmela3.png"
+      alt="Qarmela — brand guidelines showing primary logo on pink, logo construction and clear space, Q icon versions including negative on black"
+      class="q-full reveal"
+    >
+  </section>
+
+  <!-- §5 IDENTITY BOARD -->
+  <section class="q-brand-block cream">
+    <div class="q-brand-header reveal">
+      <h2 class="q-brand-title">Identity System</h2>
+      <p class="q-brand-sub">Color palette, typography, and full application across brand touchpoints.</p>
+    </div>
+    <div class="q-identity-img-wrap reveal">
+      <img
+        src="../brand_assets/qarmela 4.png"
+        alt="Qarmela — brand identity board showing logo variations, color palette with coral, green, yellow and blue, typography specimens"
+      >
+    </div>
+  </section>
+
+  <!-- §6 CAROUSEL -->
+  <section class="q-car-section">
+    <div class="q-car-head">
+      <h2 class="q-car-title reveal">Brand in the World</h2>
+      <p class="q-car-hint reveal reveal-d1">Drag to explore</p>
+    </div>
+    <div class="q-car-vp" id="qCarVp">
+      <div class="q-car-track" id="qCarTrack">
+
+        <!-- Originals -->
+        <div class="q-car-slide q-car-slide--box">
+          <img src="../brand_assets/qarmela4.png" alt="Qarmela — pink gift box packaging with botanical logo and soft shadow on warm beige background">
+        </div>
+        <div class="q-car-slide q-car-slide--stamp">
+          <img src="../brand_assets/qarmela5.png" alt="Qarmela — custom Q letterpress stamp on kraft paper with dried flowers nearby">
+        </div>
+        <div class="q-car-slide q-car-slide--stationery">
+          <img src="../brand_assets/qarmela6.png" alt="Qarmela — complete stationery suite including dark envelope, notebook, business cards, pink envelope and pen on coral background">
+        </div>
+
+        <!-- Clones for infinite loop -->
+        <div class="q-car-slide q-car-slide--box" aria-hidden="true">
+          <img src="../brand_assets/qarmela4.png" alt="">
+        </div>
+        <div class="q-car-slide q-car-slide--stamp" aria-hidden="true">
+          <img src="../brand_assets/qarmela5.png" alt="">
+        </div>
+        <div class="q-car-slide q-car-slide--stationery" aria-hidden="true">
+          <img src="../brand_assets/qarmela6.png" alt="">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- §7 CLOSING -->
+  <section class="q-closing">
+    <p class="q-closing-tag reveal">Vinca Studio — 2024</p>
+    <h2 class="q-closing-quote reveal reveal-d1">
+      Design that<br><span class="q-yellow">blooms.</span>
+    </h2>
+    <p class="q-closing-sub reveal reveal-d2">Every mark we make is built to carry meaning — from the first sketch to the final press.</p>
+  </section>
+
+  <!-- OUTCOME -->
+  <section class="q-outcome">
+    <div class="q-outcome-inner">
+      <div class="q-outcome-tag reveal">Outcome</div>
+      <div class="q-outcome-quote reveal reveal-d1">
+        A brand that<br>grows <span class="accent">everywhere.</span>
+      </div>
+      <div class="q-outcome-grid">
+        <div class="q-outcome-cell reveal">
+          <div class="q-cell-label">Services</div>
+          <div class="q-cell-val">Brand Identity</div>
+        </div>
+        <div class="q-outcome-cell reveal reveal-d1">
+          <div class="q-cell-label">Scope</div>
+          <div class="q-cell-val">Full Identity System</div>
+        </div>
+        <div class="q-outcome-cell reveal reveal-d2">
+          <div class="q-cell-label">Industry</div>
+          <div class="q-cell-val">Food &amp; Hospitality</div>
+        </div>
+        <div class="q-outcome-cell reveal reveal-d3">
+          <div class="q-cell-label">Year</div>
+          <div class="q-cell-val">2024</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT PROJECT -->
+  <a href="/work/notco" class="next-project">
+    <div class="next-left">
+      <div class="next-label-sm">Next Project</div>
+      <div class="next-name">NotCo</div>
+    </div>
+    <div class="next-arrow">→</div>
+  </a>
+
+  <!-- FOOTER -->
+  <footer class="project-footer">
+    <a href="/work" class="back-link">← Back to Work</a>
+    <span class="footer-logo" aria-label="Vinca Studio">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="25 222 340 72" aria-hidden="true">
+        <path fill="#db84b6" d="M95.87,236.94c10.77-.14,9.67,13.1-.55,12.97-10.32-.13-10.15-12.83.55-12.97Z"/>
+        <path fill="#db84b6" d="M75.41,231.12c-.26-.32-.39-.83-.29-1.23l.77-.72c4.42-.34,9.32-.76,13.75-.44,6.7.48.92,3.87-.86,6.04-1.06,1.29-1.91,2.76-2.57,4.3-3.85,8.9-6.41,19.79-9.89,29.12-1.2,3.23-2.49,6.73-3.87,9.87-1.42,3.23-1.91,5.77-6.03,5.75-8.6-.05-11.06-7.28-14.26-13.94-3.99-8.31-7.26-17-11.23-25.32-2.15-4.5-4.35-9.65-8.62-12.47-.99-.65-2.74-.84-2.63-2.18.33-1.36,4.76-.84,5.96-.9,5.64-.27,11.43-.47,17.1-.26,1.25.05,6.36.28,6.95.86,1.14,1.11-1.35,2.17-1.96,2.71-3.13,2.72-1.34,6.46-.18,9.77,3.03,8.61,7.42,17.17,10.96,25.59,1.34,1.76,2.33-2.04,2.67-2.92,2.75-7.19,6.01-15.75,8.06-23.1.54-1.92,1.59-5.22.91-7.07-.93-2.54-3.76-2.25-4.75-3.45h.01Z"/>
+        <path fill="#db84b6" d="M122.48,255.76c4.21-4.6,11.58-7.04,17.26-3.73,6.85,3.99,4.46,16.3,4.96,23.03.26,3.49,1.58,6.31,5.33,6.8l.21.56c-.06.87-1.32,1.1-2.06,1.28-4.25,1.05-12.06.73-15.07-2.87-3.55-4.24-.84-14.6-2.18-20.17-1.08-4.48-6.45-4.08-7.64-.53-1,2.98-.75,13.02-.28,16.37.2,1.45.46,2.37,1.43,3.48.43.5,1.84,1.06,1.2,2.05-.11.17-1.9.5-2.28.53-3.77.31-10.15.28-13.94,0-4.86-.35-1.54-1.87-.75-3.48.72-1.45.82-4.74.89-6.47.14-3.29.42-11.88-.62-14.63-.63-1.65-1.94-1.53-2.34-2.14-.54-.82-.05-1.55.79-1.88,2.27-.89,10.15-2.77,12.6-3.04.5-.06,2.49-.25,2.49.55v4.3h0Z"/>
+        <path fill="#db84b6" d="M162.63,272.39c3.36,3.68,9.28,3.65,13.51,1.6.94-.45,4.63-3.65,4.69-.91.09,3.91-5.62,8.24-8.95,9.4-12.73,4.47-26.74-3.39-23.64-18.13,2.41-11.46,18.13-17.2,27.9-12.09,6.82,3.57,4.87,13.27-1.98,12.56-5-.52-2.43-9.15-7.85-9.34-7.14-.24-7.7,12.5-3.69,16.88h0Z"/>
+        <path fill="#db84b6" d="M102.39,251.89c.76.76.07,3.68.05,4.72-.11,5.87-.42,13.19.01,18.93.1,1.32.42,3.31,1.33,4.31.54.59,1.82.84,1.24,1.96-.29.55-1.6.69-2.2.74-3.67.31-10.25.29-13.94,0-.9-.07-2.83-.19-2.46-1.49.18-.63.84-.72,1.12-1.1.99-1.3,1.33-2.55,1.46-4.18.34-4.04.36-11.46.01-15.49-.07-.8-.29-1.83-.65-2.55-.7-1.4-4.45-2.63-.74-3.75,2.16-.65,12.13-2.65,13.95-2.4.25.03.63.1.81.28h0Z"/>
+        <path fill="#db84b6" d="M203.59,278.61c-5.12,7.86-22.59,6.7-21.23-5.01.81-6.95,8.56-8.66,14.27-8.99,1.55-.09,4.38.66,5.02-.63-.31-2.81-1.18-8.99-5.21-8.17-2.9.59-1.2,4.52-4.32,6.22-4.7,2.56-10.13-2.09-6.96-6.76,2.88-4.24,13.19-5.12,17.79-4.41,12.85,1.99,11.82,13.46,14.15,23.37.53,2.26.99,4.4,2.98,5.85,1.09.8,5.19,1.36,2.15,2.65-3.47,1.48-12.16,1.34-15.44-.58-1.54-.9-2.23-2.15-3.19-3.54h-.01ZM202.09,268.08c-3.94-1.05-8.32.74-7.72,5.44.65,5.06,8.48,5.62,8.49,1.29l-.77-6.73Z"/>
+        <path fill="#fbb349" d="M229.73,260.04c0-1.86.48-3.49,1.44-4.92.96-1.42,2.28-2.53,3.98-3.33,1.7-.8,3.66-1.2,5.89-1.2s4.01.38,5.59,1.13c1.58.75,2.81,1.83,3.7,3.22.88,1.39,1.36,3.04,1.41,4.96h-5.57c-.06-1.36-.55-2.43-1.48-3.2-.93-.77-2.17-1.15-3.74-1.15-1.71,0-3.08.38-4.11,1.15-1.03.77-1.54,1.82-1.54,3.15,0,1.13.31,2.02.94,2.67.62.65,1.6,1.14,2.94,1.46l5,1.13c2.73.58,4.76,1.57,6.09,2.98,1.33,1.41,2,3.3,2,5.68,0,1.94-.48,3.65-1.44,5.13-.96,1.48-2.31,2.62-4.07,3.41-1.75.8-3.81,1.2-6.16,1.2s-4.19-.38-5.87-1.15c-1.68-.77-2.99-1.85-3.94-3.24-.94-1.39-1.44-3.03-1.5-4.92h5.57c.03,1.33.56,2.39,1.59,3.15,1.03.77,2.43,1.15,4.2,1.15s3.33-.38,4.41-1.15c1.09-.77,1.63-1.79,1.63-3.07,0-1.1-.29-1.98-.87-2.63s-1.52-1.11-2.83-1.37l-5.05-1.13c-2.7-.58-4.74-1.63-6.13-3.15s-2.09-3.52-2.09-5.98Z"/>
+        <path fill="#fbb349" d="M254.39,261.48h13.57v4.44h-13.57v-4.44ZM263.83,282.96h-5.31v-28.19h5.31v28.19Z"/>
+        <path fill="#fbb349" d="M285.88,261.48h5.31v21.49h-4.92l-.39-2.87c-.64,1.02-1.59,1.84-2.87,2.48s-2.64.96-4.09.96c-2.47,0-4.39-.78-5.79-2.35-1.39-1.57-2.09-3.65-2.09-6.26v-13.44h5.31v11.57c0,2.03.39,3.49,1.17,4.39.78.9,1.91,1.35,3.39,1.35,1.68,0,2.93-.5,3.74-1.5.81-1,1.22-2.52,1.22-4.55v-11.27Z"/>
+        <path fill="#fbb349" d="M305.05,283.53c-2.09,0-3.88-.47-5.37-1.41-1.49-.94-2.65-2.25-3.48-3.94-.83-1.68-1.24-3.64-1.24-5.87s.41-4.21,1.24-5.94c.83-1.72,2.02-3.08,3.59-4.07,1.57-.99,3.42-1.48,5.57-1.48,1.51,0,2.89.3,4.13.89,1.25.59,2.2,1.43,2.87,2.5v-13.61h5.26v32.36h-4.87l-.35-3.35c-.64,1.22-1.62,2.17-2.94,2.87-1.32.7-2.79,1.04-4.42,1.04ZM306.23,278.66c1.25,0,2.32-.27,3.22-.8.9-.54,1.6-1.31,2.11-2.31.51-1,.76-2.14.76-3.41s-.25-2.44-.76-3.42c-.51-.97-1.21-1.74-2.11-2.31s-1.97-.85-3.22-.85-2.28.28-3.17.85c-.9.57-1.59,1.34-2.07,2.33-.48.99-.72,2.12-.72,3.39s.24,2.41.72,3.39,1.17,1.75,2.07,2.3c.9.55,1.96.83,3.17.83Z"/>
+        <path fill="#fbb349" d="M325.76,257.17c-.9,0-1.66-.31-2.28-.94-.62-.62-.94-1.38-.94-2.28s.31-1.65.94-2.26c.62-.61,1.38-.91,2.28-.91s1.66.3,2.28.91c.62.61.93,1.36.93,2.26s-.31,1.66-.93,2.28-1.39.94-2.28.94ZM323.15,282.96v-21.49h5.31v21.49h-5.31Z"/>
+        <path fill="#fbb349" d="M332.67,272.18c0-2.23.49-4.2,1.48-5.89.99-1.7,2.35-3.02,4.09-3.98,1.74-.96,3.71-1.43,5.92-1.43s4.21.48,5.94,1.43c1.72.96,3.08,2.28,4.07,3.98.99,1.7,1.48,3.66,1.48,5.89s-.49,4.2-1.48,5.89c-.99,1.7-2.34,3.02-4.07,3.98-1.73.96-3.71,1.43-5.94,1.43s-4.18-.48-5.92-1.43c-1.74-.96-3.1-2.28-4.09-3.98-.99-1.7-1.48-3.66-1.48-5.89ZM337.98,272.18c0,1.3.27,2.45.8,3.44.54.99,1.26,1.75,2.17,2.3.91.55,1.98.83,3.2.83s2.29-.28,3.22-.83c.93-.55,1.65-1.32,2.17-2.3.52-.99.78-2.13.78-3.44s-.26-2.49-.78-3.46c-.52-.97-1.25-1.73-2.17-2.28-.93-.55-2-.83-3.22-.83s-2.28.28-3.2.83c-.91.55-1.64,1.31-2.17,2.28-.54.97-.8,2.12-.8,3.46Z"/>
+      </svg>
+    </span>
+  </footer>
+
+  <script>
+    // Nav scroll state
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Scroll reveals
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Infinite drag carousel
+    (function () {
+      const vp = document.getElementById('qCarVp');
+      let isDragging = false, startX = 0, startScroll = 0;
+      let velX = 0, lastX = 0, lastT = 0;
+      let hovered = false, dragRaf = null;
+      const SPEED = 0.42;
+
+      function half() { return vp.scrollWidth / 2; }
+      function loop() {
+        const h = half();
+        if (vp.scrollLeft >= h) vp.scrollLeft -= h;
+        else if (vp.scrollLeft < 0) vp.scrollLeft += h;
+      }
+      function autoTick() {
+        if (!isDragging && !hovered) { vp.scrollLeft += SPEED; loop(); }
+        requestAnimationFrame(autoTick);
+      }
+      function px(e) { return e.touches ? e.touches[0].clientX : e.clientX; }
+      function down(e) {
+        isDragging = true; hovered = true;
+        startX = px(e); startScroll = vp.scrollLeft;
+        velX = 0; lastX = startX; lastT = performance.now();
+        vp.classList.add('dragging');
+        cancelAnimationFrame(dragRaf);
+      }
+      function move(e) {
+        if (!isDragging) return;
+        if (e.cancelable) e.preventDefault();
+        const x = px(e), now = performance.now(), dt = now - lastT;
+        if (dt > 0) velX = (x - lastX) / dt * 16;
+        lastX = x; lastT = now;
+        vp.scrollLeft = startScroll - (x - startX);
+        loop();
+      }
+      function decay() {
+        if (Math.abs(velX) < 0.08) return;
+        velX *= 0.94; vp.scrollLeft -= velX; loop();
+        dragRaf = requestAnimationFrame(decay);
+      }
+      function up() {
+        if (!isDragging) return;
+        isDragging = false;
+        vp.classList.remove('dragging');
+        decay();
+        setTimeout(() => { hovered = false; }, 600);
+      }
+      vp.addEventListener('mousedown', down);
+      document.addEventListener('mousemove', move);
+      document.addEventListener('mouseup', up);
+      vp.addEventListener('touchstart', down, { passive: true });
+      vp.addEventListener('touchmove', move, { passive: false });
+      vp.addEventListener('touchend', up);
+      vp.addEventListener('mouseenter', () => { hovered = true; });
+      vp.addEventListener('mouseleave', () => { if (!isDragging) hovered = false; });
+      requestAnimationFrame(autoTick);
+    })();
+
+    // Back to top
+    const btt = document.getElementById('back-to-top');
+    if (btt) {
+      window.addEventListener('scroll', () => {
+        btt.classList.toggle('visible', window.scrollY > 400);
+      }, { passive: true });
+      btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+  </script>
+
+  <button id="back-to-top" aria-label="Back to top">↑</button>
+</body>
+</html>

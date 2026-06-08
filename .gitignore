@@ -1,0 +1,30 @@
+temporary screenshots/
+.claude/
+*.DS_Store
+Thumbs.db
+node_modules/
+
+# Dev reference images (not part of the website)
+1.png
+2.jpg
+2.png
+3..png
+3.png
+4.png
+5..png
+6.png
+r.png
+about.png
+ejemplo.png
+kota.co.uk_agency.png
+501c301c-1e50-4abd-b8f7-2fb5fd4941b3.png
+ChatGPT Image May 12, 2026, 09_52_18 PM.png
+
+# Dev/build tools
+screenshot.mjs
+screenshot-clip.mjs
+screenshot-section.mjs
+screenshot-sections.mjs
+screenshot-work.mjs
+serve.mjs
+CLAUDE.md
