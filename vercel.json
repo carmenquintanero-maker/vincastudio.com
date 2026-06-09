@@ -1,0 +1,14 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/services", "destination": "/services.html" },
+    { "source": "/work", "destination": "/work.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/work/notco", "destination": "/work/notco.html" },
+    { "source": "/work/irene-castro", "destination": "/work/irene-castro.html" },
+    { "source": "/work/qarmela", "destination": "/work/qarmela.html" },
+    { "source": "/work/fossil-fuel", "destination": "/work/fossil-fuel.html" }
+  ]
+}
