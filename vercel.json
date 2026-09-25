@@ -1,6 +1,13 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/hola",
+      "destination": "https://wa.me/34630618370?text=Hola%2C%20nos%20conocimos%20en%20el%20evento%20de%20comerciantes%20de%20C%C3%B3rdoba.",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     { "source": "/about", "destination": "/about.html" },
     { "source": "/services", "destination": "/services.html" },
