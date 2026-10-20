@@ -1,5 +1,5 @@
 {
-  "cleanUrls": true,
+  "cleanUrls": false,
   "trailingSlash": false,
   "redirects": [
     {
@@ -29,6 +29,76 @@
     },
     {
       "source": "/work/san-isidro",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/services.html",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/work.html",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/work/notco.html",
+      "destination": "/work/notco",
+      "permanent": true
+    },
+    {
+      "source": "/notco.html",
+      "destination": "/work/notco",
+      "permanent": true
+    },
+    {
+      "source": "/work/qarmela.html",
+      "destination": "/work/qarmela",
+      "permanent": true
+    },
+    {
+      "source": "/qarmela.html",
+      "destination": "/work/qarmela",
+      "permanent": true
+    },
+    {
+      "source": "/work/irene-castro.html",
+      "destination": "/work/irene-castro",
+      "permanent": true
+    },
+    {
+      "source": "/irene-castro.html",
+      "destination": "/work/irene-castro",
+      "permanent": true
+    },
+    {
+      "source": "/work/fossil-fuel.html",
+      "destination": "/work/fossil-fuel",
+      "permanent": true
+    },
+    {
+      "source": "/fossil-fuel.html",
+      "destination": "/work/fossil-fuel",
+      "permanent": true
+    },
+    {
+      "source": "/work/san-isidro.html",
       "destination": "/work",
       "permanent": true
     }
