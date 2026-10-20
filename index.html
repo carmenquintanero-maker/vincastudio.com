@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/isotipo.svg" />
+  <link rel="apple-touch-icon" href="/isotipo.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vinca Studio — Strategic Branding & Creative Direction</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,12 +23,12 @@
   <style>
     /* ── TOKENS ──────────────────────────────────────────── */
     :root {
-      --dark:   #1D1319;
+      --dark:   #20161D;
       --cream:  #E9E3DC;
-      --red:    #6E1021;
-      --purple: #7D73B5;
-      --yellow: #FFB548;
-      --pink:   #DD85BA;
+      --red:    #642027;
+      --purple: #736DAE;
+      --yellow: #F0B45E;
+      --pink:   #DC85B7;
       --ocean:  #6AABDB;
       --white:  #FFFFFF;
       --ease:   cubic-bezier(0.65, 0, 0.15, 1);
@@ -82,7 +84,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.5rem 2.5rem;
-      background: rgba(29,19,25,0.72);
+      background: rgba(32,22,29,0.72);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -90,7 +92,7 @@
       transition: background 0.5s var(--ease), box-shadow 0.5s var(--ease);
     }
     #nav.scrolled {
-      background: rgba(29,19,25,0.92);
+      background: rgba(32,22,29,0.92);
       box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     }
     .nav-logo svg { height: 30px; width: auto; }
@@ -117,11 +119,11 @@
       border-radius: 100px;
       text-decoration: none;
       transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
-      box-shadow: 0 2px 14px rgba(255,181,72,0.35);
+      box-shadow: 0 2px 14px rgba(240,180,94,0.35);
     }
     .nav-cta:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 22px rgba(255,181,72,0.5);
+      box-shadow: 0 6px 22px rgba(240,180,94,0.5);
     }
 
     /* ────────────────────────────────────────────────────── */
@@ -226,29 +228,30 @@
     /* ────────────────────────────────────────────────────── */
     .mission {
       background: var(--cream);
-      padding: 9rem 2.5rem;
+      padding: 7rem 2.5rem;
     }
     .mission-inner {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 5rem;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 6rem;
       align-items: start;
-      max-width: 1300px;
+      max-width: 1360px;
       margin: 0 auto;
     }
     .mission-left .eyebrow {
       color: var(--purple);
       display: inline-flex;
       align-items: center;
-      gap: 0.65rem;
-      margin-bottom: 2rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.18em;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
     }
     .mission-left .eyebrow::before {
       content: '';
       display: block;
-      width: 22px;
+      width: 44px;
       height: 1.5px;
       background: var(--purple);
       flex-shrink: 0;
@@ -256,49 +259,29 @@
     .mission-heading {
       font-family: 'Satoshi', sans-serif;
       font-weight: 900;
-      font-size: clamp(2.2rem, 4.5vw, 4.25rem);
-      line-height: 1.05;
+      font-size: clamp(3rem, 6.7vw, 6.5rem);
+      line-height: 1.04;
       letter-spacing: -0.03em;
       color: var(--dark);
     }
-    .mh-word {
-      transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .mh-clarity   { color: #7D73B5; }
-    .mh-clarity:hover  { color: #DD85BA; }
-    .mh-connect   { color: #DD85BA; }
-    .mh-connect:hover  { color: #FFB548; }
-    .mh-purpose   { color: #6E1021; }
-    .mh-purpose:hover  { color: #7D73B5; }
-    .mh-direction { color: #FFB548; }
-    .mh-direction:hover { color: #DD85BA; }
+    .mh-pink   { color: var(--pink); }
+    .mh-red    { color: var(--red); }
+    .mh-yellow { color: var(--yellow); }
     .mission-right {
-      padding-top: 3.5rem;
+      padding-top: 2rem;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.75rem;
+      max-width: 560px;
     }
     .mission-right p {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: rgba(29,19,25,0.7);
-    }
-    .mission-right p:first-child {
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: var(--dark);
-      line-height: 1.65;
+      font-size: clamp(1.1rem, 1.45vw, 1.4rem);
+      line-height: 1.75;
+      color: rgba(32,22,29,0.92);
     }
     .mission-right strong {
       font-weight: 700;
       color: var(--dark);
-    }
-    .mission-right .txt-xl {
-      font-size: 1.18em;
-      font-weight: 700;
-      color: var(--dark);
-      letter-spacing: -0.01em;
-      line-height: 1.35;
     }
 
     /* ────────────────────────────────────────────────────── */
@@ -364,7 +347,7 @@
       color: var(--dark);
     }
     .services-header .eyebrow {
-      color: rgba(29,19,25,0.82);
+      color: rgba(32,22,29,0.82);
       margin-bottom: 1.25rem;
       font-size: 0.8rem;
       letter-spacing: 0.2em;
@@ -384,7 +367,7 @@
       margin-top: 1.5rem;
       font-size: clamp(0.95rem, 1.15vw, 1.05rem);
       line-height: 1.65;
-      color: rgba(29,19,25,0.58);
+      color: rgba(32,22,29,0.58);
       max-width: 38ch;
       letter-spacing: 0.01em;
     }
@@ -598,11 +581,11 @@
       padding: 1.1rem 2.75rem;
       border-radius: 100px;
       transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-      box-shadow: 0 4px 20px rgba(29,19,25,0.2);
+      box-shadow: 0 4px 20px rgba(32,22,29,0.2);
     }
     .btn-dark:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 36px rgba(29,19,25,0.3);
+      box-shadow: 0 10px 36px rgba(32,22,29,0.3);
     }
     .btn-dark:active { transform: translateY(0); }
 
@@ -685,7 +668,7 @@
     #back-to-top {
       position: fixed; bottom: 2rem; right: 2rem; z-index: 99;
       width: 48px; height: 48px;
-      background: transparent; border: 1.5px solid rgba(221,133,186,0.45);
+      background: transparent; border: 1.5px solid rgba(220,133,183,0.45);
       border-radius: 50%; color: var(--pink);
       font-size: 1rem; cursor: pointer;
       opacity: 0; transform: translateY(12px);
@@ -693,7 +676,7 @@
       display: flex; align-items: center; justify-content: center;
     }
     #back-to-top.visible { opacity: 1; transform: none; }
-    #back-to-top:hover { background: rgba(221,133,186,0.15); border-color: var(--pink); }
+    #back-to-top:hover { background: rgba(220,133,183,0.15); border-color: var(--pink); }
 
     @media (max-width: 1100px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 768px) {
@@ -762,12 +745,12 @@
     <div class="mission-inner">
       <div class="mission-left reveal">
         <span class="eyebrow">Our Mission</span>
-        <h2 class="mission-heading">We help brands communicate with <span class="mh-word mh-clarity">clarity</span>, <span class="mh-word mh-connect">connect</span> with <span class="mh-word mh-purpose">purpose</span>, and grow with <span class="mh-word mh-direction">direction</span>.</h2>
+        <h2 class="mission-heading">Good design starts with <span class="mh-pink">understanding</span> <span class="mh-red">the</span> <span class="mh-yellow">business</span><span class="mh-red">.</span></h2>
       </div>
       <div class="mission-right reveal reveal-delay-1">
-        <p>Most brands don't fail because of bad products. They fail because <span class="txt-xl">people never truly understand them.</span> <strong>Clarity isn't a luxury</strong> — it's the foundation everything else builds on.</p>
-        <p>At Vinca Studio, <strong>strategy and design are one discipline.</strong> Every visual decision is a strategic one. Every word, a positioning move. We build brands that communicate <strong>before you explain them.</strong></p>
-        <p>We partner with founders and teams who are ready to stop being overlooked — and start <span class="txt-xl">being felt.</span></p>
+        <p>At Vinca Studio, <strong>strategy and design are one discipline.</strong> We help ambitious founders and teams communicate clearly, build stronger brands, and create real commercial impact.</p>
+        <p>Not every business needs a full rebrand. Sometimes the right move is to clarify, strengthen, and build on what&rsquo;s already working.</p>
+        <p>Whatever the starting point, our focus is the same: clearer messaging, stronger brands, and a more meaningful connection with the people you want to reach.</p>
       </div>
     </div>
   </section>
@@ -992,7 +975,7 @@
       return React.createElement(MeshGradient, {
         width:        size.w,
         height:       size.h,
-        colors:       ['#FFB548', '#DD85BA', '#7D73B5', '#6E1021'],
+        colors:       ['#F0B45E', '#DC85B7', '#736DAE', '#642027'],
         distortion:   0.45,
         swirl:        0.55,
         grainMixer:   0,

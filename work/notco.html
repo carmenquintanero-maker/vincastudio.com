@@ -17,7 +17,7 @@
       --dark:   #0B0A08;
       --cream:  #F5F2ED;
       --white:  #FFFFFF;
-      --yellow: #FFB548;
+      --yellow: #F0B45E;
       --ease:   cubic-bezier(0.65, 0, 0.15, 1);
     }
 
@@ -38,7 +38,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.5rem 2.5rem;
-      background: rgba(29,19,25,0.72);
+      background: rgba(32,22,29,0.72);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -46,7 +46,7 @@
       transition: background 0.5s var(--ease), box-shadow 0.5s var(--ease);
     }
     #nav.scrolled {
-      background: rgba(29,19,25,0.92);
+      background: rgba(32,22,29,0.92);
       box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     }
     .nav-logo svg { height: 30px; width: auto; }
@@ -73,11 +73,11 @@
       border-radius: 100px;
       text-decoration: none;
       transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
-      box-shadow: 0 2px 14px rgba(255,181,72,0.35);
+      box-shadow: 0 2px 14px rgba(240,180,94,0.35);
     }
     .nav-cta:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 22px rgba(255,181,72,0.5);
+      box-shadow: 0 6px 22px rgba(240,180,94,0.5);
     }
 
     /* §1 HERO */
@@ -789,15 +789,15 @@
     #back-to-top {
       position: fixed; bottom: 2rem; right: 2rem; z-index: 99;
       width: 48px; height: 48px;
-      background: transparent; border: 1.5px solid rgba(221,133,186,0.45);
-      border-radius: 50%; color: #DD85BA;
+      background: transparent; border: 1.5px solid rgba(220,133,183,0.45);
+      border-radius: 50%; color: #DC85B7;
       font-size: 1rem; cursor: pointer;
       opacity: 0; transform: translateY(12px);
       transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), background 0.2s, border-color 0.2s;
       display: flex; align-items: center; justify-content: center;
     }
     #back-to-top.visible { opacity: 1; transform: none; }
-    #back-to-top:hover { background: rgba(221,133,186,0.15); border-color: #DD85BA; }
+    #back-to-top:hover { background: rgba(220,133,183,0.15); border-color: #DC85B7; }
 
     /* ─── FOOTER ─── */
     .project-footer {
