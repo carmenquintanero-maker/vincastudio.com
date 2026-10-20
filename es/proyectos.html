@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio de branding — Vinca Studio</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <!-- SEO -->
+  <meta name="description" content="Proyectos de Vinca Studio: identidad de marca, dirección de arte y diseño de campañas para NotCo, Qarmela, Irene Castro y Fossil Free Future." />
+  <link rel="canonical" href="https://www.vincastudio.com/es/proyectos" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Vinca Studio" />
+  <meta property="og:title" content="Portfolio de branding — Vinca Studio" />
+  <meta property="og:description" content="Proyectos de Vinca Studio: identidad de marca, dirección de arte y diseño de campañas para NotCo, Qarmela, Irene Castro y Fossil Free Future." />
+  <meta property="og:url" content="https://www.vincastudio.com/es/proyectos" />
+  <meta property="og:image" content="https://www.vincastudio.com/og/vinca-studio.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- LANG -->
+  <link rel="alternate" hreflang="en" href="https://www.vincastudio.com/work" />
+  <link rel="alternate" hreflang="es" href="https://www.vincastudio.com/es/proyectos" />
+  <link rel="alternate" hreflang="x-default" href="https://www.vincastudio.com/work" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:locale:alternate" content="en_GB" />
+  <!-- /LANG -->
+  <!-- /SEO -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --dark: #20161D; --cream: #E9E3DC; --pink: #DC85B7;
+      --yellow: #F0B45E; --purple: #736DAE; --ease: cubic-bezier(0.65,0,0.15,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--yellow); color: var(--dark); }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Satoshi', sans-serif; font-size: 1rem; line-height: 1.6; color: var(--dark); background: var(--dark); overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.85s var(--ease), transform 0.85s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    /* NAV */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 2.5rem;
+      background: rgba(32,22,29,0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      transition: background 0.5s var(--ease), box-shadow 0.5s var(--ease);
+    }
+    #nav.scrolled {
+      background: rgba(32,22,29,0.92);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .nav-logo svg { height: 30px; width: auto; }
+    .nav-links { display: flex; gap: 2.25rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dark);
+      background: var(--yellow);
+      padding: 0.55rem 1.4rem;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+      box-shadow: 0 2px 14px rgba(240,180,94,0.35);
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(240,180,94,0.5); }
+
+    /* ── PAGE HERO ───────────────────────────────────────── */
+    .page-hero {
+      padding: 14rem 2.5rem 7rem;
+      background: var(--pink);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 55% at 85% 15%, rgba(255,255,255,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 10% 90%, rgba(32,22,29,0.14) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1300px; margin: 0 auto; position: relative; }
+    .hero-label {
+      font-family: 'Fredoka', sans-serif; font-size: 0.78rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(32,22,29,0.5); display: block; margin-bottom: 2rem;
+    }
+    .hero-heading {
+      font-family: 'Satoshi', sans-serif; font-weight: 900;
+      font-size: clamp(3.5rem, 7vw, 8rem); letter-spacing: -0.04em;
+      line-height: 0.93; color: var(--dark); max-width: 14ch;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 1.2vw, 1.1rem); color: rgba(32,22,29,0.6);
+      max-width: 48ch; line-height: 1.75; margin-top: 2.5rem;
+    }
+    .hero-count {
+      font-family: 'Fredoka', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(32,22,29,0.35);
+      position: absolute; right: 0; bottom: 0;
+    }
+
+    /* ── PORTFOLIO ENTRIES ───────────────────────────────── */
+    .pf-entries { width: 100%; margin-top: 2px; }
+    .pf-entry {
+      display: grid; position: relative; overflow: hidden;
+      transition: filter 0.5s;
+    }
+    .pf-entries:hover .pf-entry:not(:hover) { filter: brightness(0.65); }
+    .pf-entry + .pf-entry { border-top: 1px solid rgba(233,227,220,0.04); }
+    .pf-entry-01 { height: 88vh; background: #080c14; }
+    .pf-entry-02 { height: 80vh; background: #080e18; }
+    .pf-entry-03 { height: 80vh; background: #080c08; }
+    .pf-entry-04 { height: 88vh; background: #0e0907; }
+
+    .pf-info {
+      position: relative; display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 5rem 4rem; z-index: 2;
+    }
+    .pf-entry-01 .pf-info { min-height: 88vh; }
+    .pf-entry-02 .pf-info { min-height: 80vh; }
+    .pf-entry-03 .pf-info { min-height: 80vh; }
+    .pf-entry-04 .pf-info { min-height: 88vh; }
+
+    .pf-num {
+      position: absolute; top: 2.5rem; left: 3.5rem;
+      font-family: 'Satoshi', sans-serif; font-weight: 900;
+      font-size: clamp(5rem, 10vw, 13rem); line-height: 1; letter-spacing: -0.06em;
+      color: rgba(233,227,220,0.04); pointer-events: none; user-select: none;
+      transition: color 0.6s;
+    }
+    .pf-entry:hover .pf-num { color: rgba(233,227,220,0.08); }
+    .pf-entry-02 .pf-num { left: auto; right: 3.5rem; }
+    .pf-entry-03 .pf-num { top: 2.5rem; right: 4rem; left: auto; }
+
+    .pf-category {
+      font-family: 'Fredoka', sans-serif; font-size: 0.72rem; letter-spacing: 0.22em;
+      text-transform: uppercase; display: inline-flex; align-items: center;
+      gap: 0.6rem; margin-bottom: 1.5rem;
+    }
+    .pf-category::before { content: ''; display: block; width: 18px; height: 1.5px; background: currentColor; flex-shrink: 0; }
+    .pf-entry-01 .pf-category { color: #78C831; }
+    .pf-entry-02 .pf-category { color: #6AABDB; }
+    .pf-entry-03 .pf-category { color: #6EC118; }
+
+    .pf-title {
+      font-family: 'Satoshi', sans-serif; font-weight: 900;
+      font-size: clamp(3rem, 5vw, 5.5rem); letter-spacing: -0.04em;
+      line-height: 0.93; color: var(--cream); margin-bottom: 0.85rem;
+    }
+    .pf-entry-03 .pf-title { font-size: clamp(3.5rem, 7vw, 8rem); }
+
+    .pf-sub {
+      font-size: clamp(0.9rem, 1.1vw, 1rem); line-height: 1.75;
+      color: rgba(233,227,220,0.42); max-width: 36ch; margin-bottom: 2rem;
+    }
+    .pf-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+    .pf-tag {
+      font-family: 'Fredoka', sans-serif; font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(233,227,220,0.32);
+      border: 1px solid rgba(233,227,220,0.1); padding: 0.3rem 0.9rem; border-radius: 100px;
+      transition: color 0.25s, border-color 0.25s;
+    }
+    .pf-entry:hover .pf-tag { color: rgba(233,227,220,0.55); border-color: rgba(233,227,220,0.2); }
+
+    .pf-cta {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: 'Fredoka', sans-serif; font-size: 0.8rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(233,227,220,0.5);
+      transition: color 0.3s, gap 0.3s;
+    }
+    .pf-cta-arrow { transition: transform 0.3s; }
+    .pf-entry:hover .pf-cta { color: var(--cream); }
+    .pf-entry:hover .pf-cta-arrow { transform: translateX(5px); }
+
+    .pf-img { position: relative; overflow: hidden; height: 100%; }
+    .pf-img img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 1s cubic-bezier(0.22, 0, 0.08, 1);
+    }
+    .pf-entry:hover .pf-img img { transform: scale(1.05); }
+    .pf-img::after { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+    .pf-entry-01 .pf-img,
+    .pf-entry-02 .pf-img,
+    .pf-entry-03 .pf-img,
+    .pf-entry-04 .pf-img { position: absolute; inset: 0; }
+    .pf-entry-01 .pf-img::after { background: linear-gradient(to top, #080c14 0%, rgba(8,12,20,0.72) 45%, rgba(8,12,20,0.18) 100%); }
+    .pf-entry-02 .pf-img::after { background: linear-gradient(to top, #080e18 0%, rgba(8,14,24,0.72) 45%, rgba(8,14,24,0.18) 100%); }
+    .pf-entry-03 .pf-img::after { background: linear-gradient(to top, #080c10 0%, rgba(8,12,16,0.72) 45%, rgba(8,12,16,0.18) 100%); }
+    .pf-entry-04 .pf-category { color: #D96B4A; }
+    .pf-entry-04 .pf-img::after { background: linear-gradient(to top, #0e0907 0%, rgba(14,9,7,0.72) 45%, rgba(14,9,7,0.18) 100%); }
+
+    /* ── FOOTER ── */
+    footer { background: #20161D; color: white; padding: 5rem 3rem 3rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 3.5rem; margin-bottom: 2rem; }
+    .footer-col-label { font-family: 'Fredoka', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--pink); display: block; margin-bottom: 1.5rem; }
+    .footer-logo-wrap { margin-bottom: 1.75rem; }
+    .footer-logo-wrap svg { height: 22px; opacity: 0.7; }
+    .footer-tagline { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.7; max-width: 280px; margin-bottom: 1.5rem; }
+    .footer-statement { font-weight: 700; font-size: 1.2rem; line-height: 1.45; color: white; }
+    .footer-statement .hl-yellow { color: var(--yellow); text-decoration: underline; text-decoration-color: var(--pink); text-underline-offset: 4px; }
+    .footer-link-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .footer-link-list li, .footer-link-list a { font-size: 1rem; color: rgba(255,255,255,0.75); transition: color 0.2s; }
+    .footer-link-list a:hover { color: var(--yellow); }
+    .footer-link-list .hover-pink:hover { color: var(--pink); }
+    .footer-bottom { display: flex; align-items: center; justify-content: center; }
+    .footer-copy { font-family: 'Fredoka', sans-serif; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+
+    @media (max-width: 1024px) {
+      .pf-entry-01, .pf-entry-02, .pf-entry-04 { height: auto; min-height: 65vh; }
+      .pf-entry-01 .pf-info, .pf-entry-02 .pf-info, .pf-entry-04 .pf-info { min-height: 65vh; }
+      .pf-entry-02 .pf-num { left: 3.5rem; right: auto; }
+    }
+    @media (max-width: 1100px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .page-hero { padding: 10rem 1.5rem 4rem; }
+      .hero-count { position: static; display: block; margin-top: 2.5rem; }
+      .pf-info { padding: 3rem 1.5rem; }
+      .pf-entry-02 .pf-info { padding: 3rem 1.5rem; }
+      .pf-entry-03 .pf-info { padding: 3rem 1.5rem; min-height: 60vh; }
+      .pf-entry-03 { min-height: 60vh; }
+      footer { padding: 4rem 1.5rem 2.5rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    #back-to-top {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 99;
+      width: 48px; height: 48px;
+      background: transparent; border: 1.5px solid rgba(220,133,183,0.45);
+      border-radius: 50%; color: var(--pink);
+      font-size: 1rem; cursor: pointer;
+      opacity: 0; transform: translateY(12px);
+      transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), background 0.2s, border-color 0.2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #back-to-top.visible { opacity: 1; transform: none; }
+    #back-to-top:hover { background: rgba(220,133,183,0.15); border-color: var(--pink); }
+      /* ── MOBILE MENU (≤1024px): burger + full-screen panel ── */
+    .nav-burger {
+      display: none; position: relative; flex-shrink: 0;
+      width: 44px; height: 44px; margin-right: -10px;
+      background: none; border: 0; border-radius: 12px; cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .nav-burger span {
+      position: absolute; left: 11px; right: 11px; height: 2px;
+      border-radius: 2px; background: #FFFFFF;
+      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s;
+    }
+    .nav-burger span:nth-child(1) { top: 17px; }
+    .nav-burger span:nth-child(2) { top: 25px; }
+    @media (hover: hover) {
+      .nav-burger[aria-expanded="false"]:hover span:nth-child(2) { transform: scaleX(0.7); transform-origin: right; }
+    }
+    .nav-burger:focus-visible { outline: 2px solid #F0B45E; outline-offset: 2px; }
+    .nav-burger:active { transform: scale(0.9); }
+    .nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+    .nav-burger[aria-expanded="true"] span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 99;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 2rem;
+      padding: 7.5rem 1.5rem 2.5rem;
+      background:
+        radial-gradient(ellipse 70% 45% at 100% 0%, rgba(220,133,183,0.22) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 0% 100%, rgba(115,109,174,0.28) 0%, transparent 70%),
+        #20161D;
+      overflow-y: auto;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+    }
+    .mobile-menu.open { opacity: 1; visibility: visible; transition: opacity 0.35s ease; }
+    .mobile-menu ul { list-style: none; margin: 0; padding: 0; }
+    .mobile-menu li a {
+      display: inline-block; padding: 0.15rem 0;
+      font-family: 'Satoshi', sans-serif; font-weight: 900; font-style: normal;
+      font-size: clamp(2.4rem, 11vw, 3.75rem); line-height: 1.15; letter-spacing: -0.03em;
+      color: #E9E3DC; text-decoration: none; text-transform: none;
+      opacity: 0; transform: translateY(24px);
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+    }
+    .mobile-menu.open li a { opacity: 1; transform: none; }
+    .mobile-menu li a:hover, .mobile-menu li a:focus-visible { color: #DC85B7; outline: none; }
+    .mobile-menu li a:active { opacity: 0.7; }
+    .mobile-menu .mm-cta {
+      align-self: flex-start;
+      font-family: 'Fredoka', sans-serif; font-size: 0.9rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      color: #20161D; background: #F0B45E;
+      padding: 0.95rem 2.25rem; border-radius: 100px;
+      box-shadow: 0 2px 8px rgba(240,180,94,0.25), 0 10px 32px rgba(240,180,94,0.25);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .mobile-menu .mm-cta:hover { transform: translateY(-2px); }
+    .mobile-menu .mm-cta:focus-visible { outline: 2px solid #E9E3DC; outline-offset: 3px; }
+    .mobile-menu .mm-cta:active { transform: scale(0.97); }
+    body.menu-open { overflow: hidden; }
+    @media (max-width: 1024px) {
+      #nav .nav-links, #nav .nav-cta { display: none; }
+      .nav-burger { display: block; }
+    }
+    @media (max-width: 768px) {
+      #nav { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+    @media (min-width: 1025px) { .mobile-menu { display: none; } }
+  </style>
+  <style>
+    .nav-links .nav-lang a {
+      display: inline-block;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 100px;
+      color: rgba(255,255,255,0.85);
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s;
+    }
+    .nav-links .nav-lang a:hover { color: #fff; border-color: rgba(255,255,255,0.6); transform: translateY(-1px); }
+    .nav-links .nav-lang a:focus-visible { outline: 2px solid #F0B45E; outline-offset: 3px; }
+    .nav-links .nav-lang a:active { transform: scale(0.95); opacity: 0.8; }
+    .nav-links:has(.nav-lang) { align-items: center; }
+    .nav-links .lang-long, .mobile-menu .lang-short { display: none; }
+    .mobile-menu li a[hreflang] { font-size: 1.15rem; letter-spacing: 0.04em; color: rgba(233,227,220,0.6); margin-top: 1.25rem; }
+    .mobile-menu li a[hreflang]:hover, .mobile-menu li a[hreflang]:focus-visible { color: #DC85B7; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="/es" class="nav-logo" aria-label="Vinca Studio">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="212 267 418 61" aria-hidden="true">
+        <path fill="#dc85b7" d="M368.23,316.64c-4.65,2.24-11.15,2.27-14.85-1.75-4.4-4.79-3.79-18.69,4.06-18.43,5.96.2,3.13,9.63,8.63,10.19,7.52.77,9.66-9.83,2.17-13.72-10.73-5.58-28,.69-30.65,13.2-3.41,16.09,11.99,24.67,25.97,19.79,3.65-1.27,9.92-6,9.83-10.27-.07-2.99-4.12.5-5.15,1Z"/>
+        <path fill="#dc85b7" d="M413.2,322.31c-2.08-1.64-2.12-4.23-2.6-6.67-2.1-10.69-1.08-22.55-12.22-24.45-4.94-.84-16.05-.44-19.33,3.97-3.61,4.86,2.04,10.06,7.21,7.52,3.43-1.69,1.76-5.96,4.91-6.48,4.37-.71,5.05,5.94,5.27,8.96-1.24.25-3.75.43-5.43.46-6.16.12-14.83,1.59-15.73,9.03-1.69,13.99,15.45,16.53,23.17,7.07.53.83.43,1.01,1.07,1.8.55.68,1.22,1.34,1.92,1.9,3.11,2.49,9.03,2.11,13.38.91.37-.1.67-.18.97-.4.71-.53.48-.99,0-1.49-.67-.69-1.79-1.53-2.57-2.14ZM388.2,315.05c-.45-5.05,4.34-6.78,8.54-5.5l.54,7.24c-.19,4.63-8.6,3.69-9.08-1.74Z"/>
+        <path fill="#dc85b7" d="M276.4,270.02c.48.53.36,1.34-.07,1.86-1.01,1.22-3.21,2.08-3.88,3.85-4.06,10.25-7.59,21.65-11.58,31.94-1.38,3.56-2.77,7.21-4.29,10.72-1.9,4.37-3.93,9.75-9.81,8.48-3.1-.67-4.85-3.73-6.17-6.34-3.01-5.95-5.72-12.4-8.49-18.5-2.92-6.41-5.64-12.94-8.67-19.29-1.9-3.99-3.82-7.49-7.66-9.92-.95-.6-2.72-1.18-2.75-2.59-.03-1.8,2.86-2.03,4.13-2.09,8.5-.41,17.71-.14,25.92.1,1.28.08,3.51.86,2.74,2.54-.5,1.07-2.74,1.85-3.7,2.69-2.58,2.26-.89,5.63.06,8.28,3.37,9.41,7.23,18.65,10.82,27.97.34.63-.17.85.35.23,3.15-8.62,6.37-17.25,9.29-25.96.69-2.06,2.46-7.34,1.75-9.33-.58-1.63-3.04-2.24-3.18-3.48-.19-1.65,1.66-1.84,2.88-1.91,2.61-.16,7.37-.17,9.98,0,.67.05,1.85.22,2.32.74Z"/>
+        <path fill="#dc85b7" d="M281.44,287.65c9.96.12,11.03-12.7.54-12.56-10.43.13-10.6,12.44-.54,12.56Z"/>
+        <path fill="#dc85b7" d="M289.78,323.63c-1.05-1.31-1.07-2.82-1.15-4.43.04-7.79-.05-15.58,0-23.36,0-.78.09-1.58.04-2.36-.01-.18-.04-.38-.1-.56v-.16c-.06-1.45-1.27-2.13-2.81-1.68-3.37,1.47-6.99,2.65-10.35,4.13-.77.34-1.45.66-1.37,1.53.07.78,1.1,1.28,1.69,1.77,1.16.97,1.9,1.6,2,3.1l.02.03c.07,1.2.01,2.42,0,3.37,0,3.92.02,7.84,0,11.75-.01,2.31.36,5.07-1.19,6.95-.48.58-1.44,1.16-1.52,1.95-.11,1.08.7,1.53,1.66,1.59.81.05,1.65-.03,2.46-.04,1.81-.03,6.37-.03,8.19,0,1.32.02,4.26.53,3.97-1.65-.1-.71-1.11-1.37-1.56-1.94Z"/>
+        <path fill="#dc85b7" d="M308.52,295.97c.06.01.08-.02.11-.05.4-.37.78-.88,1.2-1.27,3.44-3.23,8.44-4.65,13.04-3.18,7.54,2.4,7.63,11.7,7.83,18.22.07,2.39.03,4.9.19,7.27.21,3.21,2.07,4.7,4.64,6.39.56.37,1.81.93,2.06,1.52.51,1.2-1.23,1.63-2.05,1.83-3.21.79-7.75.88-10.86-.32-6.52-2.53-5.43-8.48-5.41-14.2,0-3.02.06-6.06.04-9.08-.02-2.63-1.05-5.01-3.76-5.76-4.09-1.13-6.19,2.14-6.21,5.8v15.2c.05,1.77.3,3.53,1.44,4.94.58.72,1.85,1.58,1.92,2.54.06.81-.45,1.28-1.21,1.41-5.34.08-10.7.07-16.04,0-.83-.11-1.42-.73-1.23-1.59s1.36-1.73,1.91-2.41c1.03-1.27,1.44-2.89,1.55-4.5.01-4.38-.02-8.76,0-13.14.01-2.6.54-4.46-1.27-6.58-.79-.92-2.63-2.43-1.44-3.73.83-.91,4.1-1.84,5.38-2.26,1.92-.63,4.09-1.43,6.03-1.9.7-.17,1.76-.31,2.07.53.02.05.07.04.08.29.08,1.67,0,4.04,0,4.04Z"/>
+        <path fill="#eba645" d="M451.83,293.94l-8.88-2c-2.36-.57-4.1-1.43-5.2-2.59-1.11-1.16-1.66-2.74-1.66-4.75,0-2.36.91-4.23,2.74-5.6,1.82-1.36,4.25-2.04,7.29-2.04,2.78,0,4.98.68,6.63,2.04,1.65,1.36,2.52,3.25,2.63,5.68h9.88c-.1-3.39-.94-6.33-2.5-8.8-1.58-2.46-3.76-4.37-6.56-5.71-2.8-1.34-6.1-2.01-9.91-2.01s-7.44.71-10.45,2.12c-3.01,1.41-5.36,3.38-7.06,5.91-1.7,2.51-2.55,5.42-2.55,8.72,0,4.37,1.23,7.91,3.71,10.6,2.46,2.7,6.09,4.57,10.88,5.6l8.95,2c2.31.46,3.98,1.27,5.01,2.43,1.03,1.15,1.55,2.72,1.55,4.67,0,2.26-.97,4.08-2.9,5.43-1.93,1.36-4.53,2.05-7.83,2.05s-5.62-.69-7.44-2.05c-1.83-1.35-2.77-3.22-2.82-5.59h-9.87c.1,3.34.98,6.24,2.66,8.72,1.67,2.46,4,4.38,6.98,5.75,2.99,1.36,6.45,2.04,10.41,2.04,4.17,0,7.81-.71,10.92-2.12,3.11-1.41,5.51-3.43,7.21-6.05,1.7-2.63,2.56-5.66,2.56-9.11,0-4.21-1.19-7.56-3.56-10.06-2.36-2.49-5.97-4.26-10.8-5.29Z"/>
+        <polygon fill="#eba645" points="484.27 281.62 475.93 281.62 475.93 292.13 469.42 292.13 469.42 299.08 475.93 299.08 475.91 326.69 484.26 326.69 484.27 299.08 490.78 299.08 490.78 292.13 484.27 292.13 484.27 281.62"/>
+        <path fill="#eba645" d="M519,309.78c0,3.18-.64,5.56-1.92,7.12-1.27,1.57-3.24,2.36-5.89,2.36-2.32,0-4.11-.71-5.34-2.12-1.23-1.41-1.85-3.7-1.85-6.89v-18.13h-8.36v21.07c0,4.09,1.1,7.36,3.29,9.82s5.23,3.68,9.11,3.68c2.28,0,4.43-.5,6.44-1.5,2.01-1,3.51-2.29,4.52-3.88l.61,5.38h7.74v-34.56s-8.35,0-8.35,0v17.66Z"/>
+        <path fill="#eba645" d="M560.7,296.42c-1.05-1.68-2.56-2.99-4.52-3.92-1.96-.94-4.13-1.4-6.51-1.4-3.38,0-6.29.78-8.76,2.32-2.47,1.54-4.35,3.67-5.66,6.37-1.3,2.7-1.95,5.81-1.95,9.31s.65,6.57,1.95,9.2c1.31,2.63,3.13,4.7,5.48,6.17,2.36,1.47,5.17,2.21,8.46,2.21,2.56,0,4.87-.54,6.95-1.63,2.08-1.09,3.62-2.59,4.63-4.5l.54,6.13h7.67v-51.61s-8.27,0-8.27,0v21.34ZM559.44,314.18c-.8,1.56-1.91,2.77-3.33,3.62-1.42.84-3.1,1.26-5.07,1.26s-3.59-.44-5-1.29c-1.41-.87-2.49-2.07-3.25-3.62s-1.13-3.32-1.13-5.32.38-3.78,1.13-5.32c.75-1.54,1.84-2.76,3.25-3.64,1.42-.89,3.08-1.33,5-1.33s3.65.44,5.07,1.33c1.42.88,2.53,2.09,3.33,3.61.8,1.53,1.19,3.31,1.19,5.36s-.39,3.78-1.19,5.36Z"/>
+        <rect fill="#eba645" x="577.68" y="291.17" width="8.36" height="35.52"/>
+        <path fill="#eba645" d="M581.87,275.76c-1.58,0-2.91.53-4.01,1.6-1.09,1.07-1.64,2.38-1.64,3.96s.55,2.91,1.64,4,2.43,1.65,4.01,1.65,2.9-.55,4-1.65c1.09-1.09,1.64-2.42,1.64-4s-.55-2.89-1.64-3.96c-1.1-1.07-2.43-1.6-4-1.6Z"/>
+        <path fill="#eba645" d="M626.52,299.66c-1.55-2.66-3.69-4.74-6.4-6.24-2.72-1.5-5.84-2.25-9.35-2.25s-6.57.75-9.32,2.25c-2.73,1.5-4.89,3.58-6.44,6.24-1.55,2.66-2.32,5.74-2.32,9.24s.77,6.58,2.32,9.24c1.55,2.66,3.7,4.74,6.44,6.24,2.74,1.5,5.85,2.25,9.32,2.25s6.64-.75,9.35-2.25c2.72-1.5,4.85-3.58,6.4-6.24,1.55-2.66,2.33-5.74,2.33-9.24s-.78-6.58-2.33-9.24ZM619.26,314.28c-.82,1.54-1.96,2.75-3.43,3.62s-3.15,1.29-5.07,1.29-3.6-.43-5.03-1.29c-1.44-.87-2.58-2.07-3.43-3.62-.84-1.54-1.26-3.34-1.26-5.38s.42-3.9,1.26-5.43c.84-1.52,1.98-2.71,3.43-3.58,1.43-.86,3.11-1.29,5.03-1.29s3.6.44,5.07,1.29c1.46.87,2.61,2.06,3.43,3.58.82,1.53,1.24,3.34,1.24,5.43s-.41,3.84-1.24,5.38Z"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/es#studio">Estudio</a></li>
+      <li><a href="/es/nosotros">Nosotros</a></li>
+      <li><a href="/es/servicios">Servicios</a></li>
+      <li><a href="/es/proyectos" class="active">Proyectos</a></li>
+      <li><a href="/es/contacto">Contacto</a></li>
+      <li class="nav-lang"><a href="/work" lang="en" hreflang="en" aria-label="View this page in English"><span class="lang-short">EN</span><span class="lang-long">English</span></a></li>
+    </ul>
+    <a href="/es/contacto" class="nav-cta">Hablemos</a>
+    <button class="nav-burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+  </nav>
+
+  <!-- HERO -->
+  <header class="page-hero">
+    <div class="hero-inner" style="position:relative;z-index:2;">
+      <span class="hero-label reveal">Nuestros proyectos</span>
+      <h1 class="hero-heading reveal reveal-delay-1">Trabajo que habla antes de que lo expliques.</h1>
+      <p class="hero-sub reveal reveal-delay-2">Cuatro proyectos. Cuatro mundos distintos. Un mismo hilo conductor: branding que convence sin necesidad de explicarse.</p>
+      <span class="hero-count reveal">04 Proyectos destacados</span>
+    </div>
+  </header>
+
+  <!-- PORTFOLIO ENTRIES -->
+  <div class="pf-entries">
+
+    <!-- 01 — NotCo -->
+    <a href="/es/proyectos/notco" class="pf-entry pf-entry-01 reveal" style="display:grid;">
+      <div class="pf-info">
+        <span class="pf-category">Conceptos de campaña</span>
+        <h2 class="pf-title">NotCo</h2>
+        <p class="pf-sub">A Shot Decision for a Long Night: dirección de arte de campaña que explora la recuperación de la resaca a través de colores atrevidos y personajes para una marca retadora de origen vegetal.</p>
+        <div class="pf-tags">
+          <span class="pf-tag">Campaña</span>
+          <span class="pf-tag">Dirección de arte</span>
+          <span class="pf-tag">Diseño de carteles</span>
+        </div>
+        <span class="pf-cta">Ver proyecto <span class="pf-cta-arrow">→</span></span>
+      </div>
+      <div class="pf-img">
+        <img src="/brand_assets/NOTCO1.png" alt="NotCo — campaña A Shot Decision for a Long Night" loading="lazy" style="object-position: 50% 50%;" />
+      </div>
+    </a>
+
+    <!-- 02 — Irene Castro -->
+    <a href="/es/proyectos/irene-castro" class="pf-entry pf-entry-02 reveal" style="display:grid;">
+      <div class="pf-img">
+        <img src="/brand_assets/pexels-thel0stkidd-2149128959-30750192.jpg" alt="Irene Castro — Identidad de marca" loading="lazy" style="object-position: 50% 50%;" />
+      </div>
+      <div class="pf-info">
+        <span class="pf-category">Identidad de marca</span>
+        <h2 class="pf-title">Irene Castro</h2>
+        <p class="pf-sub">Una marca personal arraigada en la conexión entre la naturaleza, el mar y la tierra: un símbolo orgánico creado para transmitir elegancia y ser reconocible en cada aplicación.</p>
+        <div class="pf-tags">
+          <span class="pf-tag">Identidad de marca</span>
+          <span class="pf-tag">Diseño de símbolo</span>
+          <span class="pf-tag">Dirección de arte</span>
+        </div>
+        <span class="pf-cta">Ver proyecto <span class="pf-cta-arrow">→</span></span>
+      </div>
+    </a>
+
+    <!-- 04 — Qarmela -->
+    <a href="/es/proyectos/qarmela" target="_blank" rel="noopener" class="pf-entry pf-entry-04 reveal" style="display:grid;">
+      <div class="pf-info">
+        <span class="pf-category">Identidad de marca</span>
+        <h2 class="pf-title">Qarmela</h2>
+        <p class="pf-sub">Una identidad cálida y con carácter para una marca gastronómica mediterránea moderna, que une la artesanía tradicional con el gusto contemporáneo.</p>
+        <div class="pf-tags">
+          <span class="pf-tag">Branding</span>
+          <span class="pf-tag">Packaging</span>
+          <span class="pf-tag">Sistema de identidad</span>
+        </div>
+        <span class="pf-cta">Ver proyecto <span class="pf-cta-arrow">→</span></span>
+      </div>
+      <div class="pf-img">
+        <img src="/brand_assets/qarmela5.png" alt="Qarmela — identidad de marca" loading="lazy" style="object-position: 50% 45%;" />
+      </div>
+    </a>
+
+    <!-- 03 — Fossil Fuel -->
+    <a href="/es/proyectos/fossil-fuel" class="pf-entry pf-entry-03 reveal" style="position:relative;overflow:hidden;">
+      <div class="pf-img">
+        <img src="/brand_assets/fossil-hero.png" alt="Campaña del Tratado de No Proliferación de Combustibles Fósiles" loading="lazy" style="object-position: 50% 30%;" />
+      </div>
+      <div class="pf-info">
+        <span class="pf-category">Diseño activista</span>
+        <h2 class="pf-title">Fossil Fuel</h2>
+        <p class="pf-sub">Un símbolo de campaña global para el Tratado de No Proliferación de Combustibles Fósiles: una marca creada para viajar sin traducción por 47 países y más de 3.000 organizaciones.</p>
+        <div class="pf-tags">
+          <span class="pf-tag">Identidad de campaña</span>
+          <span class="pf-tag">Diseño de símbolo</span>
+          <span class="pf-tag">Global</span>
+        </div>
+        <span class="pf-cta">Ver proyecto <span class="pf-cta-arrow">→</span></span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+
+      <!-- Brand column -->
+      <div>
+        <div class="footer-logo-wrap" aria-label="Vinca Studio">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="212 267 418 61" aria-hidden="true">
+            <path fill="#dc85b7" d="M368.23,316.64c-4.65,2.24-11.15,2.27-14.85-1.75-4.4-4.79-3.79-18.69,4.06-18.43,5.96.2,3.13,9.63,8.63,10.19,7.52.77,9.66-9.83,2.17-13.72-10.73-5.58-28,.69-30.65,13.2-3.41,16.09,11.99,24.67,25.97,19.79,3.65-1.27,9.92-6,9.83-10.27-.07-2.99-4.12.5-5.15,1Z"/>
+            <path fill="#dc85b7" d="M413.2,322.31c-2.08-1.64-2.12-4.23-2.6-6.67-2.1-10.69-1.08-22.55-12.22-24.45-4.94-.84-16.05-.44-19.33,3.97-3.61,4.86,2.04,10.06,7.21,7.52,3.43-1.69,1.76-5.96,4.91-6.48,4.37-.71,5.05,5.94,5.27,8.96-1.24.25-3.75.43-5.43.46-6.16.12-14.83,1.59-15.73,9.03-1.69,13.99,15.45,16.53,23.17,7.07.53.83.43,1.01,1.07,1.8.55.68,1.22,1.34,1.92,1.9,3.11,2.49,9.03,2.11,13.38.91.37-.1.67-.18.97-.4.71-.53.48-.99,0-1.49-.67-.69-1.79-1.53-2.57-2.14ZM388.2,315.05c-.45-5.05,4.34-6.78,8.54-5.5l.54,7.24c-.19,4.63-8.6,3.69-9.08-1.74Z"/>
+            <path fill="#dc85b7" d="M276.4,270.02c.48.53.36,1.34-.07,1.86-1.01,1.22-3.21,2.08-3.88,3.85-4.06,10.25-7.59,21.65-11.58,31.94-1.38,3.56-2.77,7.21-4.29,10.72-1.9,4.37-3.93,9.75-9.81,8.48-3.1-.67-4.85-3.73-6.17-6.34-3.01-5.95-5.72-12.4-8.49-18.5-2.92-6.41-5.64-12.94-8.67-19.29-1.9-3.99-3.82-7.49-7.66-9.92-.95-.6-2.72-1.18-2.75-2.59-.03-1.8,2.86-2.03,4.13-2.09,8.5-.41,17.71-.14,25.92.1,1.28.08,3.51.86,2.74,2.54-.5,1.07-2.74,1.85-3.7,2.69-2.58,2.26-.89,5.63.06,8.28,3.37,9.41,7.23,18.65,10.82,27.97.34.63-.17.85.35.23,3.15-8.62,6.37-17.25,9.29-25.96.69-2.06,2.46-7.34,1.75-9.33-.58-1.63-3.04-2.24-3.18-3.48-.19-1.65,1.66-1.84,2.88-1.91,2.61-.16,7.37-.17,9.98,0,.67.05,1.85.22,2.32.74Z"/>
+            <path fill="#dc85b7" d="M281.44,287.65c9.96.12,11.03-12.7.54-12.56-10.43.13-10.6,12.44-.54,12.56Z"/>
+            <path fill="#dc85b7" d="M289.78,323.63c-1.05-1.31-1.07-2.82-1.15-4.43.04-7.79-.05-15.58,0-23.36,0-.78.09-1.58.04-2.36-.01-.18-.04-.38-.1-.56v-.16c-.06-1.45-1.27-2.13-2.81-1.68-3.37,1.47-6.99,2.65-10.35,4.13-.77.34-1.45.66-1.37,1.53.07.78,1.1,1.28,1.69,1.77,1.16.97,1.9,1.6,2,3.1l.02.03c.07,1.2.01,2.42,0,3.37,0,3.92.02,7.84,0,11.75-.01,2.31.36,5.07-1.19,6.95-.48.58-1.44,1.16-1.52,1.95-.11,1.08.7,1.53,1.66,1.59.81.05,1.65-.03,2.46-.04,1.81-.03,6.37-.03,8.19,0,1.32.02,4.26.53,3.97-1.65-.1-.71-1.11-1.37-1.56-1.94Z"/>
+            <path fill="#dc85b7" d="M308.52,295.97c.06.01.08-.02.11-.05.4-.37.78-.88,1.2-1.27,3.44-3.23,8.44-4.65,13.04-3.18,7.54,2.4,7.63,11.7,7.83,18.22.07,2.39.03,4.9.19,7.27.21,3.21,2.07,4.7,4.64,6.39.56.37,1.81.93,2.06,1.52.51,1.2-1.23,1.63-2.05,1.83-3.21.79-7.75.88-10.86-.32-6.52-2.53-5.43-8.48-5.41-14.2,0-3.02.06-6.06.04-9.08-.02-2.63-1.05-5.01-3.76-5.76-4.09-1.13-6.19,2.14-6.21,5.8v15.2c.05,1.77.3,3.53,1.44,4.94.58.72,1.85,1.58,1.92,2.54.06.81-.45,1.28-1.21,1.41-5.34.08-10.7.07-16.04,0-.83-.11-1.42-.73-1.23-1.59s1.36-1.73,1.91-2.41c1.03-1.27,1.44-2.89,1.55-4.5.01-4.38-.02-8.76,0-13.14.01-2.6.54-4.46-1.27-6.58-.79-.92-2.63-2.43-1.44-3.73.83-.91,4.1-1.84,5.38-2.26,1.92-.63,4.09-1.43,6.03-1.9.7-.17,1.76-.31,2.07.53.02.05.07.04.08.29.08,1.67,0,4.04,0,4.04Z"/>
+            <path fill="#eba645" d="M451.83,293.94l-8.88-2c-2.36-.57-4.1-1.43-5.2-2.59-1.11-1.16-1.66-2.74-1.66-4.75,0-2.36.91-4.23,2.74-5.6,1.82-1.36,4.25-2.04,7.29-2.04,2.78,0,4.98.68,6.63,2.04,1.65,1.36,2.52,3.25,2.63,5.68h9.88c-.1-3.39-.94-6.33-2.5-8.8-1.58-2.46-3.76-4.37-6.56-5.71-2.8-1.34-6.1-2.01-9.91-2.01s-7.44.71-10.45,2.12c-3.01,1.41-5.36,3.38-7.06,5.91-1.7,2.51-2.55,5.42-2.55,8.72,0,4.37,1.23,7.91,3.71,10.6,2.46,2.7,6.09,4.57,10.88,5.6l8.95,2c2.31.46,3.98,1.27,5.01,2.43,1.03,1.15,1.55,2.72,1.55,4.67,0,2.26-.97,4.08-2.9,5.43-1.93,1.36-4.53,2.05-7.83,2.05s-5.62-.69-7.44-2.05c-1.83-1.35-2.77-3.22-2.82-5.59h-9.87c.1,3.34.98,6.24,2.66,8.72,1.67,2.46,4,4.38,6.98,5.75,2.99,1.36,6.45,2.04,10.41,2.04,4.17,0,7.81-.71,10.92-2.12,3.11-1.41,5.51-3.43,7.21-6.05,1.7-2.63,2.56-5.66,2.56-9.11,0-4.21-1.19-7.56-3.56-10.06-2.36-2.49-5.97-4.26-10.8-5.29Z"/>
+            <polygon fill="#eba645" points="484.27 281.62 475.93 281.62 475.93 292.13 469.42 292.13 469.42 299.08 475.93 299.08 475.91 326.69 484.26 326.69 484.27 299.08 490.78 299.08 490.78 292.13 484.27 292.13 484.27 281.62"/>
+            <path fill="#eba645" d="M519,309.78c0,3.18-.64,5.56-1.92,7.12-1.27,1.57-3.24,2.36-5.89,2.36-2.32,0-4.11-.71-5.34-2.12-1.23-1.41-1.85-3.7-1.85-6.89v-18.13h-8.36v21.07c0,4.09,1.1,7.36,3.29,9.82s5.23,3.68,9.11,3.68c2.28,0,4.43-.5,6.44-1.5,2.01-1,3.51-2.29,4.52-3.88l.61,5.38h7.74v-34.56s-8.35,0-8.35,0v17.66Z"/>
+            <path fill="#eba645" d="M560.7,296.42c-1.05-1.68-2.56-2.99-4.52-3.92-1.96-.94-4.13-1.4-6.51-1.4-3.38,0-6.29.78-8.76,2.32-2.47,1.54-4.35,3.67-5.66,6.37-1.3,2.7-1.95,5.81-1.95,9.31s.65,6.57,1.95,9.2c1.31,2.63,3.13,4.7,5.48,6.17,2.36,1.47,5.17,2.21,8.46,2.21,2.56,0,4.87-.54,6.95-1.63,2.08-1.09,3.62-2.59,4.63-4.5l.54,6.13h7.67v-51.61s-8.27,0-8.27,0v21.34ZM559.44,314.18c-.8,1.56-1.91,2.77-3.33,3.62-1.42.84-3.1,1.26-5.07,1.26s-3.59-.44-5-1.29c-1.41-.87-2.49-2.07-3.25-3.62s-1.13-3.32-1.13-5.32.38-3.78,1.13-5.32c.75-1.54,1.84-2.76,3.25-3.64,1.42-.89,3.08-1.33,5-1.33s3.65.44,5.07,1.33c1.42.88,2.53,2.09,3.33,3.61.8,1.53,1.19,3.31,1.19,5.36s-.39,3.78-1.19,5.36Z"/>
+            <rect fill="#eba645" x="577.68" y="291.17" width="8.36" height="35.52"/>
+            <path fill="#eba645" d="M581.87,275.76c-1.58,0-2.91.53-4.01,1.6-1.09,1.07-1.64,2.38-1.64,3.96s.55,2.91,1.64,4,2.43,1.65,4.01,1.65,2.9-.55,4-1.65c1.09-1.09,1.64-2.42,1.64-4s-.55-2.89-1.64-3.96c-1.1-1.07-2.43-1.6-4-1.6Z"/>
+            <path fill="#eba645" d="M626.52,299.66c-1.55-2.66-3.69-4.74-6.4-6.24-2.72-1.5-5.84-2.25-9.35-2.25s-6.57.75-9.32,2.25c-2.73,1.5-4.89,3.58-6.44,6.24-1.55,2.66-2.32,5.74-2.32,9.24s.77,6.58,2.32,9.24c1.55,2.66,3.7,4.74,6.44,6.24,2.74,1.5,5.85,2.25,9.32,2.25s6.64-.75,9.35-2.25c2.72-1.5,4.85-3.58,6.4-6.24,1.55-2.66,2.33-5.74,2.33-9.24s-.78-6.58-2.33-9.24ZM619.26,314.28c-.82,1.54-1.96,2.75-3.43,3.62s-3.15,1.29-5.07,1.29-3.6-.43-5.03-1.29c-1.44-.87-2.58-2.07-3.43-3.62-.84-1.54-1.26-3.34-1.26-5.38s.42-3.9,1.26-5.43c.84-1.52,1.98-2.71,3.43-3.58,1.43-.86,3.11-1.29,5.03-1.29s3.6.44,5.07,1.29c1.46.87,2.61,2.06,3.43,3.58.82,1.53,1.24,3.34,1.24,5.43s-.41,3.84-1.24,5.38Z"/>
+          </svg>
+        </div>
+        <p class="footer-tagline">Branding estratégico y dirección creativa para marcas ambiciosas.</p>
+        <p class="footer-statement">Claridad. Conexión. <span class="hl-yellow">Impacto comercial.</span></p>
+      </div>
+
+      <!-- Menu column -->
+      <div>
+        <span class="footer-col-label">Menú</span>
+        <ul class="footer-link-list">
+          <li><a href="/es#studio">Estudio</a></li>
+          <li><a href="/es/nosotros">Nosotros</a></li>
+          <li><a href="/es/servicios">Servicios</a></li>
+          <li><a href="/es/proyectos">Proyectos</a></li>
+          <li><a href="/es/contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact column -->
+      <div>
+        <span class="footer-col-label">Contacto</span>
+        <ul class="footer-link-list">
+          <li><a href="mailto:hellovincastudio@gmail.com">hellovincastudio@gmail.com</a></li>
+          <li><a href="tel:+34630618370" class="hover-pink">+34 630 618 370</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Vinca Studio. Todos los derechos reservados.</span>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Volver arriba">↑</button>
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => io.observe(el));
+    document.querySelectorAll('.page-hero .reveal').forEach(el => setTimeout(() => el.classList.add('visible'), 120));
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => { btt.classList.toggle('visible', window.scrollY > 400); }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+
+  <script>
+    // Mobile menu — built from the desktop nav links so every page stays in sync
+    (function () {
+      const nav = document.getElementById('nav');
+      const btn = nav && nav.querySelector('.nav-burger');
+      if (!btn) return;
+      const menu = document.createElement('div');
+      menu.className = 'mobile-menu'; menu.id = 'mobile-menu';
+      menu.setAttribute('aria-hidden', 'true');
+      const ul = document.createElement('ul');
+      nav.querySelectorAll('.nav-links a').forEach((a, i) => {
+        const li = document.createElement('li'); const link = a.cloneNode(true);
+        link.removeAttribute('class'); link.removeAttribute('style');
+        link.style.transitionDelay = (0.06 + i * 0.05) + 's';
+        li.appendChild(link); ul.appendChild(li);
+      });
+      menu.appendChild(ul);
+      const cta = nav.querySelector('.nav-cta');
+      if (cta) { const c = cta.cloneNode(true); c.className = 'mm-cta'; c.removeAttribute('style'); menu.appendChild(c); }
+      document.body.appendChild(menu);
+      function setOpen(open) {
+        btn.setAttribute('aria-expanded', String(open));
+        btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+        menu.classList.toggle('open', open);
+        menu.setAttribute('aria-hidden', String(!open));
+        document.body.classList.toggle('menu-open', open);
+      }
+      btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+      menu.addEventListener('click', e => { if (e.target.closest('a')) setOpen(false); });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && menu.classList.contains('open')) { setOpen(false); btn.focus(); }
+      });
+      matchMedia('(min-width: 1025px)').addEventListener('change', e => { if (e.matches) setOpen(false); });
+    })();
+  </script>
+</body>
+</html>

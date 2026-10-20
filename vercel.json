@@ -101,6 +101,51 @@
       "source": "/work/san-isidro.html",
       "destination": "/work",
       "permanent": true
+    },
+    {
+      "source": "/es/index.html",
+      "destination": "/es",
+      "permanent": true
+    },
+    {
+      "source": "/es/nosotros.html",
+      "destination": "/es/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/es/servicios.html",
+      "destination": "/es/servicios",
+      "permanent": true
+    },
+    {
+      "source": "/es/proyectos.html",
+      "destination": "/es/proyectos",
+      "permanent": true
+    },
+    {
+      "source": "/es/contacto.html",
+      "destination": "/es/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/es/proyectos/notco.html",
+      "destination": "/es/proyectos/notco",
+      "permanent": true
+    },
+    {
+      "source": "/es/proyectos/irene-castro.html",
+      "destination": "/es/proyectos/irene-castro",
+      "permanent": true
+    },
+    {
+      "source": "/es/proyectos/qarmela.html",
+      "destination": "/es/proyectos/qarmela",
+      "permanent": true
+    },
+    {
+      "source": "/es/proyectos/fossil-fuel.html",
+      "destination": "/es/proyectos/fossil-fuel",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -135,6 +180,42 @@
     {
       "source": "/work/fossil-fuel",
       "destination": "/work/fossil-fuel.html"
+    },
+    {
+      "source": "/es",
+      "destination": "/es/index.html"
+    },
+    {
+      "source": "/es/nosotros",
+      "destination": "/es/nosotros.html"
+    },
+    {
+      "source": "/es/servicios",
+      "destination": "/es/servicios.html"
+    },
+    {
+      "source": "/es/proyectos",
+      "destination": "/es/proyectos.html"
+    },
+    {
+      "source": "/es/contacto",
+      "destination": "/es/contacto.html"
+    },
+    {
+      "source": "/es/proyectos/notco",
+      "destination": "/es/proyectos/notco.html"
+    },
+    {
+      "source": "/es/proyectos/irene-castro",
+      "destination": "/es/proyectos/irene-castro.html"
+    },
+    {
+      "source": "/es/proyectos/qarmela",
+      "destination": "/es/proyectos/qarmela.html"
+    },
+    {
+      "source": "/es/proyectos/fossil-fuel",
+      "destination": "/es/proyectos/fossil-fuel.html"
     }
   ]
 }
