@@ -417,11 +417,11 @@
     .next-project {
       display: flex; justify-content: space-between; align-items: center;
       padding: 5rem 5.5rem;
-      background: #E8C6D1;
+      background: #F4C9D1;
       text-decoration: none; color: #1A1714;
       transition: background 0.4s var(--ease);
     }
-    .next-project:hover { background: #D9B1C0; }
+    .next-project:hover { background: #F4C9D1; }
     .next-project:hover .next-arrow { transform: translateX(14px); }
     .next-label-sm {
       font-family: 'Fredoka', sans-serif;
@@ -435,6 +435,17 @@
       font-size: clamp(2.8rem, 5.5vw, 5rem);
       letter-spacing: -0.025em; color: #1A1714; line-height: 1;
     }
+    /* Qarmela wordmark, cropped from qarmela2.png (bg pink #F4C9D1 sampled from the file) */
+    .next-logo {
+      position: relative; overflow: hidden;
+      width: clamp(220px, 26vw, 420px); aspect-ratio: 1161 / 398;
+      transition: transform 0.35s var(--ease);
+    }
+    .next-logo img {
+      position: absolute; max-width: none;
+      width: 144.01%; left: -21.45%; top: -65.83%;
+    }
+    .next-project:hover .next-logo { transform: scale(1.03); }
     .next-arrow {
       font-size: 2.5rem; color: rgba(26,23,20,0.45);
       transition: transform 0.35s var(--ease), color 0.35s;
@@ -703,7 +714,7 @@
   <a href="/work/qarmela" class="next-project">
     <div>
       <p class="next-label-sm">Next Project</p>
-      <p class="next-name">Qarmela</p>
+      <div class="next-logo"><img src="../brand_assets/qarmela2.png" alt="Qarmela"></div>
     </div>
     <span class="next-arrow">→</span>
   </a>
