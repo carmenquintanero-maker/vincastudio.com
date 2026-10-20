@@ -821,15 +821,39 @@
       let velX = 0, lastX = 0, lastT = 0;
       let hovered = false, dragRaf = null;
       const SPEED = 0.42;
+      let acc = 0;
 
-      function half() { return vp.scrollWidth / 2; }
+      // Loop period = width of one set of slides (originals + 4px gaps).
+      // With only 4 slides, two sets can be narrower than a wide screen, so
+      // clone extra sets until the strip can always scroll one full period.
+      const track = document.getElementById('ffCarTrack');
+      const set = [...track.children].slice(0, track.children.length / 2);
+      function half() { return set.reduce((w, s) => w + s.offsetWidth + 4, 0); }
+      function fill() {
+        const h = half();
+        if (h < 50) return;
+        while (track.scrollWidth - vp.clientWidth < h + 4) {
+          set.forEach(s => {
+            const c = s.cloneNode(true);
+            c.setAttribute('aria-hidden', 'true');
+            c.querySelector('img').alt = '';
+            track.appendChild(c);
+          });
+        }
+      }
+      window.addEventListener('load', fill);
+      window.addEventListener('resize', fill);
       function loop() {
         const h = half();
         if (vp.scrollLeft >= h) vp.scrollLeft -= h;
         else if (vp.scrollLeft < 0) vp.scrollLeft += h;
       }
       function autoTick() {
-        if (!isDragging && !hovered) { vp.scrollLeft += SPEED; loop(); }
+        // scrollLeft rounds to whole pixels, so accumulate sub-pixel steps
+        if (!isDragging && !hovered) {
+          acc += SPEED; const step = Math.floor(acc);
+          if (step) { vp.scrollLeft += step; acc -= step; loop(); }
+        }
         requestAnimationFrame(autoTick);
       }
       function px(e) { return e.touches ? e.touches[0].clientX : e.clientX; }

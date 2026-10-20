@@ -752,6 +752,7 @@
       let velX = 0, lastX = 0, lastT = 0;
       let hovered = false, dragRaf = null;
       const SPEED = 0.45;
+      let acc = 0;
 
       function half() { return vp.scrollWidth / 2; }
       function loop() {
@@ -760,7 +761,11 @@
         else if (vp.scrollLeft < 0) vp.scrollLeft += h;
       }
       function autoTick() {
-        if (!isDragging && !hovered) { vp.scrollLeft += SPEED; loop(); }
+        // scrollLeft rounds to whole pixels, so accumulate sub-pixel steps
+        if (!isDragging && !hovered) {
+          acc += SPEED; const step = Math.floor(acc);
+          if (step) { vp.scrollLeft += step; acc -= step; loop(); }
+        }
         requestAnimationFrame(autoTick);
       }
       function px(e) { return e.touches ? e.touches[0].clientX : e.clientX; }
