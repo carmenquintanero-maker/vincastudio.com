@@ -6,16 +6,65 @@
       "source": "/hola",
       "destination": "https://wa.me/34630618370?text=Hola%2C%20nos%20conocimos%20en%20el%20evento%20de%20comerciantes%20de%20C%C3%B3rdoba.",
       "permanent": false
+    },
+    {
+      "source": "/notco",
+      "destination": "/work/notco",
+      "permanent": true
+    },
+    {
+      "source": "/qarmela",
+      "destination": "/work/qarmela",
+      "permanent": true
+    },
+    {
+      "source": "/irene-castro",
+      "destination": "/work/irene-castro",
+      "permanent": true
+    },
+    {
+      "source": "/fossil-fuel",
+      "destination": "/work/fossil-fuel",
+      "permanent": true
+    },
+    {
+      "source": "/work/san-isidro",
+      "destination": "/work",
+      "permanent": true
     }
   ],
   "rewrites": [
-    { "source": "/about", "destination": "/about.html" },
-    { "source": "/services", "destination": "/services.html" },
-    { "source": "/work", "destination": "/work.html" },
-    { "source": "/contact", "destination": "/contact.html" },
-    { "source": "/work/notco", "destination": "/work/notco.html" },
-    { "source": "/work/irene-castro", "destination": "/work/irene-castro.html" },
-    { "source": "/work/qarmela", "destination": "/work/qarmela.html" },
-    { "source": "/work/fossil-fuel", "destination": "/work/fossil-fuel.html" }
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/services",
+      "destination": "/services.html"
+    },
+    {
+      "source": "/work",
+      "destination": "/work.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/work/notco",
+      "destination": "/work/notco.html"
+    },
+    {
+      "source": "/work/irene-castro",
+      "destination": "/work/irene-castro.html"
+    },
+    {
+      "source": "/work/qarmela",
+      "destination": "/work/qarmela.html"
+    },
+    {
+      "source": "/work/fossil-fuel",
+      "destination": "/work/fossil-fuel.html"
+    }
   ]
 }
