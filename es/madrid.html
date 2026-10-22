@@ -401,7 +401,7 @@
             </button>
             <div class="option-panel" id="p1" role="region" aria-labelledby="b1" hidden>
               <p>Hay una diferencia entre tener clientes fieles y resultar claro para alguien que aún no os conoce. Podemos revisar qué entiende esa persona cuando os encuentra por primera vez y qué motivos tiene para recordaros.</p>
-              <a class="panel-cta wa-link" href="#" data-track="whatsapp_click">Cuéntanoslo por WhatsApp →</a>
+              <a class="panel-cta wa-link" href="#" data-track="whatsapp_click" data-wa="Hola, vengo del cartel de Vinca Studio. Nos conocen los de siempre, pero nos cuesta llegar a gente nueva.">Cuéntanoslo por WhatsApp →</a>
             </div>
           </li>
           <li class="option">
@@ -412,7 +412,7 @@
             </button>
             <div class="option-panel" id="p2" role="region" aria-labelledby="b2" hidden>
               <p>Tal vez vuestro valor no se explica con claridad, o la oferta necesita una posición más precisa. No podemos saberlo sin escucharos. Revisemos qué os diferencia de verdad y cómo se comunica hoy.</p>
-              <a class="panel-cta wa-link" href="#" data-track="whatsapp_click">Cuéntanoslo por WhatsApp →</a>
+              <a class="panel-cta wa-link" href="#" data-track="whatsapp_click" data-wa="Hola, vengo del cartel de Vinca Studio. Hacemos un buen trabajo, pero nos comparan por precio.">Cuéntanoslo por WhatsApp →</a>
             </div>
           </li>
           <li class="option">
@@ -423,7 +423,7 @@
             </button>
             <div class="option-panel" id="p3" role="region" aria-labelledby="b3" hidden>
               <p>Habéis evolucionado en servicios, equipo, público o ambición. Si lo que se ve y se lee sigue contando una etapa anterior, toca decidir qué conservar y qué actualizar.</p>
-              <a class="panel-cta wa-link" href="#" data-track="whatsapp_click">Cuéntanoslo por WhatsApp →</a>
+              <a class="panel-cta wa-link" href="#" data-track="whatsapp_click" data-wa="Hola, vengo del cartel de Vinca Studio. Nuestro negocio ha cambiado, pero desde fuera no se nota.">Cuéntanoslo por WhatsApp →</a>
             </div>
           </li>
           <li class="option">
@@ -434,7 +434,7 @@
             </button>
             <div class="option-panel" id="p4" role="region" aria-labelledby="b4" hidden>
               <p>Las publicaciones, la web, la atención y los materiales pueden estar funcionando por separado. Podemos revisar si comparten una dirección clara y qué sistema ayudaría a mantenerla.</p>
-              <a class="panel-cta wa-link" href="#" data-track="whatsapp_click">Cuéntanoslo por WhatsApp →</a>
+              <a class="panel-cta wa-link" href="#" data-track="whatsapp_click" data-wa="Hola, vengo del cartel de Vinca Studio. Hacemos marketing, pero cada pieza cuenta algo distinto.">Cuéntanoslo por WhatsApp →</a>
             </div>
           </li>
         </ul>
@@ -448,7 +448,7 @@
             </button>
             <div class="option-panel" id="p5" role="region" aria-labelledby="b5" hidden>
               <p>Cuéntanos qué te inquieta y en qué punto está tu negocio. No hace falta que llegues con un diagnóstico hecho.</p>
-              <a class="panel-cta wa-link" href="#" data-track="whatsapp_click">Cuéntanoslo por WhatsApp →</a>
+              <a class="panel-cta wa-link" href="#" data-track="whatsapp_click" data-wa="Hola, vengo del cartel de Vinca Studio. Sé que algo no va bien en mi negocio, pero no sé ponerle nombre.">Cuéntanoslo por WhatsApp →</a>
             </div>
           </li>
         </ul>
@@ -484,18 +484,20 @@
       <div class="foot">
         <span>Vinca Studio</span>
         <a href="mailto:hellovincastudio@gmail.com">hellovincastudio@gmail.com</a>
-        <a class="wa-link" href="#" data-track="whatsapp_click">WhatsApp +34 630 618 370</a>
+        <a class="wa-link" href="#" data-track="whatsapp_click" data-wa="Hola, vengo del cartel de Vinca Studio.">WhatsApp +34 630 618 370</a>
       </div>
     </div>
   </footer>
 
   <script>
     // Contact destinations. Set BOOKING_URL once the calendar is live and the button appears.
-    const WHATSAPP_URL = 'https://wa.me/34630618370?text=' + encodeURIComponent('Hola, he visto el cartel de Vinca Studio y me gustaría hablar sobre mi negocio.');
+    // Each WhatsApp link pre-fills its own message (data-wa) so Vincent knows which button was used.
+    const WHATSAPP_NUMBER = '34630618370';
+    const WHATSAPP_DEFAULT = 'Hola, he visto el cartel de Vinca Studio y me gustaría hablar sobre mi negocio.';
     const BOOKING_URL = '';
 
     document.querySelectorAll('.wa-link').forEach(a => {
-      a.href = WHATSAPP_URL;
+      a.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(a.dataset.wa || WHATSAPP_DEFAULT);
       a.target = '_blank';
       a.rel = 'noopener';
     });
