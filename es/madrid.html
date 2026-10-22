@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nadie habla de tu negocio — Vinca Studio Madrid</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <!-- Campaign page for the Madrid posters: reached through /cartel, kept out of search results -->
+  <meta name="robots" content="noindex" />
+  <meta name="description" content="Tu negocio puede haber avanzado mucho y seguir pareciendo uno más para quien acaba de descubrirlo. Hablemos." />
+  <link rel="canonical" href="https://www.vincastudio.com/es/madrid" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Vinca Studio" />
+  <meta property="og:title" content="Nadie habla de tu negocio — Vinca Studio" />
+  <meta property="og:description" content="Tu negocio puede haber avanzado mucho y seguir pareciendo uno más para quien acaba de descubrirlo. Hablemos." />
+  <meta property="og:url" content="https://www.vincastudio.com/es/madrid" />
+  <meta property="og:image" content="https://www.vincastudio.com/og/vinca-studio.jpg" />
+  <meta property="og:locale" content="es_ES" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ───────────────────────────────────────────── */
+    :root {
+      --dark:   #20161D;
+      --bg:     #F5F1EE;
+      --cream:  #E9E3DC;
+      --pink:   #DC85B7;
+      --yellow: #F0B45E;
+      --purple: #736DAE;
+      --ease:   cubic-bezier(0.65, 0, 0.15, 1);
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --gutter: 1.5rem;
+      --space-s: 1rem;
+      --space-m: 2rem;
+      --space-l: 4rem;
+      --space-xl: 6rem;
+    }
+
+    /* ── RESET ────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--yellow); color: var(--dark); }
+    html { background: var(--bg); }
+    body {
+      font-family: 'Satoshi', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    .wrap { width: 100%; max-width: 980px; margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* ── HEADER (not fixed, so it never covers content) ───── */
+    .top { padding: var(--space-m) 0 0; }
+    .top a { display: inline-block; border-radius: 6px; }
+    .top svg { height: 24px; width: auto; display: block; }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero { position: relative; padding: var(--space-l) 0 var(--space-xl); isolation: isolate; }
+    .hero::before {
+      content: "";
+      position: absolute; inset: -40% 0 0;
+      z-index: -1;
+      background:
+        radial-gradient(40% 35% at 85% 20%, rgba(220,133,183,0.22), transparent 70%),
+        radial-gradient(35% 30% at 10% 70%, rgba(240,180,94,0.18), transparent 70%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: var(--space-m);
+    }
+    .headline, .twist {
+      font-weight: 900;
+      font-size: clamp(2.5rem, 10vw, 6rem);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+    .twist { color: var(--pink); margin-top: 0.4em; line-height: 1.02; }
+    .bridge {
+      font-size: clamp(1.15rem, 3.6vw, 1.45rem);
+      font-weight: 500;
+      line-height: 1.55;
+      max-width: 34ch;
+      margin-top: var(--space-l);
+    }
+    .explain {
+      font-size: 1.05rem;
+      color: rgba(32,22,29,0.68);
+      max-width: 52ch;
+      margin-top: var(--space-m);
+    }
+
+    /* ── SITUATIONS ───────────────────────────────────────── */
+    .situations { padding-bottom: var(--space-xl); }
+    .situations h2 {
+      font-weight: 900;
+      font-size: clamp(1.9rem, 6.5vw, 3.2rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-m);
+    }
+    .options { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .option {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 1px 2px rgba(32,22,29,0.04), 0 8px 24px -12px rgba(115,109,174,0.25);
+    }
+    .option.is-open { box-shadow: 0 1px 2px rgba(32,22,29,0.05), 0 18px 40px -16px rgba(220,133,183,0.45); }
+    .option-btn {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-s);
+      width: 100%;
+      min-height: 64px;
+      padding: 1.1rem 1.25rem;
+      background: none; border: 0; border-radius: 18px;
+      font: inherit; font-size: 1.08rem; font-weight: 700; line-height: 1.35;
+      color: var(--dark); text-align: left;
+      cursor: pointer;
+      transition: transform 0.35s var(--spring);
+    }
+    .option-btn:hover { transform: translateY(-2px); }
+    .option-btn:active { transform: scale(0.985); }
+    .option-btn:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
+    .option-icon {
+      flex: none;
+      width: 32px; height: 32px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--bg); color: var(--pink);
+      font-size: 1.3rem; font-weight: 700; line-height: 1;
+      transition: transform 0.4s var(--spring);
+    }
+    .option.is-open .option-icon { transform: rotate(45deg); }
+    .option-panel { padding: 0 1.25rem 1.4rem; }
+    .option-panel:not([hidden]) { animation: panel-in 0.45s var(--ease); }
+    @keyframes panel-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+    .option-panel p { color: rgba(32,22,29,0.75); max-width: 58ch; }
+    .panel-cta {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: var(--space-s);
+      font-weight: 700; color: var(--dark);
+      text-decoration: underline; text-decoration-color: var(--pink); text-decoration-thickness: 2px; text-underline-offset: 5px;
+      border-radius: 4px;
+      transition: opacity 0.2s;
+    }
+    .panel-cta:hover { opacity: 0.7; }
+    .panel-cta:active { opacity: 0.5; }
+    .panel-cta:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
+    .options-extra { margin-top: var(--space-m); }
+    .options-extra .option { background: transparent; box-shadow: none; border: 1.5px dashed rgba(32,22,29,0.25); }
+    .options-extra .option.is-open { background: #fff; border-style: solid; border-color: transparent; box-shadow: 0 18px 40px -16px rgba(220,133,183,0.45); }
+
+    /* ── VINCA BLOCK + CONTACT ────────────────────────────── */
+    .contact {
+      position: relative;
+      background: var(--dark);
+      color: #fff;
+      padding: var(--space-xl) 0;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .contact::before {
+      content: "";
+      position: absolute; inset: 0; z-index: -1;
+      background:
+        radial-gradient(45% 50% at 100% 0%, rgba(220,133,183,0.25), transparent 70%),
+        radial-gradient(40% 45% at 0% 100%, rgba(115,109,174,0.3), transparent 70%);
+    }
+    .contact::after {
+      content: "";
+      position: absolute; inset: 0; z-index: -1; opacity: 0.12; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .contact-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: var(--space-s);
+    }
+    .contact-text {
+      font-size: clamp(1.15rem, 3.4vw, 1.4rem);
+      line-height: 1.6;
+      max-width: 40ch;
+      color: rgba(255,255,255,0.9);
+    }
+    .ctas { display: flex; flex-direction: column; gap: 0.75rem; margin-top: var(--space-l); max-width: 420px; }
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+      min-height: 58px;
+      padding: 1rem 1.6rem;
+      border-radius: 100px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.35s var(--spring), opacity 0.2s;
+    }
+    .btn[hidden] { display: none; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn:active { transform: scale(0.97); }
+    .btn:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+    .btn-primary {
+      background: var(--yellow); color: var(--dark);
+      box-shadow: 0 2px 6px rgba(240,180,94,0.25), 0 14px 34px -10px rgba(240,180,94,0.55);
+    }
+    .btn-secondary { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.35); }
+    .btn svg { width: 20px; height: 20px; flex: none; }
+    .cta-note { margin-top: var(--space-m); font-size: 0.98rem; color: rgba(255,255,255,0.62); max-width: 42ch; }
+
+    /* ── SERVICES LINK + FOOTER ───────────────────────────── */
+    .more { padding: var(--space-l) 0; }
+    .more a {
+      font-weight: 700;
+      text-decoration: underline; text-decoration-color: var(--pink); text-decoration-thickness: 2px; text-underline-offset: 6px;
+      border-radius: 4px;
+      transition: opacity 0.2s;
+    }
+    .more a:hover { opacity: 0.7; }
+    .more a:active { opacity: 0.5; }
+    .more a:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
+    .foot {
+      border-top: 1px solid rgba(32,22,29,0.1);
+      padding: var(--space-m) 0 var(--space-l);
+      font-size: 0.92rem;
+      color: rgba(32,22,29,0.6);
+      display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+    }
+    .foot a { text-decoration: none; border-radius: 4px; transition: opacity 0.2s; }
+    .foot a:hover { opacity: 0.7; }
+    .foot a:active { opacity: 0.5; }
+    .foot a:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+
+    @media (min-width: 700px) {
+      :root { --gutter: 3rem; }
+      .ctas { flex-direction: row; max-width: none; }
+      .btn { flex: 0 1 auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top">
+    <div class="wrap">
+      <a href="/es" aria-label="Vinca Studio, ir a la web">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="212 267 418 61" aria-hidden="true">
+        <path fill="#dc85b7" d="M368.23,316.64c-4.65,2.24-11.15,2.27-14.85-1.75-4.4-4.79-3.79-18.69,4.06-18.43,5.96.2,3.13,9.63,8.63,10.19,7.52.77,9.66-9.83,2.17-13.72-10.73-5.58-28,.69-30.65,13.2-3.41,16.09,11.99,24.67,25.97,19.79,3.65-1.27,9.92-6,9.83-10.27-.07-2.99-4.12.5-5.15,1Z"/>
+        <path fill="#dc85b7" d="M413.2,322.31c-2.08-1.64-2.12-4.23-2.6-6.67-2.1-10.69-1.08-22.55-12.22-24.45-4.94-.84-16.05-.44-19.33,3.97-3.61,4.86,2.04,10.06,7.21,7.52,3.43-1.69,1.76-5.96,4.91-6.48,4.37-.71,5.05,5.94,5.27,8.96-1.24.25-3.75.43-5.43.46-6.16.12-14.83,1.59-15.73,9.03-1.69,13.99,15.45,16.53,23.17,7.07.53.83.43,1.01,1.07,1.8.55.68,1.22,1.34,1.92,1.9,3.11,2.49,9.03,2.11,13.38.91.37-.1.67-.18.97-.4.71-.53.48-.99,0-1.49-.67-.69-1.79-1.53-2.57-2.14ZM388.2,315.05c-.45-5.05,4.34-6.78,8.54-5.5l.54,7.24c-.19,4.63-8.6,3.69-9.08-1.74Z"/>
+        <path fill="#dc85b7" d="M276.4,270.02c.48.53.36,1.34-.07,1.86-1.01,1.22-3.21,2.08-3.88,3.85-4.06,10.25-7.59,21.65-11.58,31.94-1.38,3.56-2.77,7.21-4.29,10.72-1.9,4.37-3.93,9.75-9.81,8.48-3.1-.67-4.85-3.73-6.17-6.34-3.01-5.95-5.72-12.4-8.49-18.5-2.92-6.41-5.64-12.94-8.67-19.29-1.9-3.99-3.82-7.49-7.66-9.92-.95-.6-2.72-1.18-2.75-2.59-.03-1.8,2.86-2.03,4.13-2.09,8.5-.41,17.71-.14,25.92.1,1.28.08,3.51.86,2.74,2.54-.5,1.07-2.74,1.85-3.7,2.69-2.58,2.26-.89,5.63.06,8.28,3.37,9.41,7.23,18.65,10.82,27.97.34.63-.17.85.35.23,3.15-8.62,6.37-17.25,9.29-25.96.69-2.06,2.46-7.34,1.75-9.33-.58-1.63-3.04-2.24-3.18-3.48-.19-1.65,1.66-1.84,2.88-1.91,2.61-.16,7.37-.17,9.98,0,.67.05,1.85.22,2.32.74Z"/>
+        <path fill="#dc85b7" d="M281.44,287.65c9.96.12,11.03-12.7.54-12.56-10.43.13-10.6,12.44-.54,12.56Z"/>
+        <path fill="#dc85b7" d="M289.78,323.63c-1.05-1.31-1.07-2.82-1.15-4.43.04-7.79-.05-15.58,0-23.36,0-.78.09-1.58.04-2.36-.01-.18-.04-.38-.1-.56v-.16c-.06-1.45-1.27-2.13-2.81-1.68-3.37,1.47-6.99,2.65-10.35,4.13-.77.34-1.45.66-1.37,1.53.07.78,1.1,1.28,1.69,1.77,1.16.97,1.9,1.6,2,3.1l.02.03c.07,1.2.01,2.42,0,3.37,0,3.92.02,7.84,0,11.75-.01,2.31.36,5.07-1.19,6.95-.48.58-1.44,1.16-1.52,1.95-.11,1.08.7,1.53,1.66,1.59.81.05,1.65-.03,2.46-.04,1.81-.03,6.37-.03,8.19,0,1.32.02,4.26.53,3.97-1.65-.1-.71-1.11-1.37-1.56-1.94Z"/>
+        <path fill="#dc85b7" d="M308.52,295.97c.06.01.08-.02.11-.05.4-.37.78-.88,1.2-1.27,3.44-3.23,8.44-4.65,13.04-3.18,7.54,2.4,7.63,11.7,7.83,18.22.07,2.39.03,4.9.19,7.27.21,3.21,2.07,4.7,4.64,6.39.56.37,1.81.93,2.06,1.52.51,1.2-1.23,1.63-2.05,1.83-3.21.79-7.75.88-10.86-.32-6.52-2.53-5.43-8.48-5.41-14.2,0-3.02.06-6.06.04-9.08-.02-2.63-1.05-5.01-3.76-5.76-4.09-1.13-6.19,2.14-6.21,5.8v15.2c.05,1.77.3,3.53,1.44,4.94.58.72,1.85,1.58,1.92,2.54.06.81-.45,1.28-1.21,1.41-5.34.08-10.7.07-16.04,0-.83-.11-1.42-.73-1.23-1.59s1.36-1.73,1.91-2.41c1.03-1.27,1.44-2.89,1.55-4.5.01-4.38-.02-8.76,0-13.14.01-2.6.54-4.46-1.27-6.58-.79-.92-2.63-2.43-1.44-3.73.83-.91,4.1-1.84,5.38-2.26,1.92-.63,4.09-1.43,6.03-1.9.7-.17,1.76-.31,2.07.53.02.05.07.04.08.29.08,1.67,0,4.04,0,4.04Z"/>
+        <path fill="#eba645" d="M451.83,293.94l-8.88-2c-2.36-.57-4.1-1.43-5.2-2.59-1.11-1.16-1.66-2.74-1.66-4.75,0-2.36.91-4.23,2.74-5.6,1.82-1.36,4.25-2.04,7.29-2.04,2.78,0,4.98.68,6.63,2.04,1.65,1.36,2.52,3.25,2.63,5.68h9.88c-.1-3.39-.94-6.33-2.5-8.8-1.58-2.46-3.76-4.37-6.56-5.71-2.8-1.34-6.1-2.01-9.91-2.01s-7.44.71-10.45,2.12c-3.01,1.41-5.36,3.38-7.06,5.91-1.7,2.51-2.55,5.42-2.55,8.72,0,4.37,1.23,7.91,3.71,10.6,2.46,2.7,6.09,4.57,10.88,5.6l8.95,2c2.31.46,3.98,1.27,5.01,2.43,1.03,1.15,1.55,2.72,1.55,4.67,0,2.26-.97,4.08-2.9,5.43-1.93,1.36-4.53,2.05-7.83,2.05s-5.62-.69-7.44-2.05c-1.83-1.35-2.77-3.22-2.82-5.59h-9.87c.1,3.34.98,6.24,2.66,8.72,1.67,2.46,4,4.38,6.98,5.75,2.99,1.36,6.45,2.04,10.41,2.04,4.17,0,7.81-.71,10.92-2.12,3.11-1.41,5.51-3.43,7.21-6.05,1.7-2.63,2.56-5.66,2.56-9.11,0-4.21-1.19-7.56-3.56-10.06-2.36-2.49-5.97-4.26-10.8-5.29Z"/>
+        <polygon fill="#eba645" points="484.27 281.62 475.93 281.62 475.93 292.13 469.42 292.13 469.42 299.08 475.93 299.08 475.91 326.69 484.26 326.69 484.27 299.08 490.78 299.08 490.78 292.13 484.27 292.13 484.27 281.62"/>
+        <path fill="#eba645" d="M519,309.78c0,3.18-.64,5.56-1.92,7.12-1.27,1.57-3.24,2.36-5.89,2.36-2.32,0-4.11-.71-5.34-2.12-1.23-1.41-1.85-3.7-1.85-6.89v-18.13h-8.36v21.07c0,4.09,1.1,7.36,3.29,9.82s5.23,3.68,9.11,3.68c2.28,0,4.43-.5,6.44-1.5,2.01-1,3.51-2.29,4.52-3.88l.61,5.38h7.74v-34.56s-8.35,0-8.35,0v17.66Z"/>
+        <path fill="#eba645" d="M560.7,296.42c-1.05-1.68-2.56-2.99-4.52-3.92-1.96-.94-4.13-1.4-6.51-1.4-3.38,0-6.29.78-8.76,2.32-2.47,1.54-4.35,3.67-5.66,6.37-1.3,2.7-1.95,5.81-1.95,9.31s.65,6.57,1.95,9.2c1.31,2.63,3.13,4.7,5.48,6.17,2.36,1.47,5.17,2.21,8.46,2.21,2.56,0,4.87-.54,6.95-1.63,2.08-1.09,3.62-2.59,4.63-4.5l.54,6.13h7.67v-51.61s-8.27,0-8.27,0v21.34ZM559.44,314.18c-.8,1.56-1.91,2.77-3.33,3.62-1.42.84-3.1,1.26-5.07,1.26s-3.59-.44-5-1.29c-1.41-.87-2.49-2.07-3.25-3.62s-1.13-3.32-1.13-5.32.38-3.78,1.13-5.32c.75-1.54,1.84-2.76,3.25-3.64,1.42-.89,3.08-1.33,5-1.33s3.65.44,5.07,1.33c1.42.88,2.53,2.09,3.33,3.61.8,1.53,1.19,3.31,1.19,5.36s-.39,3.78-1.19,5.36Z"/>
+        <rect fill="#eba645" x="577.68" y="291.17" width="8.36" height="35.52"/>
+        <path fill="#eba645" d="M581.87,275.76c-1.58,0-2.91.53-4.01,1.6-1.09,1.07-1.64,2.38-1.64,3.96s.55,2.91,1.64,4,2.43,1.65,4.01,1.65,2.9-.55,4-1.65c1.09-1.09,1.64-2.42,1.64-4s-.55-2.89-1.64-3.96c-1.1-1.07-2.43-1.6-4-1.6Z"/>
+        <path fill="#eba645" d="M626.52,299.66c-1.55-2.66-3.69-4.74-6.4-6.24-2.72-1.5-5.84-2.25-9.35-2.25s-6.57.75-9.32,2.25c-2.73,1.5-4.89,3.58-6.44,6.24-1.55,2.66-2.32,5.74-2.32,9.24s.77,6.58,2.32,9.24c1.55,2.66,3.7,4.74,6.44,6.24,2.74,1.5,5.85,2.25,9.32,2.25s6.64-.75,9.35-2.25c2.72-1.5,4.85-3.58,6.4-6.24,1.55-2.66,2.33-5.74,2.33-9.24s-.78-6.58-2.33-9.24ZM619.26,314.28c-.82,1.54-1.96,2.75-3.43,3.62s-3.15,1.29-5.07,1.29-3.6-.43-5.03-1.29c-1.44-.87-2.58-2.07-3.43-3.62-.84-1.54-1.26-3.34-1.26-5.38s.42-3.9,1.26-5.43c.84-1.52,1.98-2.71,3.43-3.58,1.43-.86,3.11-1.29,5.03-1.29s3.6.44,5.07,1.29c1.46.87,2.61,2.06,3.43,3.58.82,1.53,1.24,3.34,1.24,5.43s-.41,3.84-1.24,5.38Z"/>
+      </svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Vinca Studio · Madrid</p>
+        <h1>
+          <span class="headline" style="display:block">Hay alguien hablando de tu negocio a tus espaldas.</span>
+          <span class="twist" style="display:block">No. Nadie habla de él.</span>
+        </h1>
+        <p class="bridge">Tus clientes de siempre te conocen. ¿Y los que todavía no? Tu negocio puede haber avanzado mucho y seguir pareciendo uno más para quien acaba de descubrirlo.</p>
+        <p class="explain">Hoy cualquiera puede generar un logo, una web o publicaciones. Lo que cuesta es saber qué lugar debe ocupar tu negocio, por qué alguien debería elegirlo y cómo transmitirlo en cada contacto.</p>
+      </div>
+    </section>
+
+    <section class="situations" aria-labelledby="situations-title">
+      <div class="wrap">
+        <h2 id="situations-title">¿Qué está pasando en tu negocio?</h2>
+
+        <ul class="options">
+          <li class="option">
+            <button class="option-btn" type="button" aria-expanded="false" aria-controls="p1" id="b1" data-option="clientes_nuevos">
+              Nos conocen los de siempre, pero cuesta llegar a gente nueva<span class="option-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="option-panel" id="p1" role="region" aria-labelledby="b1" hidden>
+              <p>Hay una diferencia entre tener clientes fieles y resultar claro para alguien que aún no os conoce. Podemos revisar qué entiende esa persona cuando os encuentra por primera vez y qué motivos tiene para recordaros.</p>
+              <a class="panel-cta wa-link" href="#" data-track="whatsapp_click">Cuéntanoslo por WhatsApp →</a>
+            </div>
+          </li>
+          <li class="option">
+            <button class="option-btn" type="button" aria-expanded="false" aria-controls="p2" id="b2" data-option="comparan_precio">
+              Hacemos un buen trabajo, pero nos comparan por precio<span class="option-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="option-panel" id="p2" role="region" aria-labelledby="b2" hidden>
+              <p>Tal vez vuestro valor no se explica con claridad, o la oferta necesita una posición más precisa. No podemos saberlo sin escucharos. Revisemos qué os diferencia de verdad y cómo se comunica hoy.</p>
+              <a class="panel-cta wa-link" href="#" data-track="whatsapp_click">Cuéntanoslo por WhatsApp →</a>
+            </div>
+          </li>
+          <li class="option">
+            <button class="option-btn" type="button" aria-expanded="false" aria-controls="p3" id="b3" data-option="cambio_no_se_nota">
+              El negocio ha cambiado, pero desde fuera no se nota<span class="option-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="option-panel" id="p3" role="region" aria-labelledby="b3" hidden>
+              <p>Habéis evolucionado en servicios, equipo, público o ambición. Si lo que se ve y se lee sigue contando una etapa anterior, toca decidir qué conservar y qué actualizar.</p>
+              <a class="panel-cta wa-link" href="#" data-track="whatsapp_click">Cuéntanoslo por WhatsApp →</a>
+            </div>
+          </li>
+          <li class="option">
+            <button class="option-btn" type="button" aria-expanded="false" aria-controls="p4" id="b4" data-option="piezas_distintas">
+              Hacemos marketing, pero cada pieza cuenta algo distinto<span class="option-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="option-panel" id="p4" role="region" aria-labelledby="b4" hidden>
+              <p>Las publicaciones, la web, la atención y los materiales pueden estar funcionando por separado. Podemos revisar si comparten una dirección clara y qué sistema ayudaría a mantenerla.</p>
+              <a class="panel-cta wa-link" href="#" data-track="whatsapp_click">Cuéntanoslo por WhatsApp →</a>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="options options-extra">
+          <li class="option">
+            <button class="option-btn" type="button" aria-expanded="false" aria-controls="p5" id="b5" data-option="sin_nombre">
+              Sé que algo no va bien, pero no sé ponerle nombre<span class="option-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="option-panel" id="p5" role="region" aria-labelledby="b5" hidden>
+              <p>Cuéntanos qué te inquieta y en qué punto está tu negocio. No hace falta que llegues con un diagnóstico hecho.</p>
+              <a class="panel-cta wa-link" href="#" data-track="whatsapp_click">Cuéntanoslo por WhatsApp →</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto" aria-labelledby="contact-title">
+      <div class="wrap">
+        <p class="contact-label" id="contact-title">Cómo trabajamos</p>
+        <p class="contact-text">Empezamos por entender tu negocio y lo que ya funciona. Después identificamos qué está frenando la percepción de su valor y proponemos el siguiente paso: aclarar el mensaje, definir una posición, ordenar la identidad o acompañar su aplicación. El alcance depende de lo que encontremos juntos.</p>
+
+        <div class="ctas">
+          <a class="btn btn-primary" id="booking-btn" href="#" data-track="booking_click" hidden>Agendar una conversación</a>
+          <a class="btn btn-primary wa-link" id="wa-btn" href="#" data-track="whatsapp_click">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg>
+            Escribir por WhatsApp
+          </a>
+        </div>
+        <p class="cta-note">Cuéntanos en qué etapa estás. Vincent hablará contigo antes de recomendar un servicio.</p>
+      </div>
+    </section>
+
+    <section class="more">
+      <div class="wrap">
+        <p>Si prefieres conocer cómo trabajamos, <a href="/es/servicios" data-track="services_click">ver servicios</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="foot">
+      <span>Vinca Studio</span>
+      <a href="mailto:hellovincastudio@gmail.com">hellovincastudio@gmail.com</a>
+      <a class="wa-link" href="#" data-track="whatsapp_click">WhatsApp +34 630 618 370</a>
+    </div>
+  </footer>
+
+  <script>
+    // Contact destinations. Set BOOKING_URL once the calendar is live and the button appears.
+    const WHATSAPP_URL = 'https://wa.me/34630618370?text=' + encodeURIComponent('Hola, he visto el cartel de Vinca Studio y me gustaría hablar sobre mi negocio.');
+    const BOOKING_URL = '';
+
+    document.querySelectorAll('.wa-link').forEach(a => {
+      a.href = WHATSAPP_URL;
+      a.target = '_blank';
+      a.rel = 'noopener';
+    });
+    if (BOOKING_URL) {
+      const booking = document.getElementById('booking-btn');
+      booking.href = BOOKING_URL;
+      booking.hidden = false;
+      document.getElementById('wa-btn').classList.replace('btn-primary', 'btn-secondary');
+    }
+
+    // Situations: one open at a time; the open one stays open until another is chosen or it is closed.
+    const buttons = document.querySelectorAll('.option-btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        buttons.forEach(other => {
+          other.setAttribute('aria-expanded', 'false');
+          document.getElementById(other.getAttribute('aria-controls')).hidden = true;
+          other.closest('.option').classList.remove('is-open');
+        });
+        if (!open) {
+          btn.setAttribute('aria-expanded', 'true');
+          document.getElementById(btn.getAttribute('aria-controls')).hidden = false;
+          btn.closest('.option').classList.add('is-open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

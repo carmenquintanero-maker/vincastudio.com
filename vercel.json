@@ -9,7 +9,7 @@
     },
     {
       "source": "/cartel",
-      "destination": "/es/contacto?utm_source=cartel&utm_medium=qr&utm_campaign=cartel",
+      "destination": "/es/madrid?utm_source=cartel&utm_medium=offline&utm_campaign=madrid_2026&utm_content=general",
       "permanent": false
     },
     {
@@ -151,6 +151,11 @@
       "source": "/es/proyectos/fossil-fuel.html",
       "destination": "/es/proyectos/fossil-fuel",
       "permanent": true
+    },
+    {
+      "source": "/es/madrid.html",
+      "destination": "/es/madrid",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -221,6 +226,10 @@
     {
       "source": "/es/proyectos/fossil-fuel",
       "destination": "/es/proyectos/fossil-fuel.html"
+    },
+    {
+      "source": "/es/madrid",
+      "destination": "/es/madrid.html"
     }
   ]
 }
