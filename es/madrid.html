@@ -9,6 +9,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <!-- Campaign page for the Madrid posters: reached through /cartel, kept out of search results -->
   <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#20161D" />
   <meta name="description" content="Tu negocio puede haber avanzado mucho y seguir pareciendo uno más para quien acaba de descubrirlo. Hablemos." />
   <link rel="canonical" href="https://www.vincastudio.com/es/madrid" />
   <meta property="og:type" content="website" />
@@ -31,6 +32,7 @@
       --pink:   #DC85B7;
       --yellow: #F0B45E;
       --purple: #736DAE;
+      --red:    #642027;
       --ease:   cubic-bezier(0.65, 0, 0.15, 1);
       --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
       --gutter: 1.5rem;
@@ -38,12 +40,13 @@
       --space-m: 2rem;
       --space-l: 4rem;
       --space-xl: 6rem;
+      --grain: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='300' height='300' filter='url(%23g)'/></svg>");
     }
 
     /* ── RESET ────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
     ::selection { background: var(--yellow); color: var(--dark); }
-    html { background: var(--bg); }
+    html { background: var(--dark); }
     body {
       font-family: 'Satoshi', sans-serif;
       background: var(--bg);
@@ -52,112 +55,193 @@
       overflow-x: hidden;
     }
     a { color: inherit; }
-    .wrap { width: 100%; max-width: 980px; margin: 0 auto; padding: 0 var(--gutter); }
+    .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 var(--gutter); }
+    .eyebrow {
+      display: flex; align-items: center; gap: 0.9rem;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 2.5rem; height: 1px; background: currentColor; opacity: 0.6; }
 
-    /* ── HEADER (not fixed, so it never covers content) ───── */
-    .top { padding: var(--space-m) 0 0; }
-    .top a { display: inline-block; border-radius: 6px; }
-    .top svg { height: 24px; width: auto; display: block; }
-
-    /* ── HERO ─────────────────────────────────────────────── */
-    .hero { position: relative; padding: var(--space-l) 0 var(--space-xl); isolation: isolate; }
+    /* ── HERO: CSS mesh gradient in the homepage colours ──── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      background: var(--dark);
+      color: #fff;
+      overflow: hidden;
+      isolation: isolate;
+    }
     .hero::before {
       content: "";
-      position: absolute; inset: -40% 0 0;
-      z-index: -1;
+      position: absolute; inset: -10%; z-index: -2;
       background:
-        radial-gradient(40% 35% at 85% 20%, rgba(220,133,183,0.22), transparent 70%),
-        radial-gradient(35% 30% at 10% 70%, rgba(240,180,94,0.18), transparent 70%);
-      pointer-events: none;
+        radial-gradient(60% 50% at 12% 10%, #642027, transparent 75%),
+        radial-gradient(55% 45% at 92% 22%, #736DAE, transparent 72%),
+        radial-gradient(70% 50% at 35% 52%, #F0B45E, transparent 70%),
+        radial-gradient(55% 45% at 90% 70%, #DC85B7, transparent 70%),
+        radial-gradient(60% 40% at 10% 95%, #736DAE, transparent 70%),
+        #8a3a4a;
+      filter: blur(24px) saturate(1.1);
     }
-    .eyebrow {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--purple);
-      margin-bottom: var(--space-m);
+    /* veil keeps the text legible whatever the gradient does underneath */
+    .hero::after {
+      content: "";
+      position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(to bottom, rgba(13,9,18,0.5) 0%, transparent 18%, transparent 42%, rgba(32,22,29,0.55) 70%, rgba(32,22,29,0.85) 100%);
     }
-    .headline, .twist {
+    .hero-grain { position: absolute; inset: 0; z-index: -1; background: var(--grain); opacity: 0.06; pointer-events: none; }
+    .top { padding: var(--space-m) 0 0; }
+    .top a { display: inline-block; border-radius: 6px; transition: opacity 0.2s; }
+    .top a:hover { opacity: 0.8; }
+    .top a:active { opacity: 0.6; }
+    .top a:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+    .top svg { height: 24px; width: auto; display: block; }
+    .hero-body { margin-top: auto; padding: var(--space-xl) 0 var(--space-l); }
+    .hero .eyebrow { color: rgba(255,255,255,0.75); margin-bottom: var(--space-m); }
+    .headline {
+      display: block;
       font-weight: 900;
-      font-size: clamp(2.5rem, 10vw, 6rem);
-      line-height: 0.92;
+      font-size: clamp(2.6rem, 10.5vw, 6.8rem);
+      line-height: 0.95;
       letter-spacing: -0.04em;
       text-transform: uppercase;
+      max-width: 11ch;
+      text-wrap: balance;
     }
-    .twist { color: var(--pink); margin-top: 0.4em; line-height: 1.02; }
-    .bridge {
-      font-size: clamp(1.15rem, 3.6vw, 1.45rem);
-      font-weight: 500;
-      line-height: 1.55;
-      max-width: 34ch;
-      margin-top: var(--space-l);
-    }
-    .explain {
-      font-size: 1.05rem;
-      color: rgba(32,22,29,0.68);
-      max-width: 52ch;
+    .twist {
+      display: inline-block;
       margin-top: var(--space-m);
-    }
-
-    /* ── SITUATIONS ───────────────────────────────────────── */
-    .situations { padding-bottom: var(--space-xl); }
-    .situations h2 {
+      padding: 0.18em 0.4em 0.12em;
+      background: var(--pink);
+      color: var(--dark);
       font-weight: 900;
-      font-size: clamp(1.9rem, 6.5vw, 3.2rem);
+      font-size: clamp(1.7rem, 7vw, 4.2rem);
       line-height: 1;
       letter-spacing: -0.03em;
-      margin-bottom: var(--space-m);
+      text-transform: uppercase;
+      transform: rotate(-2.5deg);
+      transform-origin: left center;
+      box-shadow: 0 2px 4px rgba(13,9,18,0.2), 0 18px 40px -12px rgba(220,133,183,0.55);
     }
-    .options { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-    .option {
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 1px 2px rgba(32,22,29,0.04), 0 8px 24px -12px rgba(115,109,174,0.25);
-    }
-    .option.is-open { box-shadow: 0 1px 2px rgba(32,22,29,0.05), 0 18px 40px -16px rgba(220,133,183,0.45); }
-    .option-btn {
-      display: flex; align-items: center; justify-content: space-between; gap: var(--space-s);
-      width: 100%;
-      min-height: 64px;
-      padding: 1.1rem 1.25rem;
-      background: none; border: 0; border-radius: 18px;
-      font: inherit; font-size: 1.08rem; font-weight: 700; line-height: 1.35;
-      color: var(--dark); text-align: left;
-      cursor: pointer;
-      transition: transform 0.35s var(--spring);
-    }
-    .option-btn:hover { transform: translateY(-2px); }
-    .option-btn:active { transform: scale(0.985); }
-    .option-btn:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
-    .option-icon {
-      flex: none;
-      width: 32px; height: 32px; border-radius: 50%;
-      display: grid; place-items: center;
-      background: var(--bg); color: var(--pink);
-      font-size: 1.3rem; font-weight: 700; line-height: 1;
-      transition: transform 0.4s var(--spring);
-    }
-    .option.is-open .option-icon { transform: rotate(45deg); }
-    .option-panel { padding: 0 1.25rem 1.4rem; }
-    .option-panel:not([hidden]) { animation: panel-in 0.45s var(--ease); }
-    @keyframes panel-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
-    .option-panel p { color: rgba(32,22,29,0.75); max-width: 58ch; }
-    .panel-cta {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      margin-top: var(--space-s);
-      font-weight: 700; color: var(--dark);
-      text-decoration: underline; text-decoration-color: var(--pink); text-decoration-thickness: 2px; text-underline-offset: 5px;
+    .scroll-hint {
+      display: flex; align-items: center; gap: 0.6rem;
+      margin-top: var(--space-l);
+      font-family: 'Fredoka', sans-serif; font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      width: fit-content;
       border-radius: 4px;
       transition: opacity 0.2s;
     }
-    .panel-cta:hover { opacity: 0.7; }
-    .panel-cta:active { opacity: 0.5; }
-    .panel-cta:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
+    .scroll-hint:hover { opacity: 0.8; }
+    .scroll-hint:active { opacity: 0.6; }
+    .scroll-hint:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+    .scroll-hint span { display: inline-block; animation: nudge 2.4s var(--ease) infinite; }
+    @keyframes nudge { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(5px); } }
+
+    /* ── BRIDGE ───────────────────────────────────────────── */
+    .bridge { background: var(--cream); padding: var(--space-xl) 0; }
+    .bridge .eyebrow { color: var(--purple); margin-bottom: var(--space-m); }
+    .bridge-lead {
+      font-weight: 900;
+      font-size: clamp(2rem, 7.5vw, 4.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+      max-width: 16ch;
+    }
+    .bridge-lead em { font-style: normal; color: var(--pink); }
+    .bridge-text {
+      font-size: clamp(1.1rem, 3.4vw, 1.35rem);
+      font-weight: 500;
+      line-height: 1.6;
+      max-width: 38ch;
+      margin-top: var(--space-m);
+    }
+    .explain {
+      position: relative;
+      margin-top: var(--space-l);
+      padding: var(--space-m) 0 0;
+      border-top: 1px solid rgba(32,22,29,0.15);
+      font-size: 1.05rem;
+      color: rgba(32,22,29,0.72);
+      max-width: 54ch;
+    }
+    .explain strong { color: var(--dark); }
+
+    /* ── SITUATIONS: service-card language ────────────────── */
+    .situations { background: var(--yellow); padding: var(--space-xl) 0; }
+    .situations .eyebrow { color: var(--dark); margin-bottom: var(--space-s); }
+    .situations h2 {
+      font-weight: 900;
+      font-size: clamp(2.1rem, 8vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.035em;
+      max-width: 14ch;
+      margin-bottom: var(--space-l);
+    }
+    .options { list-style: none; display: grid; gap: 1rem; }
+    .option {
+      --card-bg: var(--cream); --card-fg: var(--dark); --card-muted: rgba(32,22,29,0.72); --card-accent: var(--purple);
+      background: var(--card-bg);
+      color: var(--card-fg);
+      border-radius: 22px;
+      box-shadow: 0 1px 2px rgba(32,22,29,0.06), 0 14px 32px -18px rgba(100,32,39,0.45);
+      transition: transform 0.45s var(--spring);
+    }
+    .option:nth-child(2) { --card-bg: var(--purple); --card-fg: #fff; --card-muted: #fff; --card-accent: var(--yellow); }
+    .option:nth-child(3) { --card-bg: var(--dark); --card-fg: #fff; --card-muted: rgba(255,255,255,0.8); --card-accent: var(--pink); }
+    .option:nth-child(4) { --card-bg: var(--pink); --card-fg: var(--dark); --card-muted: rgba(32,22,29,0.8); --card-accent: var(--dark); }
+    .option.is-open { transform: translateY(-4px); box-shadow: 0 2px 4px rgba(32,22,29,0.08), 0 26px 50px -20px rgba(100,32,39,0.6); }
+    .option-btn {
+      display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem;
+      width: 100%;
+      min-height: 72px;
+      padding: 1.35rem 1.4rem;
+      background: none; border: 0; border-radius: 22px;
+      font: inherit; font-size: 1.12rem; font-weight: 700; line-height: 1.3;
+      color: inherit; text-align: left;
+      cursor: pointer;
+      transition: transform 0.35s var(--spring);
+    }
+    .option-btn:hover { transform: translateX(4px); }
+    .option-btn:active { transform: scale(0.98); }
+    .option-btn:focus-visible { outline: 3px solid var(--dark); outline-offset: 4px; }
+    .option-num {
+      font-family: 'Fredoka', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em;
+      color: var(--card-accent);
+      align-self: start; padding-top: 0.25rem;
+    }
+    .option-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: grid; place-items: center;
+      border: 1.5px solid currentColor;
+      font-size: 1.25rem; line-height: 1;
+      opacity: 0.85;
+      transition: transform 0.45s var(--spring);
+    }
+    .option.is-open .option-icon { transform: rotate(45deg); }
+    .option-panel { padding: 0 1.4rem 1.6rem calc(1.4rem + 1rem + 1.4ch); }
+    .option-panel:not([hidden]) { animation: panel-in 0.5s var(--ease); }
+    @keyframes panel-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+    .option-panel p { color: var(--card-muted); max-width: 56ch; }
+    .panel-cta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-top: 1.1rem;
+      padding: 0.7rem 1.2rem;
+      border-radius: 100px;
+      background: var(--card-fg); color: var(--card-bg);
+      font-family: 'Fredoka', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.35s var(--spring);
+    }
+    .panel-cta:hover { transform: translateY(-2px); }
+    .panel-cta:active { transform: scale(0.97); }
+    .panel-cta:focus-visible { outline: 3px solid var(--card-fg); outline-offset: 3px; }
     .options-extra { margin-top: var(--space-m); }
-    .options-extra .option { background: transparent; box-shadow: none; border: 1.5px dashed rgba(32,22,29,0.25); }
-    .options-extra .option.is-open { background: #fff; border-style: solid; border-color: transparent; box-shadow: 0 18px 40px -16px rgba(220,133,183,0.45); }
+    .options-extra .option { --card-bg: transparent; --card-accent: var(--dark); box-shadow: none; border: 2px dashed rgba(32,22,29,0.55); }
+    .options-extra .option.is-open { --card-bg: #fff; border-color: transparent; }
 
     /* ── VINCA BLOCK + CONTACT ────────────────────────────── */
     .contact {
@@ -172,36 +256,31 @@
       content: "";
       position: absolute; inset: 0; z-index: -1;
       background:
-        radial-gradient(45% 50% at 100% 0%, rgba(220,133,183,0.25), transparent 70%),
-        radial-gradient(40% 45% at 0% 100%, rgba(115,109,174,0.3), transparent 70%);
+        radial-gradient(50% 55% at 100% 0%, rgba(220,133,183,0.32), transparent 70%),
+        radial-gradient(45% 50% at 0% 100%, rgba(115,109,174,0.4), transparent 70%),
+        radial-gradient(35% 35% at 70% 110%, rgba(240,180,94,0.25), transparent 70%);
     }
-    .contact::after {
-      content: "";
-      position: absolute; inset: 0; z-index: -1; opacity: 0.12; pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-    .contact-label {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
-      color: var(--pink);
-      margin-bottom: var(--space-s);
-    }
+    .contact::after { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--grain); opacity: 0.06; pointer-events: none; }
+    .contact .eyebrow { color: var(--pink); margin-bottom: var(--space-m); }
     .contact-text {
-      font-size: clamp(1.15rem, 3.4vw, 1.4rem);
-      line-height: 1.6;
-      max-width: 40ch;
-      color: rgba(255,255,255,0.9);
+      font-size: clamp(1.25rem, 4vw, 1.9rem);
+      font-weight: 500;
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+      max-width: 34ch;
+      color: rgba(255,255,255,0.92);
     }
-    .ctas { display: flex; flex-direction: column; gap: 0.75rem; margin-top: var(--space-l); max-width: 420px; }
+    .contact-text strong { color: var(--yellow); font-weight: 700; }
+    .ctas { display: flex; flex-direction: column; gap: 0.75rem; margin-top: var(--space-l); max-width: 440px; }
     .btn {
       display: flex; align-items: center; justify-content: center; gap: 0.6rem;
-      min-height: 58px;
-      padding: 1rem 1.6rem;
+      min-height: 60px;
+      padding: 1rem 1.8rem;
       border-radius: 100px;
       font-family: 'Fredoka', sans-serif;
       font-size: 1rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
       text-decoration: none;
-      transition: transform 0.35s var(--spring), opacity 0.2s;
+      transition: transform 0.35s var(--spring);
     }
     .btn[hidden] { display: none; }
     .btn:hover { transform: translateY(-3px); }
@@ -209,14 +288,15 @@
     .btn:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
     .btn-primary {
       background: var(--yellow); color: var(--dark);
-      box-shadow: 0 2px 6px rgba(240,180,94,0.25), 0 14px 34px -10px rgba(240,180,94,0.55);
+      box-shadow: 0 2px 6px rgba(240,180,94,0.25), 0 16px 36px -10px rgba(240,180,94,0.6);
     }
-    .btn-secondary { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.35); }
+    .btn-secondary { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); }
     .btn svg { width: 20px; height: 20px; flex: none; }
-    .cta-note { margin-top: var(--space-m); font-size: 0.98rem; color: rgba(255,255,255,0.62); max-width: 42ch; }
+    .cta-note { margin-top: var(--space-m); font-size: 1rem; color: rgba(255,255,255,0.65); max-width: 42ch; }
 
     /* ── SERVICES LINK + FOOTER ───────────────────────────── */
-    .more { padding: var(--space-l) 0; }
+    .more { background: var(--bg); padding: var(--space-l) 0; }
+    .more p { font-size: 1.1rem; }
     .more a {
       font-weight: 700;
       text-decoration: underline; text-decoration-color: var(--pink); text-decoration-thickness: 2px; text-underline-offset: 6px;
@@ -226,8 +306,9 @@
     .more a:hover { opacity: 0.7; }
     .more a:active { opacity: 0.5; }
     .more a:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
+    .foot-wrap { background: var(--bg); }
     .foot {
-      border-top: 1px solid rgba(32,22,29,0.1);
+      border-top: 1px solid rgba(32,22,29,0.12);
       padding: var(--space-m) 0 var(--space-l);
       font-size: 0.92rem;
       color: rgba(32,22,29,0.6);
@@ -238,10 +319,10 @@
     .foot a:active { opacity: 0.5; }
     .foot a:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
 
-    @media (min-width: 700px) {
+    @media (min-width: 760px) {
       :root { --gutter: 3rem; }
+      .options { grid-template-columns: 1fr 1fr; align-items: start; }
       .ctas { flex-direction: row; max-width: none; }
-      .btn { flex: 0 1 auto; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -250,10 +331,13 @@
 </head>
 <body>
 
-  <header class="top">
-    <div class="wrap">
-      <a href="/es" aria-label="Vinca Studio, ir a la web">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="212 267 418 61" aria-hidden="true">
+  <main>
+    <section class="hero">
+      <div class="hero-grain" aria-hidden="true"></div>
+      <header class="top">
+        <div class="wrap">
+          <a href="/es" aria-label="Vinca Studio, ir a la web">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="212 267 418 61" aria-hidden="true">
         <path fill="#dc85b7" d="M368.23,316.64c-4.65,2.24-11.15,2.27-14.85-1.75-4.4-4.79-3.79-18.69,4.06-18.43,5.96.2,3.13,9.63,8.63,10.19,7.52.77,9.66-9.83,2.17-13.72-10.73-5.58-28,.69-30.65,13.2-3.41,16.09,11.99,24.67,25.97,19.79,3.65-1.27,9.92-6,9.83-10.27-.07-2.99-4.12.5-5.15,1Z"/>
         <path fill="#dc85b7" d="M413.2,322.31c-2.08-1.64-2.12-4.23-2.6-6.67-2.1-10.69-1.08-22.55-12.22-24.45-4.94-.84-16.05-.44-19.33,3.97-3.61,4.86,2.04,10.06,7.21,7.52,3.43-1.69,1.76-5.96,4.91-6.48,4.37-.71,5.05,5.94,5.27,8.96-1.24.25-3.75.43-5.43.46-6.16.12-14.83,1.59-15.73,9.03-1.69,13.99,15.45,16.53,23.17,7.07.53.83.43,1.01,1.07,1.8.55.68,1.22,1.34,1.92,1.9,3.11,2.49,9.03,2.11,13.38.91.37-.1.67-.18.97-.4.71-.53.48-.99,0-1.49-.67-.69-1.79-1.53-2.57-2.14ZM388.2,315.05c-.45-5.05,4.34-6.78,8.54-5.5l.54,7.24c-.19,4.63-8.6,3.69-9.08-1.74Z"/>
         <path fill="#dc85b7" d="M276.4,270.02c.48.53.36,1.34-.07,1.86-1.01,1.22-3.21,2.08-3.88,3.85-4.06,10.25-7.59,21.65-11.58,31.94-1.38,3.56-2.77,7.21-4.29,10.72-1.9,4.37-3.93,9.75-9.81,8.48-3.1-.67-4.85-3.73-6.17-6.34-3.01-5.95-5.72-12.4-8.49-18.5-2.92-6.41-5.64-12.94-8.67-19.29-1.9-3.99-3.82-7.49-7.66-9.92-.95-.6-2.72-1.18-2.75-2.59-.03-1.8,2.86-2.03,4.13-2.09,8.5-.41,17.71-.14,25.92.1,1.28.08,3.51.86,2.74,2.54-.5,1.07-2.74,1.85-3.7,2.69-2.58,2.26-.89,5.63.06,8.28,3.37,9.41,7.23,18.65,10.82,27.97.34.63-.17.85.35.23,3.15-8.62,6.37-17.25,9.29-25.96.69-2.06,2.46-7.34,1.75-9.33-.58-1.63-3.04-2.24-3.18-3.48-.19-1.65,1.66-1.84,2.88-1.91,2.61-.16,7.37-.17,9.98,0,.67.05,1.85.22,2.32.74Z"/>
@@ -268,31 +352,41 @@
         <path fill="#eba645" d="M581.87,275.76c-1.58,0-2.91.53-4.01,1.6-1.09,1.07-1.64,2.38-1.64,3.96s.55,2.91,1.64,4,2.43,1.65,4.01,1.65,2.9-.55,4-1.65c1.09-1.09,1.64-2.42,1.64-4s-.55-2.89-1.64-3.96c-1.1-1.07-2.43-1.6-4-1.6Z"/>
         <path fill="#eba645" d="M626.52,299.66c-1.55-2.66-3.69-4.74-6.4-6.24-2.72-1.5-5.84-2.25-9.35-2.25s-6.57.75-9.32,2.25c-2.73,1.5-4.89,3.58-6.44,6.24-1.55,2.66-2.32,5.74-2.32,9.24s.77,6.58,2.32,9.24c1.55,2.66,3.7,4.74,6.44,6.24,2.74,1.5,5.85,2.25,9.32,2.25s6.64-.75,9.35-2.25c2.72-1.5,4.85-3.58,6.4-6.24,1.55-2.66,2.33-5.74,2.33-9.24s-.78-6.58-2.33-9.24ZM619.26,314.28c-.82,1.54-1.96,2.75-3.43,3.62s-3.15,1.29-5.07,1.29-3.6-.43-5.03-1.29c-1.44-.87-2.58-2.07-3.43-3.62-.84-1.54-1.26-3.34-1.26-5.38s.42-3.9,1.26-5.43c.84-1.52,1.98-2.71,3.43-3.58,1.43-.86,3.11-1.29,5.03-1.29s3.6.44,5.07,1.29c1.46.87,2.61,2.06,3.43,3.58.82,1.53,1.24,3.34,1.24,5.43s-.41,3.84-1.24,5.38Z"/>
       </svg>
-      </a>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="wrap">
-        <p class="eyebrow">Vinca Studio · Madrid</p>
-        <h1>
-          <span class="headline" style="display:block">Hay alguien hablando de tu negocio a tus espaldas.</span>
-          <span class="twist" style="display:block">No. Nadie habla de él.</span>
-        </h1>
-        <p class="bridge">Tus clientes de siempre te conocen. ¿Y los que todavía no? Tu negocio puede haber avanzado mucho y seguir pareciendo uno más para quien acaba de descubrirlo.</p>
-        <p class="explain">Hoy cualquiera puede generar un logo, una web o publicaciones. Lo que cuesta es saber qué lugar debe ocupar tu negocio, por qué alguien debería elegirlo y cómo transmitirlo en cada contacto.</p>
+          </a>
+        </div>
+      </header>
+      <div class="hero-body">
+        <div class="wrap">
+          <p class="eyebrow">Vinca Studio · Madrid</p>
+          <h1>
+            <span class="headline">Hay alguien hablando de tu negocio a tus espaldas.</span>
+            <span class="twist">No. Nadie habla de él.</span>
+          </h1>
+          <a class="scroll-hint" href="#situaciones">¿Qué está pasando en tu negocio? <span aria-hidden="true">↓</span></a>
+        </div>
       </div>
     </section>
 
-    <section class="situations" aria-labelledby="situations-title">
+    <section class="bridge">
       <div class="wrap">
+        <p class="eyebrow">Tus clientes de siempre te conocen</p>
+        <p class="bridge-lead">¿Y los que <em>todavía no?</em></p>
+        <p class="bridge-text">Tu negocio puede haber avanzado mucho y seguir pareciendo uno más para quien acaba de descubrirlo.</p>
+        <p class="explain">Hoy cualquiera puede generar un logo, una web o publicaciones. <strong>Lo que cuesta es saber qué lugar debe ocupar tu negocio</strong>, por qué alguien debería elegirlo y cómo transmitirlo en cada contacto.</p>
+      </div>
+    </section>
+
+    <section class="situations" id="situaciones" aria-labelledby="situations-title">
+      <div class="wrap">
+        <p class="eyebrow">Elige la que más se parezca</p>
         <h2 id="situations-title">¿Qué está pasando en tu negocio?</h2>
 
         <ul class="options">
           <li class="option">
             <button class="option-btn" type="button" aria-expanded="false" aria-controls="p1" id="b1" data-option="clientes_nuevos">
-              Nos conocen los de siempre, pero cuesta llegar a gente nueva<span class="option-icon" aria-hidden="true">+</span>
+              <span class="option-num" aria-hidden="true">01</span>
+              <span>Nos conocen los de siempre, pero cuesta llegar a gente nueva</span>
+              <span class="option-icon" aria-hidden="true">+</span>
             </button>
             <div class="option-panel" id="p1" role="region" aria-labelledby="b1" hidden>
               <p>Hay una diferencia entre tener clientes fieles y resultar claro para alguien que aún no os conoce. Podemos revisar qué entiende esa persona cuando os encuentra por primera vez y qué motivos tiene para recordaros.</p>
@@ -301,7 +395,9 @@
           </li>
           <li class="option">
             <button class="option-btn" type="button" aria-expanded="false" aria-controls="p2" id="b2" data-option="comparan_precio">
-              Hacemos un buen trabajo, pero nos comparan por precio<span class="option-icon" aria-hidden="true">+</span>
+              <span class="option-num" aria-hidden="true">02</span>
+              <span>Hacemos un buen trabajo, pero nos comparan por precio</span>
+              <span class="option-icon" aria-hidden="true">+</span>
             </button>
             <div class="option-panel" id="p2" role="region" aria-labelledby="b2" hidden>
               <p>Tal vez vuestro valor no se explica con claridad, o la oferta necesita una posición más precisa. No podemos saberlo sin escucharos. Revisemos qué os diferencia de verdad y cómo se comunica hoy.</p>
@@ -310,7 +406,9 @@
           </li>
           <li class="option">
             <button class="option-btn" type="button" aria-expanded="false" aria-controls="p3" id="b3" data-option="cambio_no_se_nota">
-              El negocio ha cambiado, pero desde fuera no se nota<span class="option-icon" aria-hidden="true">+</span>
+              <span class="option-num" aria-hidden="true">03</span>
+              <span>El negocio ha cambiado, pero desde fuera no se nota</span>
+              <span class="option-icon" aria-hidden="true">+</span>
             </button>
             <div class="option-panel" id="p3" role="region" aria-labelledby="b3" hidden>
               <p>Habéis evolucionado en servicios, equipo, público o ambición. Si lo que se ve y se lee sigue contando una etapa anterior, toca decidir qué conservar y qué actualizar.</p>
@@ -319,7 +417,9 @@
           </li>
           <li class="option">
             <button class="option-btn" type="button" aria-expanded="false" aria-controls="p4" id="b4" data-option="piezas_distintas">
-              Hacemos marketing, pero cada pieza cuenta algo distinto<span class="option-icon" aria-hidden="true">+</span>
+              <span class="option-num" aria-hidden="true">04</span>
+              <span>Hacemos marketing, pero cada pieza cuenta algo distinto</span>
+              <span class="option-icon" aria-hidden="true">+</span>
             </button>
             <div class="option-panel" id="p4" role="region" aria-labelledby="b4" hidden>
               <p>Las publicaciones, la web, la atención y los materiales pueden estar funcionando por separado. Podemos revisar si comparten una dirección clara y qué sistema ayudaría a mantenerla.</p>
@@ -331,7 +431,9 @@
         <ul class="options options-extra">
           <li class="option">
             <button class="option-btn" type="button" aria-expanded="false" aria-controls="p5" id="b5" data-option="sin_nombre">
-              Sé que algo no va bien, pero no sé ponerle nombre<span class="option-icon" aria-hidden="true">+</span>
+              <span class="option-num" aria-hidden="true">?</span>
+              <span>Sé que algo no va bien, pero no sé ponerle nombre</span>
+              <span class="option-icon" aria-hidden="true">+</span>
             </button>
             <div class="option-panel" id="p5" role="region" aria-labelledby="b5" hidden>
               <p>Cuéntanos qué te inquieta y en qué punto está tu negocio. No hace falta que llegues con un diagnóstico hecho.</p>
@@ -344,8 +446,8 @@
 
     <section class="contact" id="contacto" aria-labelledby="contact-title">
       <div class="wrap">
-        <p class="contact-label" id="contact-title">Cómo trabajamos</p>
-        <p class="contact-text">Empezamos por entender tu negocio y lo que ya funciona. Después identificamos qué está frenando la percepción de su valor y proponemos el siguiente paso: aclarar el mensaje, definir una posición, ordenar la identidad o acompañar su aplicación. El alcance depende de lo que encontremos juntos.</p>
+        <p class="eyebrow" id="contact-title">Cómo trabajamos</p>
+        <p class="contact-text">Empezamos por <strong>entender tu negocio</strong> y lo que ya funciona. Después identificamos qué está frenando la percepción de su valor y proponemos el siguiente paso: aclarar el mensaje, definir una posición, ordenar la identidad o acompañar su aplicación. El alcance depende de lo que encontremos juntos.</p>
 
         <div class="ctas">
           <a class="btn btn-primary" id="booking-btn" href="#" data-track="booking_click" hidden>Agendar una conversación</a>
@@ -365,11 +467,13 @@
     </section>
   </main>
 
-  <footer class="wrap">
-    <div class="foot">
-      <span>Vinca Studio</span>
-      <a href="mailto:hellovincastudio@gmail.com">hellovincastudio@gmail.com</a>
-      <a class="wa-link" href="#" data-track="whatsapp_click">WhatsApp +34 630 618 370</a>
+  <footer class="foot-wrap">
+    <div class="wrap">
+      <div class="foot">
+        <span>Vinca Studio</span>
+        <a href="mailto:hellovincastudio@gmail.com">hellovincastudio@gmail.com</a>
+        <a class="wa-link" href="#" data-track="whatsapp_click">WhatsApp +34 630 618 370</a>
+      </div>
     </div>
   </footer>
 
