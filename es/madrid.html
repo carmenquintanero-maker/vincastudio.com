@@ -98,7 +98,7 @@
     .top a:active { opacity: 0.6; }
     .top a:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
     .top svg { height: 24px; width: auto; display: block; }
-    .hero-body { margin-top: auto; padding: var(--space-xl) 0 var(--space-l); }
+    .hero-body { margin-top: auto; padding: var(--space-xl) 0 max(var(--space-l), 16svh); }
     .hero .eyebrow { color: rgba(255,255,255,0.75); margin-bottom: var(--space-m); }
     .headline {
       display: block;
@@ -117,8 +117,9 @@
       background: var(--pink);
       color: var(--dark);
       font-weight: 900;
-      font-size: clamp(1.7rem, 7vw, 4.2rem);
+      font-size: clamp(1.3rem, 6.6vw, 4.2rem);
       line-height: 1;
+      white-space: nowrap;
       letter-spacing: -0.03em;
       text-transform: uppercase;
       transform: rotate(-2.5deg);
@@ -126,10 +127,10 @@
       box-shadow: 0 2px 4px rgba(13,9,18,0.2), 0 18px 40px -12px rgba(220,133,183,0.55);
     }
     .scroll-hint {
-      display: flex; align-items: center; gap: 0.6rem;
+      display: block;
       margin-top: var(--space-l);
-      font-family: 'Fredoka', sans-serif; font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
+      font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #fff;
       text-decoration: none;
       width: fit-content;
       border-radius: 4px;
@@ -138,7 +139,7 @@
     .scroll-hint:hover { opacity: 0.8; }
     .scroll-hint:active { opacity: 0.6; }
     .scroll-hint:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
-    .scroll-hint span { display: inline-block; animation: nudge 2.4s var(--ease) infinite; }
+    .scroll-hint span { display: inline-block; margin-left: 0.4rem; animation: nudge 2.4s var(--ease) infinite; }
     @keyframes nudge { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(5px); } }
 
     /* ── BRIDGE ───────────────────────────────────────────── */
