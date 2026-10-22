@@ -32,7 +32,7 @@ const overrides = {
   ],
   'contact.html': [
     [/<span class="block">Let's build<\/span>\s*<span class="block">something<\/span>\s*<span class="block hl-pink">worth<\/span>\s*<span class="block hl-pink">talking<\/span>\s*<span class="block">about.<\/span>/,
-      '<span class="block">Construyamos</span>\n      <span class="block">algo que</span>\n      <span class="block hl-pink">dé que</span>\n      <span class="block hl-pink">hablar.</span>'],
+      '<span class="block">Constru&shy;yamos</span>\n        <span class="block">algo</span>\n        <span class="block">que</span>\n        <span class="block hl-pink accent-line">dé que</span>\n        <span class="block hl-pink">hablar.</span>'],
   ],
   'work/qarmela.html': [
     ['A mark that<br>grows with<br>the <span class="coral">brand.</span>', 'Un símbolo que<br>crece con<br>la <span class="coral">marca.</span>'],
@@ -43,7 +43,7 @@ const overrides = {
 // Spanish-only layout tweaks for longer words.
 const extraCss = {
   'work/fossil-fuel.html': '@media (max-width: 600px) { .wild-h { font-size: 11vw; } .closing-quote { font-size: 12.5vw; } }',
-  'contact.html': '.contact-headline { font-size: clamp(2.2rem, 5.1vw, 4.1rem); } @media (max-width: 600px) { .contact-headline { font-size: 9.5vw; } }',
+  'contact.html': '.contact-headline .block { display: block; } .contact-headline .accent-line { padding-top: 0.12em; }',
 };
 
 const translate = s => {
