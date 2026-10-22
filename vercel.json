@@ -13,6 +13,21 @@
       "permanent": false
     },
     {
+      "source": "/cartel-malasana",
+      "destination": "/es/madrid?utm_source=cartel&utm_medium=offline&utm_campaign=madrid_2026&utm_content=malasana",
+      "permanent": false
+    },
+    {
+      "source": "/cartel-salamanca",
+      "destination": "/es/madrid?utm_source=cartel&utm_medium=offline&utm_campaign=madrid_2026&utm_content=salamanca",
+      "permanent": false
+    },
+    {
+      "source": "/cartel-chamberi",
+      "destination": "/es/madrid?utm_source=cartel&utm_medium=offline&utm_campaign=madrid_2026&utm_content=chamberi",
+      "permanent": false
+    },
+    {
       "source": "/notco",
       "destination": "/work/notco",
       "permanent": true

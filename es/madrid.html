@@ -496,8 +496,14 @@
     const WHATSAPP_DEFAULT = 'Hola, he visto el cartel de Vinca Studio y me gustaría hablar sobre mi negocio.';
     const BOOKING_URL = '';
 
+    // Each zone's QR sets utm_content; the zone is added to the message so Vincent knows which poster it was.
+    const ZONES = { malasana: 'Malasaña', salamanca: 'el barrio de Salamanca', chamberi: 'Chamberí' };
+    const zone = ZONES[new URLSearchParams(location.search).get('utm_content')];
+
     document.querySelectorAll('.wa-link').forEach(a => {
-      a.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(a.dataset.wa || WHATSAPP_DEFAULT);
+      let text = a.dataset.wa || WHATSAPP_DEFAULT;
+      if (zone) text = text.replace('cartel de Vinca Studio', 'cartel de Vinca Studio en ' + zone);
+      a.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(text);
       a.target = '_blank';
       a.rel = 'noopener';
     });
