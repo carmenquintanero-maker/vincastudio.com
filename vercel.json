@@ -8,6 +8,11 @@
       "permanent": false
     },
     {
+      "source": "/cartel",
+      "destination": "/es/contacto?utm_source=cartel&utm_medium=qr&utm_campaign=cartel",
+      "permanent": false
+    },
+    {
       "source": "/notco",
       "destination": "/work/notco",
       "permanent": true
