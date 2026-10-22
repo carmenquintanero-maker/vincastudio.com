@@ -101,7 +101,7 @@
     /* Mobile: headline sits just under the logo; the scroll prompt takes the free space at the bottom */
     .hero-body { flex: 1; display: flex; padding: var(--space-l) 0 var(--space-l); }
     .hero-body .wrap { display: flex; flex-direction: column; }
-    .hero-body .scroll-hint { margin-top: auto; padding-top: var(--space-l); }
+    .hero-body .scroll-hint { margin-top: var(--space-xl); }
     .hero .eyebrow { color: rgba(255,255,255,0.75); margin-bottom: var(--space-m); }
     .headline {
       display: block;
@@ -143,6 +143,9 @@
     .scroll-hint:active { opacity: 0.6; }
     .scroll-hint:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
     .scroll-hint .nowrap { white-space: nowrap; }
+    /* slow "breathing" so the prompt invites a tap without shouting */
+    .scroll-hint { transform-origin: left center; animation: breathe 3.6s ease-in-out infinite; }
+    @keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
     .scroll-hint span[aria-hidden] { display: inline-block; margin-left: 0.4rem; animation: nudge 2.4s var(--ease) infinite; }
     @keyframes nudge { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(5px); } }
 
@@ -348,7 +351,7 @@
       :root { --gutter: 3rem; }
       .hero-body { flex: none; display: block; margin-top: auto; padding: var(--space-xl) 0 max(var(--space-l), 16svh); }
       .hero-body .wrap { display: block; }
-      .hero-body .scroll-hint { margin-top: var(--space-l); padding-top: 0; }
+      .hero-body .scroll-hint { margin-top: var(--space-l); }
       .options { grid-template-columns: 1fr 1fr; align-items: start; }
       .ctas { flex-direction: row; max-width: none; }
     }
