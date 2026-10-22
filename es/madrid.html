@@ -98,7 +98,10 @@
     .top a:active { opacity: 0.6; }
     .top a:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
     .top svg { height: 24px; width: auto; display: block; }
-    .hero-body { margin-top: auto; padding: var(--space-xl) 0 max(var(--space-l), 16svh); }
+    /* Mobile: headline sits just under the logo; the scroll prompt takes the free space at the bottom */
+    .hero-body { flex: 1; display: flex; padding: var(--space-l) 0 var(--space-l); }
+    .hero-body .wrap { display: flex; flex-direction: column; }
+    .hero-body .scroll-hint { margin-top: auto; padding-top: var(--space-l); }
     .hero .eyebrow { color: rgba(255,255,255,0.75); margin-bottom: var(--space-m); }
     .headline {
       display: block;
@@ -139,7 +142,8 @@
     .scroll-hint:hover { opacity: 0.8; }
     .scroll-hint:active { opacity: 0.6; }
     .scroll-hint:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
-    .scroll-hint span { display: inline-block; margin-left: 0.4rem; animation: nudge 2.4s var(--ease) infinite; }
+    .scroll-hint .nowrap { white-space: nowrap; }
+    .scroll-hint span[aria-hidden] { display: inline-block; margin-left: 0.4rem; animation: nudge 2.4s var(--ease) infinite; }
     @keyframes nudge { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(5px); } }
 
     /* ── BRIDGE ───────────────────────────────────────────── */
@@ -342,6 +346,9 @@
 
     @media (min-width: 760px) {
       :root { --gutter: 3rem; }
+      .hero-body { flex: none; display: block; margin-top: auto; padding: var(--space-xl) 0 max(var(--space-l), 16svh); }
+      .hero-body .wrap { display: block; }
+      .hero-body .scroll-hint { margin-top: var(--space-l); padding-top: 0; }
       .options { grid-template-columns: 1fr 1fr; align-items: start; }
       .ctas { flex-direction: row; max-width: none; }
     }
@@ -383,7 +390,7 @@
             <span class="headline">¿Hay alguien hablando de tu negocio a tus espaldas?</span>
             <span class="twist">No. Nadie habla de él.</span>
           </h1>
-          <a class="scroll-hint" href="#situaciones">¿Qué está pasando en tu negocio? <span aria-hidden="true">↓</span></a>
+          <a class="scroll-hint" href="#situaciones">¿Qué está pasando en tu <span class="nowrap">negocio?<span aria-hidden="true">↓</span></span></a>
         </div>
       </div>
     </section>
