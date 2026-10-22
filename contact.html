@@ -284,6 +284,9 @@
       margin-bottom: 0.75rem;
     }
     .form-success p { color: rgba(32,22,29,0.55); line-height: 1.75; }
+    .form-error { margin-top: 1.5rem; color: var(--red); line-height: 1.6; }
+    .form-error a { color: inherit; font-weight: 600; }
+    #contactForm button[disabled] { opacity: 0.5; pointer-events: none; }
 
     /* ── FOOTER ───────────────────────────────────────────── */
     footer {
@@ -546,7 +549,8 @@
 
     <!-- RIGHT: Form -->
     <div class="contact-right">
-      <form id="contactForm" novalidate>
+      <form id="contactForm" action="https://formspree.io/f/meaeybrp" method="POST" novalidate>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />
 
         <div class="form-grid">
           <div class="field">
@@ -584,6 +588,7 @@
           <button type="submit" class="btn-dark">Send Message ↗</button>
           <p class="form-response-note">We typically respond within <span class="note-pink">24 hours.</span></p>
         </div>
+        <p class="form-error" id="formError" hidden>Something went wrong. Please try again or email us at <a href="mailto:hellovincastudio@gmail.com">hellovincastudio@gmail.com</a>.</p>
 
       </form>
 
@@ -653,10 +658,22 @@
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
 
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      this.style.display = 'none';
-      document.getElementById('formSuccess').classList.add('visible');
+      if (!this.reportValidity()) return;
+      const btn = this.querySelector('button[type="submit"]');
+      const err = document.getElementById('formError');
+      btn.disabled = true;
+      err.hidden = true;
+      try {
+        const res = await fetch(this.action, { method: 'POST', body: new FormData(this), headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error(res.status);
+        this.style.display = 'none';
+        document.getElementById('formSuccess').classList.add('visible');
+      } catch {
+        err.hidden = false;
+        btn.disabled = false;
+      }
     });
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => { btt.classList.toggle('visible', window.scrollY > 400); }, { passive: true });
