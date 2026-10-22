@@ -244,6 +244,26 @@
     .options-extra .option { --card-bg: transparent; --card-accent: var(--dark); box-shadow: none; border: 2px dashed rgba(32,22,29,0.55); }
     .options-extra .option.is-open { --card-bg: #fff; border-color: transparent; }
 
+    /* ── ESPEJO: one concrete first step, quieter than the situations ── */
+    .espejo { background: var(--cream); padding: var(--space-l) 0; }
+    .espejo .eyebrow { color: var(--purple); margin-bottom: var(--space-s); }
+    .espejo h2 {
+      font-weight: 900;
+      font-size: clamp(1.8rem, 6.5vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 16ch;
+      text-wrap: balance;
+    }
+    .espejo-text { margin-top: var(--space-s); font-size: 1.05rem; color: rgba(32,22,29,0.78); max-width: 54ch; }
+    .espejo .ctas { margin-top: var(--space-m); }
+    .btn-dark {
+      background: var(--dark); color: #fff;
+      box-shadow: 0 2px 6px rgba(32,22,29,0.18), 0 16px 32px -14px rgba(100,32,39,0.55);
+    }
+    .btn-dark:focus-visible { outline-color: var(--purple); }
+    .espejo-note { margin-top: var(--space-s); font-size: 0.95rem; color: rgba(32,22,29,0.65); max-width: 46ch; }
+
     /* ── VINCA BLOCK + CONTACT ────────────────────────────── */
     .contact {
       position: relative;
@@ -294,16 +314,6 @@
     .btn-secondary { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); }
     .btn svg { width: 20px; height: 20px; flex: none; }
     .cta-note { margin-top: var(--space-m); font-size: 1rem; color: rgba(255,255,255,0.65); max-width: 42ch; }
-    .cta-value {
-      margin-top: var(--space-m);
-      padding: 1.1rem 1.25rem;
-      max-width: 52ch;
-      border-left: 3px solid var(--yellow);
-      border-radius: 0 14px 14px 0;
-      background: rgba(255,255,255,0.06);
-      font-size: 0.98rem;
-      color: rgba(255,255,255,0.82);
-    }
 
     /* ── SERVICES LINK + FOOTER ───────────────────────────── */
     .more { background: var(--bg); padding: var(--space-l) 0; }
@@ -455,6 +465,18 @@
       </div>
     </section>
 
+    <section class="espejo" id="espejo" aria-labelledby="espejo-title">
+      <div class="wrap">
+        <p class="eyebrow">Un primer paso concreto</p>
+        <h2 id="espejo-title">¿Tu negocio se ve como tú crees?</h2>
+        <p class="espejo-text">Tú nos cuentas qué quieres que entiendan de tu negocio. Si te encaja, te ayudamos a preguntar a clientes nuevos y habituales con dos enlaces breves. Después comparamos sus palabras con lo que tú pensabas y te compartimos un primer contraste. Sin suponer de antemano qué está fallando.</p>
+        <div class="ctas">
+          <a class="btn btn-dark wa-link" href="#" data-track="whatsapp_click" data-option="espejo" data-wa="Hola, he visto el cartel de Vinca Studio. Me interesa hacer el Espejo de percepción de mi negocio. ¿Cómo funciona?" data-wa-zone="Madrid">Quiero hacer el Espejo</a>
+        </div>
+        <p class="espejo-note">Primero hablamos de tu negocio. El ejercicio es tuyo y no te obliga a contratar otro servicio.</p>
+      </div>
+    </section>
+
     <section class="contact" id="contacto" aria-labelledby="contact-title">
       <div class="wrap">
         <p class="eyebrow" id="contact-title">Cómo trabajamos</p>
@@ -467,9 +489,7 @@
             Escribir por WhatsApp
           </a>
         </div>
-        <p class="cta-note">Cuéntanos en qué etapa estás. Vincent hablará contigo antes de recomendar un servicio.</p>
-        <p class="cta-value">Te compartiremos un ejercicio breve para preguntar a clientes habituales y nuevos qué recuerdan de tu negocio y comparar sus palabras con lo que tú quieres transmitir.</p>
-      </div>
+        <p class="cta-note">Cuéntanos en qué etapa estás. Vincent hablará contigo antes de recomendar un servicio.</p>      </div>
     </section>
 
     <section class="more">
@@ -502,7 +522,9 @@
 
     document.querySelectorAll('.wa-link').forEach(a => {
       let text = a.dataset.wa || WHATSAPP_DEFAULT;
-      if (zone) text = text.replace('cartel de Vinca Studio', 'cartel de Vinca Studio en ' + zone);
+      // data-wa-zone is the fallback place for links that must always name one (the Espejo says "Madrid").
+      const place = zone || a.dataset.waZone;
+      if (place) text = text.replace('cartel de Vinca Studio', 'cartel de Vinca Studio en ' + place);
       a.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(text);
       a.target = '_blank';
       a.rel = 'noopener';
