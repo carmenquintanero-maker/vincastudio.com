@@ -49,7 +49,7 @@ const overrides = {
 // Spanish-only layout tweaks for longer words.
 const extraCss = {
   'work/fossil-fuel.html': '@media (max-width: 600px) { .wild-h { font-size: 11vw; } .closing-quote { font-size: 12.5vw; } }',
-  'contact.html': '.contact-headline .block { display: block; } .contact-headline .accent-line { padding-top: 0.12em; }',
+  'contact.html': '.contact-headline .block { display: block; } .contact-headline .accent-line { padding-top: 0.12em; } .contact-headline { font-size: min(clamp(3.5rem, 7.2vw, 6.5rem), 21cqi); }',
 };
 
 const translate = s => {

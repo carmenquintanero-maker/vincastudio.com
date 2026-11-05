@@ -128,11 +128,13 @@
       z-index: 1;
       max-width: 540px;
       align-self: center;
+      container-type: inline-size; /* headline size follows this column */
     }
     .contact-headline {
       font-family: 'Satoshi', sans-serif;
       font-weight: 900;
       font-size: clamp(3.5rem, 7.2vw, 6.5rem);
+      font-size: min(clamp(3.5rem, 7.2vw, 6.5rem), 17cqi);
       line-height: 0.88;
       letter-spacing: -0.06em;
       text-transform: uppercase;
@@ -723,6 +725,8 @@
     </div>
   </footer>
 
+  <button id="back-to-top" aria-label="Back to top">↑</button>
+
   <script>
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
@@ -748,7 +752,6 @@
     window.addEventListener('scroll', () => { btt.classList.toggle('visible', window.scrollY > 400); }, { passive: true });
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
-  <button id="back-to-top" aria-label="Back to top">↑</button>
 
   <script>
     // Mobile menu — built from the desktop nav links so every page stays in sync
