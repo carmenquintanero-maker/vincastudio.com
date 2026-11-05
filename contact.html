@@ -27,10 +27,8 @@
   <meta property="og:locale:alternate" content="es_ES" />
   <!-- /LANG -->
   <!-- /SEO -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
+  <link href="/fonts/fonts.css" rel="stylesheet" />
+  <script src="/cookie-consent.js" defer></script>
   <style>
     /* ── TOKENS ───────────────────────────────────────────── */
     :root {
@@ -272,6 +270,50 @@
     }
     .note-pink { color: var(--pink); font-weight: 600; }
 
+    /* Privacy consent */
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: rgba(32,22,29,0.75);
+      cursor: pointer;
+    }
+    .consent input {
+      flex-shrink: 0;
+      width: 1.15rem;
+      height: 1.15rem;
+      margin-top: 0.12rem;
+      accent-color: var(--purple);
+      cursor: pointer;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .consent:hover input { transform: scale(1.08); }
+    .consent input:active { transform: scale(0.92); }
+    .consent input:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
+    .consent a, .form-legal a {
+      color: var(--dark);
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: var(--pink);
+      text-underline-offset: 3px;
+      border-radius: 2px;
+      transition: color 0.2s;
+    }
+    .consent a:hover, .form-legal a:hover { color: var(--purple); }
+    .consent a:focus-visible, .form-legal a:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+    .consent a:active, .form-legal a:active { opacity: 0.7; }
+    .form-legal {
+      margin-top: 2rem;
+      max-width: 62ch;
+      font-size: 0.8rem;
+      line-height: 1.7;
+      color: rgba(32,22,29,0.55);
+    }
+    .form-legal strong { color: rgba(32,22,29,0.75); font-weight: 700; }
+
     /* Form success */
     .form-success { display: none; padding: 3rem 0; }
     .form-success.visible { display: block; }
@@ -481,6 +523,21 @@
     @media (min-width: 1025px) { .mobile-menu { display: none; } }
   </style>
   <style>
+    /* Legal links in the footer */
+    .footer-bottom { flex-wrap: wrap; gap: 1rem 2.5rem; }
+    .project-footer { flex-wrap: wrap; gap: 1.25rem 2rem; }
+    .legal-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.75rem; }
+    .legal-links a, .legal-links button {
+      background: none; border: 0; padding: 0; cursor: pointer;
+      font-family: 'Fredoka', sans-serif; font-size: 0.72rem; letter-spacing: 0.18em;
+      text-transform: uppercase; text-decoration: none; color: rgba(255,255,255,0.45);
+      border-radius: 4px; transition: color 0.2s, opacity 0.2s;
+    }
+    .legal-links a:hover, .legal-links button:hover { color: #DC85B7; }
+    .legal-links a:focus-visible, .legal-links button:focus-visible { outline: 2px solid #F0B45E; outline-offset: 3px; }
+    .legal-links a:active, .legal-links button:active { opacity: 0.6; }
+  </style>
+  <style>
     .nav-links .nav-lang a {
       display: inline-block;
       padding: 0.3rem 0.75rem;
@@ -584,10 +641,16 @@
           <textarea id="message" name="message" rows="6" placeholder="What's the challenge? What are your goals? What does success look like for you?" required></textarea>
         </div>
 
+        <label class="consent" for="consent">
+          <input id="consent" type="checkbox" name="privacy_consent" value="yes" required />
+          <span>I have read and accept the <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+        </label>
+
         <div class="form-action">
           <button type="submit" class="btn-dark">Send Message ↗</button>
           <p class="form-response-note">We typically respond within <span class="note-pink">24 hours.</span></p>
         </div>
+        <p class="form-legal"><strong>Data protection.</strong> Controller: Vincent Miguel Hernández Sierra (Vinca Studio). Purpose: to reply to your message and, if you ask for one, send you a quote. Legal basis: your consent. Recipients: Formspree, the form provider (USA); no one else. Your rights: access, rectification, erasure and more, explained in the <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</p>
         <p class="form-error" id="formError" hidden>Something went wrong. Please try again or email us at <a href="mailto:hellovincastudio@gmail.com">hellovincastudio@gmail.com</a>.</p>
 
       </form>
@@ -651,6 +714,12 @@
 
     <div class="footer-bottom">
       <span class="footer-copy">© 2025 Vinca Studio. All rights reserved.</span>
+      <nav class="legal-links" aria-label="Legal">
+        <a href="/legal-notice">Legal notice</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/cookies">Cookies</a>
+        <button type="button" data-cookie-settings>Cookie settings</button>
+      </nav>
     </div>
   </footer>
 

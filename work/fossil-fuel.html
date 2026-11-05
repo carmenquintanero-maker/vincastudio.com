@@ -27,10 +27,8 @@
   <meta property="og:locale:alternate" content="es_ES" />
   <!-- /LANG -->
   <!-- /SEO -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link href="/fonts/fonts.css" rel="stylesheet" />
+  <script src="/cookie-consent.js" defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -677,6 +675,21 @@
     }
   </style>
   <style>
+    /* Legal links in the footer */
+    .footer-bottom { flex-wrap: wrap; gap: 1rem 2.5rem; }
+    .project-footer { flex-wrap: wrap; gap: 1.25rem 2rem; }
+    .legal-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.75rem; }
+    .legal-links a, .legal-links button {
+      background: none; border: 0; padding: 0; cursor: pointer;
+      font-family: 'Fredoka', sans-serif; font-size: 0.72rem; letter-spacing: 0.18em;
+      text-transform: uppercase; text-decoration: none; color: rgba(255,255,255,0.45);
+      border-radius: 4px; transition: color 0.2s, opacity 0.2s;
+    }
+    .legal-links a:hover, .legal-links button:hover { color: #DC85B7; }
+    .legal-links a:focus-visible, .legal-links button:focus-visible { outline: 2px solid #F0B45E; outline-offset: 3px; }
+    .legal-links a:active, .legal-links button:active { opacity: 0.6; }
+  </style>
+  <style>
     .nav-links .nav-lang a {
       display: inline-block;
       padding: 0.3rem 0.75rem;
@@ -949,6 +962,12 @@
   <!-- FOOTER -->
   <footer class="project-footer">
     <a href="/work" class="back-link">← Back to Work</a>
+    <nav class="legal-links" aria-label="Legal">
+      <a href="/legal-notice">Legal notice</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/cookies">Cookies</a>
+      <button type="button" data-cookie-settings>Cookie settings</button>
+    </nav>
     <span class="footer-logo" aria-label="Vinca Studio">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="212 267 418 61" aria-hidden="true">
         <path fill="#dc85b7" d="M368.23,316.64c-4.65,2.24-11.15,2.27-14.85-1.75-4.4-4.79-3.79-18.69,4.06-18.43,5.96.2,3.13,9.63,8.63,10.19,7.52.77,9.66-9.83,2.17-13.72-10.73-5.58-28,.69-30.65,13.2-3.41,16.09,11.99,24.67,25.97,19.79,3.65-1.27,9.92-6,9.83-10.27-.07-2.99-4.12.5-5.15,1Z"/>

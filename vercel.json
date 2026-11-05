@@ -171,6 +171,36 @@
       "source": "/es/madrid.html",
       "destination": "/es/madrid",
       "permanent": true
+    },
+    {
+      "source": "/legal-notice.html",
+      "destination": "/legal-notice",
+      "permanent": true
+    },
+    {
+      "source": "/privacy.html",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/cookies.html",
+      "destination": "/cookies",
+      "permanent": true
+    },
+    {
+      "source": "/es/aviso-legal.html",
+      "destination": "/es/aviso-legal",
+      "permanent": true
+    },
+    {
+      "source": "/es/privacidad.html",
+      "destination": "/es/privacidad",
+      "permanent": true
+    },
+    {
+      "source": "/es/cookies.html",
+      "destination": "/es/cookies",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -245,6 +275,30 @@
     {
       "source": "/es/madrid",
       "destination": "/es/madrid.html"
+    },
+    {
+      "source": "/legal-notice",
+      "destination": "/legal-notice.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/cookies",
+      "destination": "/cookies.html"
+    },
+    {
+      "source": "/es/aviso-legal",
+      "destination": "/es/aviso-legal.html"
+    },
+    {
+      "source": "/es/privacidad",
+      "destination": "/es/privacidad.html"
+    },
+    {
+      "source": "/es/cookies",
+      "destination": "/es/cookies.html"
     }
   ]
 }

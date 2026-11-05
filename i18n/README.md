@@ -14,3 +14,5 @@ After changing English copy:
     node i18n/i18n-check.mjs es/*.html es/proyectos/*.html
 
 New pages also need entries in `pages` inside `i18n-build.mjs`, a rewrite + .html redirect in `vercel.json`, and the sitemap.
+
+Legal pages (`legal-notice.html`, `privacy.html`, `cookies.html` and their `es/` versions) are written by hand in both languages — the Spanish text is the legally binding one, so it is not machine-mapped from English. They are listed in `manualPages` in `i18n-build.mjs`, which only adds hreflang + the language switch and makes footer links point at the right language. Edit both versions when the legal text changes.

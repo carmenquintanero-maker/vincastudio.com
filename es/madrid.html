@@ -19,10 +19,8 @@
   <meta property="og:url" content="https://www.vincastudio.com/es/madrid" />
   <meta property="og:image" content="https://www.vincastudio.com/og/vinca-studio.jpg" />
   <meta property="og:locale" content="es_ES" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
+  <link href="/fonts/fonts.css" rel="stylesheet" />
+  <script src="/cookie-consent.js" defer></script>
   <style>
     /* ── TOKENS ───────────────────────────────────────────── */
     :root {
@@ -346,6 +344,18 @@
     .foot a:hover { opacity: 0.7; }
     .foot a:active { opacity: 0.5; }
     .foot a:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+    .foot-legal {
+      display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem;
+      margin-top: calc(var(--space-m) * -0.5); padding-bottom: var(--space-l);
+      font-size: 0.8rem; color: rgba(32,22,29,0.5);
+    }
+    .foot-legal a, .foot-legal button {
+      font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer;
+      text-decoration: none; border-radius: 4px; transition: opacity 0.2s;
+    }
+    .foot-legal a:hover, .foot-legal button:hover { opacity: 0.7; }
+    .foot-legal a:active, .foot-legal button:active { opacity: 0.5; }
+    .foot-legal a:focus-visible, .foot-legal button:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
 
     @media (min-width: 760px) {
       :root { --gutter: 3rem; }
@@ -516,6 +526,12 @@
         <a href="mailto:hellovincastudio@gmail.com">hellovincastudio@gmail.com</a>
         <a class="wa-link" href="#" data-track="whatsapp_click" data-wa="Hola, vengo del cartel de Vinca Studio.">WhatsApp +34 630 618 370</a>
       </div>
+      <nav class="foot-legal" aria-label="Legal">
+        <a href="/es/aviso-legal">Aviso legal</a>
+        <a href="/es/privacidad">Privacidad</a>
+        <a href="/es/cookies">Cookies</a>
+        <button type="button" data-cookie-settings>Configurar cookies</button>
+      </nav>
     </div>
   </footer>
 

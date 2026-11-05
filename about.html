@@ -27,10 +27,8 @@
   <meta property="og:locale:alternate" content="es_ES" />
   <!-- /LANG -->
   <!-- /SEO -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
+  <link href="/fonts/fonts.css" rel="stylesheet" />
+  <script src="/cookie-consent.js" defer></script>
   <style>
     :root {
       --dark:   #20161D;
@@ -402,6 +400,21 @@
     @media (min-width: 1025px) { .mobile-menu { display: none; } }
   </style>
   <style>
+    /* Legal links in the footer */
+    .footer-bottom { flex-wrap: wrap; gap: 1rem 2.5rem; }
+    .project-footer { flex-wrap: wrap; gap: 1.25rem 2rem; }
+    .legal-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.75rem; }
+    .legal-links a, .legal-links button {
+      background: none; border: 0; padding: 0; cursor: pointer;
+      font-family: 'Fredoka', sans-serif; font-size: 0.72rem; letter-spacing: 0.18em;
+      text-transform: uppercase; text-decoration: none; color: rgba(255,255,255,0.45);
+      border-radius: 4px; transition: color 0.2s, opacity 0.2s;
+    }
+    .legal-links a:hover, .legal-links button:hover { color: #DC85B7; }
+    .legal-links a:focus-visible, .legal-links button:focus-visible { outline: 2px solid #F0B45E; outline-offset: 3px; }
+    .legal-links a:active, .legal-links button:active { opacity: 0.6; }
+  </style>
+  <style>
     .nav-links .nav-lang a {
       display: inline-block;
       padding: 0.3rem 0.75rem;
@@ -666,6 +679,12 @@
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">© 2025 Vinca Studio. All rights reserved.</span>
+      <nav class="legal-links" aria-label="Legal">
+        <a href="/legal-notice">Legal notice</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/cookies">Cookies</a>
+        <button type="button" data-cookie-settings>Cookie settings</button>
+      </nav>
     </div>
   </footer>
 

@@ -20,7 +20,13 @@ const pages = {
   'work/qarmela.html':      ['/work/qarmela', '/es/proyectos/qarmela', 'es/proyectos/qarmela.html'],
   'work/fossil-fuel.html':  ['/work/fossil-fuel', '/es/proyectos/fossil-fuel', 'es/proyectos/fossil-fuel.html'],
 };
-const enToEs = Object.fromEntries(Object.values(pages).map(([en, es]) => [en, es]));
+// Pages written by hand in both languages (the legal texts): not translated, only given hreflang + language switch.
+const manualPages = {
+  'legal-notice.html': ['/legal-notice', '/es/aviso-legal', 'es/aviso-legal.html'],
+  'privacy.html':      ['/privacy', '/es/privacidad', 'es/privacidad.html'],
+  'cookies.html':      ['/cookies', '/es/cookies', 'es/cookies.html'],
+};
+const enToEs = Object.fromEntries([...Object.values(pages), ...Object.values(manualPages)].map(([en, es]) => [en, es]));
 
 // Headings whose Spanish word order differs from the English fragments.
 const overrides = {
@@ -168,5 +174,13 @@ for (const [enFile, [enUrl, esUrl, esFile]] of Object.entries(pages)) {
   const mm = mask(es);
   for (const x of mm.matchAll(/>([^<>]+)</g)) { const n = norm(x[1]); if (n in enStrings && !(n in dict)) missing.add(`${esFile}: ${n}`); }
   console.log('built', esFile);
+}
+for (const [enFile, [enUrl, esUrl, esFile]] of Object.entries(manualPages)) {
+  for (const [file, lang] of [[enFile, 'en'], [esFile, 'es']]) {
+    const p = path.join(site, file);
+    if (!fs.existsSync(p)) { console.warn('missing', file); continue; }
+    fs.writeFileSync(p, addLangBits(fs.readFileSync(p, 'utf8'), enUrl, esUrl, lang));
+  }
+  console.log('linked', enFile, '<->', esFile);
 }
 if (missing.size) console.log('\nStill English (check):\n' + [...missing].join('\n'));
